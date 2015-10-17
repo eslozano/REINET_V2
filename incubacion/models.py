@@ -20,7 +20,7 @@ class Incubacion(models.Model):
 	condiciones = models.TextField()
 	tipos_oferta = models.PositiveSmallIntegerField()
 	otros = models.TextField(null=True,blank=True)
-	estado_incubacion = models.PositiveSmallIntegerField(default=0)#activa=0,terminada=1,desactivada=2
+	estado_incubacion = models.PositiveSmallIntegerField(default=0)#activa=0,terminada=1,desactivada=2,censurada=3
 	fk_perfil = models.ForeignKey(Perfil)
 	class Meta:
 		db_table = 'Incubacion'
