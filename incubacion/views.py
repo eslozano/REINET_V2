@@ -767,6 +767,8 @@ def usuario_ver_incubacion(request, id_incubacion):
         try:
             #obtengo la incubacion por medio del id 
             incubacion = Incubacion.objects.get(id_incubacion=id_incubacion)
+            
+
             if incubacion :
                 #Lo siguiente es para poder mostrar las incubadas de la incubacion               
                 incubadas = []
@@ -1115,6 +1117,8 @@ def admin_aceptar_solicitud(request):
             milestone.fecha_maxima_Retroalimentacion = datetime.datetime.now(timezone.utc)
             milestone.fecha_maxima = datetime.datetime.now(timezone.utc)
             milestone.requerimientos = "Ninguno"
+            milestone.num_ediciones=0
+            milestone.completado=True
             milestone.importancia = "Es la primera version de la incubada"
             milestone.otros = "Ninguno"
             print'555555555'
