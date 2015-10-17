@@ -215,6 +215,8 @@ def definir_milestone(request):
     milestone.fecha_maxima = fechaMilestone
     milestone.requerimientos = requerimientos
     milestone.importancia = importancia
+    milestone.num_ediciones=0
+    milestone.completado=False
     milestone.otros = otros
     milestone.fk_incubada_id = incubada_clonada.id_incubada
     milestone.save()
@@ -738,6 +740,8 @@ def usuario_ver_incubacion(request, id_incubacion):
         try:
             #obtengo la incubacion por medio del id 
             incubacion = Incubacion.objects.get(id_incubacion=id_incubacion)
+            
+
             if incubacion :
                 #Lo siguiente es para poder mostrar las incubadas de la incubacion               
                 incubadas = []
@@ -1083,6 +1087,10 @@ def admin_aceptar_solicitud(request):
             milestone.fecha_maxima = datetime.datetime.now(timezone.utc)
             milestone.requerimientos = "Primera versión de la incubada"
             milestone.importancia = "Primera version de la incubada"
+
+            milestone.num_ediciones=milestone.num_ediciones+1
+            milestone.completado=True
+
             milestone.otros = "Ninguno"
             #Se enlaza el milestone creado a la incubada creada
             milestone.fk_incubada = incubada
