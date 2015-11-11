@@ -179,6 +179,7 @@ def definir_milestone(request):
     #ID OFERTA
     id_oferta= incubada_clonada.fk_oferta.id_oferta
 
+    print "Obtengo los datos para crear Milestone"
 
     #ID DIAGRAMA DE CANVAS
     id_diagrama_canvas = incubada_actual.fk_diagrama_canvas_id
@@ -190,6 +191,8 @@ def definir_milestone(request):
     canvas_clonado.save()
     nuevo_id_diagrama_canvas = canvas_clonado.id_diagrama_business_canvas 
 
+    print "Diagrama de Canvas"
+
     #ID DIAGRAMA PORTER
     id_diagrama_porter = incubada_actual.fk_diagrama_competidores_id
     #Obtengo el DIAGRAMA DE PORTER  
@@ -200,6 +203,8 @@ def definir_milestone(request):
     porter_clonado.save()
     nuevo_id_diagrama_porter =  porter_clonado.id_diagrama_porter
 
+    print "Diagrama de porter"
+
     #Guardo los id de canvas y porter
     incubada_clonada.fk_diagrama_canvas_id = nuevo_id_diagrama_canvas
     incubada_clonada.fk_diagrama_competidores_id = nuevo_id_diagrama_porter
@@ -208,8 +213,11 @@ def definir_milestone(request):
     incubada_clonada.id_incubada = None
     incubada_clonada.save()
 
+    print "Guardo ID canvas y porter"
+
     #Crea una instancia de Milestone
     milestone = Milestone()
+    print "Crear la instancia de milestone"
     milestone.fecha_creacion = fechaactual
     milestone.fecha_maxima_Retroalimentacion = fechaRetroalimentacion
     milestone.fecha_maxima = fechaMilestone
@@ -220,6 +228,7 @@ def definir_milestone(request):
     milestone.otros = otros
     milestone.fk_incubada_id = incubada_clonada.id_incubada
     milestone.save()
+    print "cree el Mlestone"
 
 """
 Autor: Leonel Ramirez 

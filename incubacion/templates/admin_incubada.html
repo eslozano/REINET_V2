@@ -816,6 +816,7 @@
                                   </div>
                                   <br>
                                 </div>
+                                <!--
                                 <div class="form-group">
                                    <label for="Nombres"  class="col-md-3 col-md-offset-1">Otros</label>
                                    <div class="col-md-7 pull-left" id="nuevos">
@@ -825,11 +826,12 @@
                                   </div>
                                   </form>
                                 </div>
+                                -->
                                 <div class="form-group">
                                     <div align="right">
                                       <a data-dismiss="modal" class="btn btn-dark"><i class="fa fa-times"></i>&nbsp;&nbsp;Cancelar&nbsp;&nbsp;</a>
                                       
-                                      <a id="aceptardefinirMilestone"disabled  class="btn btn-red"><i class="fa fa-floppy-o"></i>&nbsp;&nbsp;Guardar&nbsp;&nbsp;</a>
+                                      <a id="adefinirMilestone"disabled  data-target="#guardarMilestone" data-toggle="modal" class="btn btn-red"><i class="fa fa-floppy-o"></i>&nbsp;&nbsp;Guardar&nbsp;&nbsp;</a>
                                     </div>                                                  
                                 </div>
                             </form>   
@@ -837,6 +839,47 @@
                       </div>
                   </div>
               </div>
+
+			<!--Modal GUARDAR MILESTONE-->
+	        <div id="guardarMilestone" class="modal fade" role="dialog">
+	        	<div class="modal-dialog" style="width: 40% !important;">
+	              <div class="modal-content">
+	                  <div class="modal-header">
+	                      <button type="button" class="close" data-dismiss="modal"aria-hidden="true">&times;</button>
+	                      <h4 class="modal-title">Guardar Milestone</h4>
+	                  </div>
+	                  <div class="modal-body" style="font-size:15px;overflow-y:auto">                           
+	                      <div class="comment" id="Comentario">
+	                          <div class="media">
+	                            <form  id="formMilestone" class="form-horizontal col-md-12" name="formMilestone"> 
+	                            	<div style="text-align: center">
+	                            		<br>
+	                            		<p>
+	                            			Desea guardar el Milestone creado.
+	                            		</p>
+	                            		<br>
+	                            		<br>
+	                            		
+	                            	</div>
+	                                
+	                                <div class="form-group">
+	                                    <div align="right">
+	                                      <a id="cancelardefinirMilestone" class="btn btn-dark"><i class="fa fa-times"></i>&nbsp;&nbsp;Cancelar&nbsp;&nbsp;</a>
+	                                      
+	                                      <a id="aceptardefinirMilestone"  class="btn btn-red"><i class="fa fa-check"></i>&nbsp;&nbsp;Aceptar&nbsp;&nbsp;</a>
+	                                    </div>                                                  
+	                                </div>
+	                            </form>   
+	                          </div>
+	                      </div>
+	                  </div>
+	              </div>
+
+	            </div>
+	        </div>
+        
+
+
 
               	<script>
 					$(function() {
@@ -849,12 +892,16 @@
 					    fecRet= $("#fecha_retroalimentacion").datepicker({ dateFormat:'YYYY-MM-DD'}).val();
 
 					    if (fecMil < fecRet) {
-					    	$("#aceptardefinirMilestone").removeAttr('disabled');
+					    	$("#adefinirMilestone").removeAttr('disabled');
 					    	return false;
 					    }else{
 					    	alert("Fecha ingresada es Invalida.\nLa Fecha fin del Retroalimencion no puede ser antes de la Fecha fin de Milestone");
 					    	return false;
 					    }                
+				    });
+
+				    $("#cancelardefinirMilestone").click(function(){
+				    	$('#guardarMilestone').modal('hide');
 				    });
 
 					$("#aceptardefinirMilestone").click(function(){
@@ -899,6 +946,7 @@
 							});
 							//Cerramos el Modal del Definir Milestone
 							$('#definirMilestone').modal('hide');
+							$('#guardarMilestone').modal('hide');
 							//Limpiamos todos los campos del formulario Definir Milestone
 							$('#formMilestone').each (function(){
 							  this.reset();
@@ -918,6 +966,12 @@
 						});
 					});
 					
+
+					$('#aceptardefinirMilestone').click(function(){
+						mostrarMilestActual();
+						alert("AJAX")
+					});
+
 					$('#IncbMilestActu').ready(mostrarMilestActual);
 					function mostrarMilestActual() {
 						$.ajax({
@@ -936,7 +990,9 @@
 				</script>
             </div>
         </div>
-        
+
+
+        	
 	
     
 
