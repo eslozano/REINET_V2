@@ -101,11 +101,14 @@
                             <div class="comment" style="border-bottom: none!important;">        
                                 <div class="media">
                                     <div class="media-body">
-                                        <h3><a href="/VerIncubacion/{{ incubacion.id_incubacion }}">{{ incubacion.nombre }}</a></h3>
-
+                                        {%if incubacion.fk_perfil == usuario.perfil%}
+                                            <h3><a href="/AdminIncubacion/{{incubacion.id_incubacion}}">{{ incubacion.nombre }}</a></h3>
+                                        {%else %}
+                                            <h3><a href="/VerIncubacion/{{ incubacion.id_incubacion }}">{{ incubacion.nombre }}</a></h3>
+                                        {%endif%}
                                         <ul class="text-muted list-inline">
                                             <li><i style="color:#515151" class="fa fa-calendar"></i> {{ incubacion.fecha_inicio.date }}</li>
-                                            <li><i style="color:#515151" class="fa fa-user"></i> Administrador: {{ incubacion.fk_perfil.username }}</li>
+                                            <li><i style="color:#515151" class="fa fa-user"></i> Administrador: {{ incubacion.fk_perfil }}</li>
                                             <li><i style="color:#515151" class="fa fa-cogs"></i> Tipo de Oferta:
                                             {%if incubacion.tipos_oferta == 0 %}
                                                 Emprendimiento
@@ -122,9 +125,6 @@
                                             
                                         </ul>
                                     </div>
-
-
-
                                 </div>
                             </div>
                         {% endfor %}

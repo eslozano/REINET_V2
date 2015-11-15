@@ -58,7 +58,7 @@ def inicio_incubacion(request):
     incubadas = []
     for incubacion in incubaciones:
         for incubada in Incubada.objects.filter(fk_incubacion=incubacion.id_incubacion):
-            for incubada1 in Incubada.objects.filter(fk_incubacion=incubacion.id_ncubacion):
+            for incubada1 in Incubada.objects.filter(fk_incubacion=incubacion.id_incubacion):
 
                 if incubada.fk_oferta.id_oferta == incubada1.fk_oferta.id_oferta:
                     if encontro == False:
