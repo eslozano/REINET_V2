@@ -249,9 +249,9 @@
                                                 <img src="/media/noPicture.png" alt="...">
                                               {%endif%}
                                               {%if idOfertaConsultor == incubada.0.fk_oferta.id_oferta %}
-                                                <a href="/ConsultorIncubada/{{idOfertaConsultor}}" style="font-size:16px;color:black">{{incubada.0.nombre}}</a><br>
+                                                <a href="/ConsultorIncubada/{{idOfertaConsultor}}" style="font-size:14px;color:black">{{incubada.0.nombre}}</a><br>
                                               {%elif incubada.1.fk_participante == usuario %}
-                                                <a href="/Incubada/{{incubada.0.fk_oferta.id_oferta}}" style="font-size:16px;color:black">
+                                                <a href="/Incubada/{{incubada.0.fk_oferta.id_oferta}}" style="font-size:14px;color:black">{{incubada.0.nombre}}</a><br>
                                               {%else %}
                                                 <a style="font-size:14px;color:black;cursor:not-allowed">{{ incubada.0.nombre }}</a><br>
                                               {%endif%}

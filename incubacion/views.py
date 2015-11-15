@@ -58,7 +58,7 @@ def inicio_incubacion(request):
     incubadas = []
     for incubacion in incubaciones:
         for incubada in Incubada.objects.filter(fk_incubacion=incubacion.id_incubacion):
-            for incubada1 in Incubada.objects.filter(fk_incubacion=incubacion.id_incubacion):
+            for incubada1 in Incubada.objects.filter(fk_incubacion=incubacion.id_ncubacion):
 
                 if incubada.fk_oferta.id_oferta == incubada1.fk_oferta.id_oferta:
                     if encontro == False:
@@ -230,6 +230,7 @@ def definir_milestone(request):
     milestone.importancia = importancia
     milestone.otros = otros
     milestone.fk_incubada_id = incubada_clonada.id_incubada
+    milestone.num_ediciones=0
     milestone.save()
     print "MILESTONE GUARDADO"
 
@@ -1290,6 +1291,7 @@ def admin_incubada_milestone_actual(request):
                 args['retroalimentar']=False
                 args['completar'] = False
                 args['milestone'] = False
+                
             elif fecha_maxima_completar <hoy and hoy<= fecha_maxima_retroal:
                 print fecha_maxima_retroal,'fecha maxima retroalimentar'
                 args['retroalimentar']=True
