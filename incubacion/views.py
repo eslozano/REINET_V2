@@ -227,6 +227,7 @@ def definir_milestone(request):
     milestone.completado=False
     milestone.otros = otros
     milestone.fk_incubada_id = incubada_clonada.id_incubada
+    milestone.num_ediciones=0
     milestone.save()
     print "cree el Mlestone"
 
@@ -1288,6 +1289,7 @@ def admin_incubada_milestone_actual(request):
                 args['retroalimentar']=False
                 args['completar'] = False
                 args['milestone'] = False
+                
             elif fecha_maxima_completar <hoy and hoy<= fecha_maxima_retroal:
                 print fecha_maxima_retroal,'fecha maxima retroalimentar'
                 args['retroalimentar']=True
