@@ -10,7 +10,7 @@
                 {%else %}
                   <img src="/media/noPicture.png" alt="...">
                 {%endif%}
-                <a href="#" style="font-size:16px;color:black">{{ solicitud.0.fk_oferta.nombre}}</a><br>
+                <a href="#" style="font-size:16px;color:black">{{ solicitud.0.fk_oferta.nombre}} </a><br>
                   <i class="fa fa-user"></i>&nbsp;{{ solicitud.1.fk_participante.first_name }} {{ solicitud.1.fk_participante.last_name }}  
                 <br><i class="fa fa-calendar"></i>&nbsp;{{solicitud.2.date}}
               </p>
@@ -88,7 +88,7 @@
       <div class="modal-body media" style="font-size:14px;padding-top: 0px;width: 540px;">
         <span>Se acept&oacute; la oferta aplicante. </span>
         <div align=right>
-          <a href="/InicioIncubacion/" class="btn btn-red" ><i class="fa fa-check-square"></i>&nbsp;&nbsp;Aceptar&nbsp;&nbsp;</a>
+          <a href="/AdminIncubacion/{{incubacion_id}}" class="btn btn-red" ><i class="fa fa-check-square"></i>&nbsp;&nbsp;Aceptar&nbsp;&nbsp;</a>
         </div>
       </div>
     </div>
@@ -106,7 +106,7 @@
       <div class="modal-body media" style="font-size:14px;padding-top: 0px;width: 540px;">
         <span>Se rechaz&oacute; la oferta aplicante. </span>
         <div align=right>
-          <a href="/InicioIncubacion/" class="btn btn-red" ><i class="fa fa-check-square"></i>&nbsp;&nbsp;Aceptar&nbsp;&nbsp;</a>
+          <a href="/AdminIncubacion/{{incubacion_id}}" class="btn btn-red" ><i class="fa fa-check-square"></i>&nbsp;&nbsp;Aceptar&nbsp;&nbsp;</a>
         </div>
       </div>
     </div>

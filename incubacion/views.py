@@ -948,7 +948,13 @@ def admin_solicitudes_incubacion(request):
                         solicitudesLista.append((solicitud, propietario, fechasolicitud,foto))
                 
                 args['solicitudes'] = solicitudesLista
-                #args['incubacion_id']=incubacion
+                print "INCUBADAAAAAAAAAAAAAA:     ", request.GET['incubacion']
+                #incubada_actual = Incubada.objects.get(id_incubada=idIncubada)
+                #print "IDINCUBADA1::::  ",incubada_actual.id_incubada
+
+                args['incubacion_id']= request.GET['incubacion']
+
+                #print "IDINCUBADA2::::  ",inc
 
             return render_to_response('admin_incubacion_solicitudes.html',args)
         except Incubada.DoesNotExist:
