@@ -35,7 +35,41 @@
 			        </div>
 			        <div class="col-md-7" align=right>
 			        	<div class="col-md-12">
-			            <a href="#" data-target="#modalInvitarConsultor" data-toggle="modal"  class="btn btn-red"><i class="fa fa-user-plus"></i>&nbsp;&nbsp;Invitar consultores</a>
+			            
+
+			            {%if estado_incubacion == 0%}
+			            	<a href="#" data-target="#modalInvitarConsultor" data-toggle="modal"  class="btn btn-red"><i class="fa fa-user-plus"></i>&nbsp;&nbsp;Invitar consultores</a>
+
+			            	{%if milestoneVigente == False%}
+				            	<a id="milestone" href="#" data-target="#definirMilestone" data-toggle="modal" class="btn btn-red"><i class="fa fa-sliders"></i>&nbsp;&nbsp;Definir Milestone</a>
+				            	</div>
+				            {%else%}
+				            	<a id="milestone" href="#" data-target="#definirMilestone" data-toggle="modal" class="btn btn-red" disabled="disabled"><i class="fa fa-sliders"></i>&nbsp;&nbsp;Definir Milestone</a>
+				            	</div>
+				            	<div class="col-md-offset-6">
+				            	<span style="font-size:11px;margin-right: 15px;">*Existe un milestone vigente</span>
+				            	</div>
+				            {%endif%}
+
+			            {%elif estado_incubacion == 1%}
+			            		<a href="#" data-target="#modalInvitarConsultor" data-toggle="modal"  class="btn btn-red" disabled="disabled"><i class="fa fa-user-plus"></i>&nbsp;&nbsp;Invitar consultores</a>
+
+			            		<a id="milestone" href="#" data-target="#definirMilestone" data-toggle="modal" class="btn btn-red" disabled="disabled"><i class="fa fa-sliders"></i>&nbsp;&nbsp;Definir Milestone</a>
+				            	</div>
+
+			            {%elif estado_incubacion == 2%}
+			            		<a href="#" data-target="#modalInvitarConsultor" data-toggle="modal"  class="btn btn-red" disabled="disabled"><i class="fa fa-user-plus"></i>&nbsp;&nbsp;Invitar consultores</a>
+
+			            		<a id="milestone" href="#" data-target="#definirMilestone" data-toggle="modal" class="btn btn-red" disabled="disabled"><i class="fa fa-sliders"></i>&nbsp;&nbsp;Definir Milestone</a>
+				            	</div>
+				        {%elif estado_incubacion == 3%}
+				        		<a href="#" data-target="#modalInvitarConsultor" data-toggle="modal"  class="btn btn-red" disabled="disabled"><i class="fa fa-user-plus"></i>&nbsp;&nbsp;Invitar consultores</a>
+
+			            		<a id="milestone" href="#" data-target="#definirMilestone" data-toggle="modal" class="btn btn-red" disabled="disabled"><i class="fa fa-sliders"></i>&nbsp;&nbsp;Definir Milestone</a>
+				            	</div>
+			            {%endif%}
+
+			            <!--
 			            {%if milestoneVigente == False%}
 			            	<a id="milestone" href="#" data-target="#definirMilestone" data-toggle="modal" class="btn btn-red"><i class="fa fa-sliders"></i>&nbsp;&nbsp;Definir Milestone</a>
 			            	</div>
@@ -46,6 +80,7 @@
 			            	<span style="font-size:11px;margin-right: 15px;">*Existe un milestone vigente</span>
 			            	</div>
 			            {%endif%}
+			            -->
 			        </div> 
 			        <div class="col-md-12" align=left>
 				        <ul class="text-muted list-inline">

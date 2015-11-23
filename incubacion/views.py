@@ -780,6 +780,7 @@ def usuario_ver_incubacion(request, id_incubacion):
                     
                     args['incubadas'] = incubadas
 
+
                 #Lo siguiente es para mostrar la convocatoriaa actual
                 convocatorias_incubacion = Convocatoria.objects.all().filter(fk_incubacion_id=id_incubacion).last()
                 if convocatorias_incubacion is not None:
@@ -900,6 +901,7 @@ def admin_incubadas_incubacion(request):
                             incubadas.append((ultimaIncubada, propietario, fechapublicacion,foto))
                     
                     args['incubadas'] = incubadas
+                    args['estado_incubacion'] = incubacion.estado_incubacion
             return render_to_response('admin_incubadas_de_incubacion.html',args)
         except Incubada.DoesNotExist:
             return redirect('/')
@@ -946,7 +948,6 @@ def admin_solicitudes_incubacion(request):
                         fechasolicitud=solicitud.fecha_creacion
                         foto=ImagenOferta.objects.filter(fk_oferta=solicitud.fk_oferta.id_oferta).first()
                         solicitudesLista.append((solicitud, propietario, fechasolicitud,foto))
-                
                 args['solicitudes'] = solicitudesLista
                 print "INCUBADAAAAAAAAAAAAAA:     ", request.GET['incubacion']
                 #incubada_actual = Incubada.objects.get(id_incubada=idIncubada)
@@ -1195,6 +1196,9 @@ def admin_ver_incubada(request, id_oferta):
                         args['incubada'] = incubada
                         args['propietario'] = propietario
                         args['id_oferta'] = id_oferta
+
+                        args['estado_incubacion'] = incubacion.estado_incubacion
+
                         return render_to_response('admin_incubada.html', args)
                     else:
                         args['error'] = "Esta incubada no se encuentra bajo su administración"
