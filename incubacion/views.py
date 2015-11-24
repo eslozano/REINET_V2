@@ -902,6 +902,7 @@ def admin_incubadas_incubacion(request):
                     
                     args['incubadas'] = incubadas
                     args['estado_incubacion'] = incubacion.estado_incubacion
+                    args['es_admin']=request.session['es_admin']
             return render_to_response('admin_incubadas_de_incubacion.html',args)
         except Incubada.DoesNotExist:
             return redirect('/')
@@ -1198,6 +1199,7 @@ def admin_ver_incubada(request, id_oferta):
                         args['id_oferta'] = id_oferta
 
                         args['estado_incubacion'] = incubacion.estado_incubacion
+                        args['es_admin']=request.session['es_admin']
 
                         return render_to_response('admin_incubada.html', args)
                     else:

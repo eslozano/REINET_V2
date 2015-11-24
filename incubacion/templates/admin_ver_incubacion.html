@@ -106,12 +106,16 @@
     		<div align="right">
           {% if incubacion.estado_incubacion == 0 %}
             <a href="/EditarMiIncubacion/{{incubacion.id_incubacion}}" class="btn btn-dark btn-sm"><i class="fa fa-edit"></i>&nbsp;Editar</a>
+
           {% elif incubacion.estado_incubacion == 1 %}
             <a href="/EditarMiIncubacion/{{incubacion.id_incubacion}}" class="btn btn-dark btn-sm" disabled><i class="fa fa-edit"></i>&nbsp;Editar</a>
+
           {% elif incubacion.estado_incubacion == 2 %}
             <a href="/EditarMiIncubacion/{{incubacion.id_incubacion}}" class="btn btn-dark btn-sm" disabled><i class="fa fa-edit"></i>&nbsp;Editar</a>
+
           {% elif incubacion.estado_incubacion == 3 %}
             <a href="/EditarMiIncubacion/{{incubacion.id_incubacion}}" class="btn btn-dark btn-sm" disabled><i class="fa fa-edit"></i>&nbsp;Editar</a>
+            
           {%endif%}
     			
     		</div>
