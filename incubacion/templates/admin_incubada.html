@@ -88,6 +88,7 @@
 			                <li><i class="fa fa-calendar"></i> {{incubada.fecha_publicacion.date}}</li>
 				        </ul>
 			        </div>
+
 			        <!-- comienza MODAL Invitar Consultor -->
 				    <div id="modalInvitarConsultor" class="modal fade" role="dialog">
 				    	<div class="modal-dialog" style="width: 40% !important;">
@@ -97,6 +98,7 @@
 				    				<h4 class="modal-title">INVITAR USUARIO A SER CONSULTOR</h4>
 				    			</div>
 				    			<div class="modal-body media" style="font-size:14px;padding-top: 0px;height: 290px;">
+				    				<!--
 				    				<div id="mostrarMensaje" style="display:none;">
 					    				<div  style="text-align:justify; font-size: 16px;margin-top: 30px;">
 					    					Se registrar&aacute; con éxito los usuarios seleccionados como consultores de la incubada. 
@@ -107,6 +109,7 @@
 									   		</div>
 									   	</div>
 									</div>
+									-->
 
 				    				<div id="formulario" name="formulario" class="form-horizontal col-md-12" style="width: 430px;">
 				    					{% csrf_token %}
@@ -172,12 +175,12 @@
 															//Elimina todos los div que contienen los usuario consultores
 															$('#resultadosInvitarConsultores').empty();
 															$('#formulario').hide();
-															$('#mostrarMensaje').show();
+															//$('#mostrarMensaje').show();
 														});
 
 														$('#aceptarConsultor').click(function(){
 															$('#formulario').show();
-															$('#mostrarMensaje').hide();
+															//$('#mostrarMensaje').hide();
 															mostrarConsultoresIncubada();
 														});
 
@@ -204,18 +207,18 @@
 
 									    <div class="form-group">
 									   		<div align="right">
-									   			<a href="#" id="enviarInvitaciones" disabled data-target="#modalInvitarAceptar" data-toggle="modal"  class="btn btn-red fa">&nbsp;&nbsp;Enviar Invitaciones</a>
+									   			<a href="#" id="enviarInvitaciones" disabled data-dismiss="modal" data-target="#confirmacion_invitar_consultor" data-toggle="modal"  class="btn btn-red fa">&nbsp;&nbsp;Enviar Invitaciones</a>
 									   		</div>
 									   	</div>
 									   	
 						                </br>
 									</div>
-									</div>
+									
 						        </div>
 				        	</div>
 				        </div>
 				    </div>
-
+				</div>
 	            <div class="blog-text">
 	                <!-- Nav tabs -->
 	                <ul class="nav nav-tabs " role="tablist" style="margin-bottom: 0px;">
@@ -811,7 +814,7 @@
 	</div>
 
 		<!--Modal DEFINIR MILESTONE-->
-        <div id="definirMilestone" class="modal fade" role="dialog">
+    <div id="definirMilestone" class="modal fade" role="dialog">
         	<div class="modal-dialog" style="width: 70% !important;">
               <div class="modal-content">
                   <div class="modal-header">
@@ -865,12 +868,12 @@
                       </div>
                   </div>
               </div>
-             </div>
-        </div>
+            </div>
+    </div>
 
 			<!--Modal GUARDAR MILESTONE-->
 
-			<div id="confirmacion_Milestones" class="modal fade" role="dialog">
+	<div id="confirmacion_Milestones" class="modal fade" role="dialog">
 		      <div class="modal-dialog" style="width: 40% !important;">
 		        <div class="modal-content" style=" width: 550px;">
 		          <div class="modal-header">
@@ -885,7 +888,50 @@
 		          </div>
 		        </div>
 		      </div>
+	</div>
+
+	<!--Modal Invitar Consultor-->
+	<div id="confirmacion_invitar_consultor" class="modal fade" role="dialog">
+		<div class="modal-dialog" style="width: 40% !important;">
+			<div class="modal-content" style=" width: 550px;">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+		            <h4 class="modal-title">INVITAR CONSULTOR</h4>
+		        </div>
+		    	<div class="modal-body media" style="font-size:14px;padding-top: 0px;width: 540px;">
+		    		<span>Se registrar&aacute; con &eacute;xito los usuarios seleccionados como consultores de la incubada.</span>
+				    <div align=right>
+				        <a id="aceptarCons" href="/AdminIncubada/{{id_oferta}}" class="btn btn-red" ><i class="fa fa-check-square"></i>&nbsp;&nbsp;Aceptar&nbsp;&nbsp;</a>
+				    </div>
+		   		</div>
+
+		   		<script>
+				                                $(document).ready(function () {
+				                                    $(function () {
+														$('#aceptarCons').click(function(){
+															$('#formulario').show();
+															//$('#mostrarMensaje').hide();
+															mostrarConsultoresIncubada();
+														});
+
+														function mostrarConsultoresIncubada() {
+				                                            $.ajax({
+				                                                data: {
+				                                                    'incubada':{{incubada.id_incubada}}
+				                                                },
+				                                                type: 'get',
+				                                                url: '/AdminIncubadaConsultores/',
+				                                                success: function (data) {
+				                                                    $('#divConsultoresInc').html(data)
+				                                                }
+				                                            });
+				                                        }
+				                                    });
+				                                });
+				</script>
 		    </div>
+		</div>
+	</div>
 
               	<script>
 					$(function() {

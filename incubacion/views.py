@@ -176,6 +176,11 @@ def definir_milestone(request):
     incubada_actual = Incubada.objects.get(id_incubada=idIncubada)
     #CLONO la incubada actual para crear un nuevo Milestone
     incubada_clonada = incubada_actual
+
+
+    imagen_actual = ImagenIncubada.objects.get(fk_incubada_id=incubada_actual.id_incubada)
+
+    imagen_clonada = imagen_actual
     #ID OFERTA
     id_oferta= incubada_clonada.fk_oferta.id_oferta
 
@@ -212,6 +217,7 @@ def definir_milestone(request):
     incubada_clonada.codigo = incubada_clonada.id_incubada+nuevo_id_diagrama_canvas+nuevo_id_diagrama_porter
     incubada_clonada.id_incubada = None
     incubada_clonada.save()
+    imagen_clonada.save()
 
     print "Guardo ID canvas y porter"
 
@@ -440,29 +446,31 @@ def invitar_consultor(request):
             args['error'] = "Error al cargar los datos"
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
-        consultor = request.GET.get( 'consultor' )
+        
         consultor = request.GET.get('consultor')
-        usuarioconsultor = consultor.split('-')
-
-        if usuario.username == usuarioconsultor[1]:
-            args['mismousuario'] = "NO SE PUEDE SELECCIONAR EL MISMO USUARIO"
+        if consultor == '':
+            args['mismousuario'] = "INGRESE A UN USUARIO VALIDO"
         else:
-
-            #si encuentra el ajax del template
-            if request.is_ajax():
-                try:
-                    invitarconsultor = Perfil.objects.get(username=usuarioconsultor[1])
-                    args['invitarconsultor'] = invitarconsultor
-
-                    return render_to_response('admin_invitar_consultor.html', args)
-                except User.DoesNotExist:
-                    return redirect('/')
-                except:
-                    return redirect('/')
+            usuarioconsultor = consultor.split('-')
+            if usuario.username == usuarioconsultor[1]:
+                args['mismousuario'] = "NO SE PUEDE SELECCIONAR EL MISMO USUARIO"
             else:
-                return redirect('/NotFound')
 
-            return render_to_response('admin_invitar_consultor.html', args)
+                #si encuentra el ajax del template
+                if request.is_ajax():
+                    try:
+                        invitarconsultor = Perfil.objects.get(username=usuarioconsultor[1])
+                        args['invitarconsultor'] = invitarconsultor
+
+                        return render_to_response('admin_invitar_consultor.html', args)
+                    except User.DoesNotExist:
+                        return redirect('/')
+                    except:
+                        return redirect('/')
+                else:
+                    return redirect('/NotFound')
+
+                return render_to_response('admin_invitar_consultor.html', args)
     except:
         return redirect('/')
 
@@ -1167,6 +1175,8 @@ def admin_ver_incubada(request, id_oferta):
                         if len(equipo)>0:
                             args['equipo'] = equipo
                         fotos = ImagenIncubada.objects.filter(fk_incubada=incubada.id_incubada)
+                        print "Mira::::::::::::::::::::::",incubada.id_incubada
+                        print "Mira:::::::::::::::::: ",fotos
                         if fotos:
                             imagen_principal = fotos.first()
                         else:
@@ -1296,7 +1306,6 @@ def admin_incubada_milestone_actual(request):
 
             print hoy
             if fecha_maxima_retroal < hoy :
-                print 'fecha maxima lalalalalalalar'
                 print fecha_maxima_retroal
                 args['retroalimentar']=False
                 args['completar'] = False
@@ -1676,8 +1685,10 @@ def admin_ver_milestone(request,id_incubada):
     args['es_admin'] = request.session['es_admin']
     try:
         incubada=Incubada.objects.get(id_incubada=id_incubada)
+        imagen_actual = ImagenIncubada.objects.get(fk_incubada_id=incubada.id_incubada)
         print incubada.fk_oferta
         args['incubada'] = incubada
+        args['imagen_incubada'] = imagen_actual
         listaMilestone = Milestone.objects.all().filter()
         args['listaMilestone'] = listaMilestone
         return render_to_response('admin_ver_milestone.html', args)
