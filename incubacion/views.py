@@ -93,7 +93,6 @@ def inicio_incubacion(request):
 
     args['consultores'] = incubadas
 
-
     return render_to_response('inicio_incubacion.html', args)
 
 
@@ -254,10 +253,28 @@ def participar_incubacion(request):
 
     if request.is_ajax():
         try:
+            
+            ofertas_incubadas = Incubada.objects.filter(equipo= MiembroEquipo.objects.filter(fk_participante=usuario.id_perfil, es_propietario=1))
+            
             ofertaParticipar = Oferta.objects.filter(publicada=1).filter(
                 miembroequipo=MiembroEquipo.objects.filter(fk_participante=usuario.id_perfil, es_propietario=1))
+            
+            ofertas_disponibles=[]
+            for oferta in ofertaParticipar:
+                encontro = False
+                for incubada in ofertas_incubadas:
+                    if oferta == incubada.fk_oferta:
+                        encontro= True
+                    if encontro == False:
+                        ofertas_disponibles.append(oferta)
+
+            for of in ofertas_disponibles:
+                print of.nombre
+
+                    
+            args['ofertasincubadas']=ofertas_incubadas
             args['incubacion'] = request.GET['incubacion']
-            args['pariciparIncubacion'] = ofertaParticipar
+            args['participarIncubacion'] = ofertas_disponibles
             return render_to_response('usuario_participar_incubacion.html', args)
 
         except Oferta.DoesNotExist:
