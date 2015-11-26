@@ -57,19 +57,19 @@ def inicio_incubacion(request):
     encontro=False
     incubadas = []
     for incubacion in incubaciones:
+        print "Nombre:::::  ", incubacion.nombre
         for incubada in Incubada.objects.filter(fk_incubacion=incubacion.id_incubacion):
-            for incubada1 in Incubada.objects.filter(fk_incubacion=incubacion.id_incubacion):
-
-                if incubada.fk_oferta.id_oferta == incubada1.fk_oferta.id_oferta:
-                    if encontro == False:
-                        encontro=True
-                        propietario = MiembroEquipo.objects.all().filter(es_propietario=1,fk_oferta_en_que_participa=incubada.fk_oferta.id_oferta)
-                        print propietario
-                        if propietario.first().fk_participante == request.user.perfil:
-                            consultores = len(IncubadaConsultor.objects.filter(fk_oferta_incubada=incubada.fk_oferta.id_oferta))
-                            milestones = len(Incubada.objects.filter(fk_oferta=incubada.fk_oferta.id_oferta))                
-                            incubadas.append((incubada, milestones, consultores))
-        encontro=False
+            print "Incubada1: ",incubada.nombre, "  ", incubada.fk_oferta.id_oferta
+            if encontro == False:
+                encontro=True
+                propietario = MiembroEquipo.objects.all().filter(es_propietario=1,fk_oferta_en_que_participa=incubada.fk_oferta.id_oferta)
+                print propietario
+                if propietario.first().fk_participante == request.user.perfil:
+                    consultores = len(IncubadaConsultor.objects.filter(fk_oferta_incubada=incubada.fk_oferta.id_oferta))
+                    milestones = len(Incubada.objects.filter(fk_oferta=incubada.fk_oferta.id_oferta))
+                    incubadas.append((incubada, milestones, consultores))
+                else:
+                    encontro=False
 
     args['incubadas'] = incubadas
 
@@ -78,18 +78,16 @@ def inicio_incubacion(request):
     incubadas = []
     for incubacion in incubaciones:
         for incubada in Incubada.objects.filter(fk_incubacion=incubacion.id_incubacion):
-            for incubada1 in Incubada.objects.filter(fk_incubacion=incubacion.id_incubacion):
-
-                if incubada.fk_oferta.id_oferta == incubada1.fk_oferta.id_oferta:
-                    if encontro == False:
-                        encontro=True
-                        consultor= Consultor.objects.filter(fk_usuario_consultor=request.user.perfil).first()
-                        if consultor:
-                            if IncubadaConsultor.objects.filter(fk_consultor=consultor.id_consultor,fk_oferta_incubada=incubada.fk_oferta.id_oferta):
-                                consultores = len(IncubadaConsultor.objects.filter(fk_oferta_incubada=incubada.fk_oferta.id_oferta))
-                                milestones = len(Incubada.objects.filter(fk_oferta=incubada.fk_oferta.id_oferta))                
-                                incubadas.append((incubada, milestones, consultores))
-        encontro=False
+            if encontro == False:
+                encontro=True
+                consultor= Consultor.objects.filter(fk_usuario_consultor=request.user.perfil).first()
+                if consultor:
+                    if IncubadaConsultor.objects.filter(fk_consultor=consultor.id_consultor,fk_oferta_incubada=incubada.fk_oferta.id_oferta):
+                        consultores = len(IncubadaConsultor.objects.filter(fk_oferta_incubada=incubada.fk_oferta.id_oferta))
+                        milestones = len(Incubada.objects.filter(fk_oferta=incubada.fk_oferta.id_oferta))
+                        incubadas.append((incubada, milestones, consultores))
+            else:
+                encontro=False
 
     args['consultores'] = incubadas
 
