@@ -35,7 +35,41 @@
 			        </div>
 			        <div class="col-md-7" align=right>
 			        	<div class="col-md-12">
-			            <a href="#" data-target="#modalInvitarConsultor" data-toggle="modal"  class="btn btn-red"><i class="fa fa-user-plus"></i>&nbsp;&nbsp;Invitar consultores</a>
+			            
+
+			            {%if estado_incubacion == 0%}
+			            	<a href="#" data-target="#modalInvitarConsultor" data-toggle="modal"  class="btn btn-red"><i class="fa fa-user-plus"></i>&nbsp;&nbsp;Invitar consultores</a>
+
+			            	{%if milestoneVigente == False%}
+				            	<a id="milestone" href="#" data-target="#definirMilestone" data-toggle="modal" class="btn btn-red"><i class="fa fa-sliders"></i>&nbsp;&nbsp;Definir Milestone</a>
+				            	</div>
+				            {%else%}
+				            	<a id="milestone" href="#" data-target="#definirMilestone" data-toggle="modal" class="btn btn-red" disabled="disabled"><i class="fa fa-sliders"></i>&nbsp;&nbsp;Definir Milestone</a>
+				            	</div>
+				            	<div class="col-md-offset-6">
+				            	<span style="font-size:11px;margin-right: 15px;">*Existe un milestone vigente</span>
+				            	</div>
+				            {%endif%}
+
+			            {%elif estado_incubacion == 1%}
+			            		<a href="#" data-target="#modalInvitarConsultor" data-toggle="modal"  class="btn btn-red" disabled="disabled"><i class="fa fa-user-plus"></i>&nbsp;&nbsp;Invitar consultores</a>
+
+			            		<a id="milestone" href="#" data-target="#definirMilestone" data-toggle="modal" class="btn btn-red" disabled="disabled"><i class="fa fa-sliders"></i>&nbsp;&nbsp;Definir Milestone</a>
+				            	</div>
+
+			            {%elif estado_incubacion == 2%}
+			            		<a href="#" data-target="#modalInvitarConsultor" data-toggle="modal"  class="btn btn-red" disabled="disabled"><i class="fa fa-user-plus"></i>&nbsp;&nbsp;Invitar consultores</a>
+
+			            		<a id="milestone" href="#" data-target="#definirMilestone" data-toggle="modal" class="btn btn-red" disabled="disabled"><i class="fa fa-sliders"></i>&nbsp;&nbsp;Definir Milestone</a>
+				            	</div>
+				        {%elif estado_incubacion == 3%}
+				        		<a href="#" data-target="#modalInvitarConsultor" data-toggle="modal"  class="btn btn-red" disabled="disabled"><i class="fa fa-user-plus"></i>&nbsp;&nbsp;Invitar consultores</a>
+
+			            		<a id="milestone" href="#" data-target="#definirMilestone" data-toggle="modal" class="btn btn-red" disabled="disabled"><i class="fa fa-sliders"></i>&nbsp;&nbsp;Definir Milestone</a>
+				            	</div>
+			            {%endif%}
+
+			            <!--
 			            {%if milestoneVigente == False%}
 			            	<a id="milestone" href="#" data-target="#definirMilestone" data-toggle="modal" class="btn btn-red"><i class="fa fa-sliders"></i>&nbsp;&nbsp;Definir Milestone</a>
 			            	</div>
@@ -46,6 +80,7 @@
 			            	<span style="font-size:11px;margin-right: 15px;">*Existe un milestone vigente</span>
 			            	</div>
 			            {%endif%}
+			            -->
 			        </div> 
 			        <div class="col-md-12" align=left>
 				        <ul class="text-muted list-inline">
@@ -53,6 +88,7 @@
 			                <li><i class="fa fa-calendar"></i> {{incubada.fecha_publicacion.date}}</li>
 				        </ul>
 			        </div>
+
 			        <!-- comienza MODAL Invitar Consultor -->
 				    <div id="modalInvitarConsultor" class="modal fade" role="dialog">
 				    	<div class="modal-dialog" style="width: 40% !important;">
@@ -62,6 +98,7 @@
 				    				<h4 class="modal-title">INVITAR USUARIO A SER CONSULTOR</h4>
 				    			</div>
 				    			<div class="modal-body media" style="font-size:14px;padding-top: 0px;height: 290px;">
+				    				<!--
 				    				<div id="mostrarMensaje" style="display:none;">
 					    				<div  style="text-align:justify; font-size: 16px;margin-top: 30px;">
 					    					Se registrar&aacute; con éxito los usuarios seleccionados como consultores de la incubada. 
@@ -72,6 +109,7 @@
 									   		</div>
 									   	</div>
 									</div>
+									-->
 
 				    				<div id="formulario" name="formulario" class="form-horizontal col-md-12" style="width: 430px;">
 				    					{% csrf_token %}
@@ -137,12 +175,12 @@
 															//Elimina todos los div que contienen los usuario consultores
 															$('#resultadosInvitarConsultores').empty();
 															$('#formulario').hide();
-															$('#mostrarMensaje').show();
+															//$('#mostrarMensaje').show();
 														});
 
 														$('#aceptarConsultor').click(function(){
 															$('#formulario').show();
-															$('#mostrarMensaje').hide();
+															//$('#mostrarMensaje').hide();
 															mostrarConsultoresIncubada();
 														});
 
@@ -169,18 +207,18 @@
 
 									    <div class="form-group">
 									   		<div align="right">
-									   			<a href="#" id="enviarInvitaciones" disabled data-target="#modalInvitarAceptar" data-toggle="modal"  class="btn btn-red fa">&nbsp;&nbsp;Enviar Invitaciones</a>
+									   			<a href="#" id="enviarInvitaciones" disabled data-dismiss="modal" data-target="#confirmacion_invitar_consultor" data-toggle="modal"  class="btn btn-red fa">&nbsp;&nbsp;Enviar Invitaciones</a>
 									   		</div>
 									   	</div>
 									   	
 						                </br>
 									</div>
-									</div>
+									
 						        </div>
 				        	</div>
 				        </div>
 				    </div>
-
+				</div>
 	            <div class="blog-text">
 	                <!-- Nav tabs -->
 	                <ul class="nav nav-tabs " role="tablist" style="margin-bottom: 0px;">
@@ -776,7 +814,7 @@
 	</div>
 
 		<!--Modal DEFINIR MILESTONE-->
-        <div id="definirMilestone" class="modal fade" role="dialog">
+    <div id="definirMilestone" class="modal fade" role="dialog">
         	<div class="modal-dialog" style="width: 70% !important;">
               <div class="modal-content">
                   <div class="modal-header">
@@ -816,22 +854,13 @@
                                   </div>
                                   <br>
                                 </div>
-                                <!--
-                                <div class="form-group">
-                                   <label for="Nombres"  class="col-md-3 col-md-offset-1">Otros</label>
-                                   <div class="col-md-7 pull-left" id="nuevos">
-                                   <form method="get">
-                                    <textarea autofocus rows="5" id="otros" class="tinymce form-control textMilestone" style="resize: none;"
-                                    ></textarea>
-                                  </div>
-                                  </form>
-                                </div>
-                                -->
                                 <div class="form-group">
                                     <div align="right">
                                       <a data-dismiss="modal" class="btn btn-dark"><i class="fa fa-times"></i>&nbsp;&nbsp;Cancelar&nbsp;&nbsp;</a>
+
+                                      <button id="adefinirMilestone" class="btn btn-red" data-dismiss="modal" data-target="#confirmacion_Milestones" data-toggle="modal" class="btn btn-red"><i class="fa fa-floppy-o"></i>&nbsp;&nbsp;Crear&nbsp;&nbsp;</button>
                                       
-                                      <a id="adefinirMilestone"disabled  data-target="#guardarMilestone" data-toggle="modal" class="btn btn-red"><i class="fa fa-floppy-o"></i>&nbsp;&nbsp;Guardar&nbsp;&nbsp;</a>
+                                  
                                     </div>                                                  
                                 </div>
                             </form>   
@@ -839,47 +868,70 @@
                       </div>
                   </div>
               </div>
+            </div>
+    </div>
 
 			<!--Modal GUARDAR MILESTONE-->
-	        <div id="guardarMilestone" class="modal fade" role="dialog">
-	        	<div class="modal-dialog" style="width: 40% !important;">
-	              <div class="modal-content">
-	                  <div class="modal-header">
-	                      <button type="button" class="close" data-dismiss="modal"aria-hidden="true">&times;</button>
-	                      <h4 class="modal-title">Guardar Milestone</h4>
-	                  </div>
-	                  <div class="modal-body" style="font-size:15px;overflow-y:auto">                           
-	                      <div class="comment" id="Comentario">
-	                          <div class="media">
-	                            <form  id="formMilestone" class="form-horizontal col-md-12" name="formMilestone"> 
-	                            	<div style="text-align: center">
-	                            		<br>
-	                            		<p>
-	                            			Desea guardar el Milestone creado.
-	                            		</p>
-	                            		<br>
-	                            		<br>
-	                            		
-	                            	</div>
-	                                
-	                                <div class="form-group">
-	                                    <div align="right">
-	                                      <a id="cancelardefinirMilestone" class="btn btn-dark"><i class="fa fa-times"></i>&nbsp;&nbsp;Cancelar&nbsp;&nbsp;</a>
-	                                      
-	                                      <a id="aceptardefinirMilestone"  class="btn btn-red"><i class="fa fa-check"></i>&nbsp;&nbsp;Aceptar&nbsp;&nbsp;</a>
-	                                    </div>                                                  
-	                                </div>
-	                            </form>   
-	                          </div>
-	                      </div>
-	                  </div>
-	              </div>
 
-	            </div>
-	        </div>
-        
+	<div id="confirmacion_Milestones" class="modal fade" role="dialog">
+		      <div class="modal-dialog" style="width: 40% !important;">
+		        <div class="modal-content" style=" width: 550px;">
+		          <div class="modal-header">
+		            <button type="button" class="close" data-dismiss="modal">&times;</button>
+		            <h4 class="modal-title">GUARDAR MILESTONE</h4>
+		          </div>
+		          <div class="modal-body media" style="font-size:14px;padding-top: 0px;width: 540px;">
+		             <span>El Milestone se ha creado con éxito </span>
+		             <div align=right>
+		                 <a href="/AdminIncubada/{{id_oferta}}" class="btn btn-red" ><i class="fa fa-check-square"></i>&nbsp;&nbsp;Aceptar&nbsp;&nbsp;</a>
+		             </div>
+		          </div>
+		        </div>
+		      </div>
+	</div>
 
+	<!--Modal Invitar Consultor-->
+	<div id="confirmacion_invitar_consultor" class="modal fade" role="dialog">
+		<div class="modal-dialog" style="width: 40% !important;">
+			<div class="modal-content" style=" width: 550px;">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+		            <h4 class="modal-title">INVITAR CONSULTOR</h4>
+		        </div>
+		    	<div class="modal-body media" style="font-size:14px;padding-top: 0px;width: 540px;">
+		    		<span>Se registrar&aacute; con &eacute;xito los usuarios seleccionados como consultores de la incubada.</span>
+				    <div align=right>
+				        <a id="aceptarCons" href="/AdminIncubada/{{id_oferta}}" class="btn btn-red" ><i class="fa fa-check-square"></i>&nbsp;&nbsp;Aceptar&nbsp;&nbsp;</a>
+				    </div>
+		   		</div>
 
+		   		<script>
+				                                $(document).ready(function () {
+				                                    $(function () {
+														$('#aceptarCons').click(function(){
+															$('#formulario').show();
+															//$('#mostrarMensaje').hide();
+															mostrarConsultoresIncubada();
+														});
+
+														function mostrarConsultoresIncubada() {
+				                                            $.ajax({
+				                                                data: {
+				                                                    'incubada':{{incubada.id_incubada}}
+				                                                },
+				                                                type: 'get',
+				                                                url: '/AdminIncubadaConsultores/',
+				                                                success: function (data) {
+				                                                    $('#divConsultoresInc').html(data)
+				                                                }
+				                                            });
+				                                        }
+				                                    });
+				                                });
+				</script>
+		    </div>
+		</div>
+	</div>
 
               	<script>
 					$(function() {
@@ -900,39 +952,17 @@
 					    }                
 				    });
 
-				    $("#cancelardefinirMilestone").click(function(){
-				    	$('#guardarMilestone').modal('hide');
-				    });
-
-					$("#aceptardefinirMilestone").click(function(){
-						var isValid = true;
-				        $('.textMilestone').each(function() {
-				            if ($.trim($(this).val()) == '') {
-				                isValid = false;
-				                $(this).css({
-				                    "border": "1px solid red",
-				                    "background": "#FFCECE"
-				                });
-				            }
-				            else {
-				                $(this).css({
-				                    "border": "",
-				                    "background": ""
-				                });
-				            }
-				        });
-
-				        if (isValid == false) 
-				            e.preventDefault();
-				        else {
-							//Obtengo todos los valores del los campos del formulario
-							var req = $('textarea#requerimientosDescripcion').val(),
+				    $("#adefinirMilestone").click(function(){
+				    	CrearMilestone();
+				    	function CrearMilestone(){
+				    		//alert("Entramos milestone");
+				    		var req = $('textarea#requerimientosDescripcion').val(),
 							fecMil= $("#fecha_milestone").datepicker({ dateFormat:'YYYY-MM-DD'}).val(),
 							fecRet= $("#fecha_retroalimentacion").datepicker({ dateFormat:'YYYY-MM-DD'}).val(),
 							importan = $('textarea#importancia_milestone').val(),
 							otros = $('textarea#otros').val();
-							//Enviar los datos de
-							$.ajax({
+
+				    		$.ajax({
 								data: {
 									'idIncubada':{{incubada.id_incubada}},
 									'requerimientos':req,
@@ -944,32 +974,8 @@
 								type: 'get',
 								url: '/DefinirMilestone/'
 							});
-							//Cerramos el Modal del Definir Milestone
-							$('#definirMilestone').modal('hide');
-							$('#guardarMilestone').modal('hide');
-							//Limpiamos todos los campos del formulario Definir Milestone
-							$('#formMilestone').each (function(){
-							  this.reset();
-							});
-
-						}
-						//Recarga la funcion de actualizar miletones
-						$.ajax({
-							data: {
-								'incubada':{{incubada.id_incubada}}
-							},
-							type: 'get',
-							url: '/AdminIncubadaMilestoneActual/',
-							success: function (data) {
-								 $('#IncbMilestActu').html(data)
-								}
-						});
-					});
-					
-
-					$('#aceptardefinirMilestone').click(function(){
-						mostrarMilestActual();
-					});
+				    	}
+				    });
 
 					$('#IncbMilestActu').ready(mostrarMilestActual);
 					function mostrarMilestActual() {
@@ -987,9 +993,7 @@
 					
 					});
 				</script>
-            </div>
-        </div>
-
+            
 
         	
 	
