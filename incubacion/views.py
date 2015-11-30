@@ -171,15 +171,22 @@ def definir_milestone(request):
     fechaRetroalimentacion = ""+listaFR[2]+"-"+listaFR[0]+"-"+listaFR[1]
     #Obtengo la incubada actual
     incubada_actual = Incubada.objects.get(id_incubada=idIncubada)
+    print "Creando un Milestone Incubada"
+    print "Incubada Actual",incubada_actual.id_incubada
     #CLONO la incubada actual para crear un nuevo Milestone
     incubada_clonada = incubada_actual
+    print "Incubada Clonada",incubada_clonada.id_incubada
 
 
     imagen_actual = ImagenIncubada.objects.get(fk_incubada_id=incubada_actual.id_incubada)
+    print "Imagen Actual", imagen_actual.fk_incubada_id
 
     imagen_clonada = imagen_actual
+    print "Imagen Clonada", imagen_clonada.fk_incubada_id
+
     #ID OFERTA
     id_oferta= incubada_clonada.fk_oferta.id_oferta
+    print "ID Oferta: ", id_oferta
 
     print "Obtengo los datos para crear Milestone"
 
@@ -214,8 +221,14 @@ def definir_milestone(request):
     incubada_clonada.codigo = incubada_clonada.id_incubada+nuevo_id_diagrama_canvas+nuevo_id_diagrama_porter
     incubada_clonada.id_incubada = None
     incubada_clonada.save()
+
+    id_incubada_clonada = incubada_clonada.id_incubada
+    print "id_clonada1", id_incubada_clonada
+    imagen_clonada.fk_incubada_id = id_incubada_clonada
+    print "id_clonada2",imagen_clonada.fk_incubada_id
     imagen_clonada.save()
 
+    print "nose que pasa"
     print "Guardo ID canvas y porter"
 
     #Crea una instancia de Milestone
