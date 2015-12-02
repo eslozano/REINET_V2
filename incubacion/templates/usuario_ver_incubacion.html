@@ -181,16 +181,16 @@
         
       <div class="col-sm-12">
               <h4 class="hl"><i class="fa fa-info-circle"></i> Descripción</h4>
-              <p class="bottom-15">{{ incubacion.descripcion}}</p>
+              <p class="bottom-15" align="justify">{{ incubacion.descripcion}}</p>
               <h4 class="hl"><i class="fa fa-question-circle"></i> Condiciones</h4>
-              <p class="bottom-15">{{ incubacion.condiciones }}</p>
+              <p class="bottom-15" align="justify">{{ incubacion.condiciones }}</p>
           </div>
       <div class="col-sm-12">
         <h4 class="hl"><i class="fa fa-sitemap"></i> Acerca de la Ofertas a Incubar</h4>
               <div role="tabpanel" class="tab-pane" id="cliente_usuario">
                   <div class="col-md-12" style="margin-top: 0px;padding-top: 15px;">
                     <p style="color: darkgray"  class="col-md-5">Perfil de la Oferta</p>
-                    <p class="col-md-7">{{ incubacion.perfil_oferta}}</p>
+                    <p class="col-md-7" align="justify">{{ incubacion.perfil_oferta}}</p>
                     <p style="color: darkgray"  class="col-md-5">Tipo de la Oferta</p>
                     <p class="col-md-7"> 
                       {% if incubacion.tipos_oferta == 0 %}
