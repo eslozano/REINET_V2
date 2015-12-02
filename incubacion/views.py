@@ -57,19 +57,19 @@ def inicio_incubacion(request):
     encontro=False
     incubadas = []
     for incubacion in incubaciones:
+        print "Nombre:::::  ", incubacion.nombre
         for incubada in Incubada.objects.filter(fk_incubacion=incubacion.id_incubacion):
-            for incubada1 in Incubada.objects.filter(fk_incubacion=incubacion.id_incubacion):
-
-                if incubada.fk_oferta.id_oferta == incubada1.fk_oferta.id_oferta:
-                    if encontro == False:
-                        encontro=True
-                        propietario = MiembroEquipo.objects.all().filter(es_propietario=1,fk_oferta_en_que_participa=incubada.fk_oferta.id_oferta)
-                        print propietario
-                        if propietario.first().fk_participante == request.user.perfil:
-                            consultores = len(IncubadaConsultor.objects.filter(fk_oferta_incubada=incubada.fk_oferta.id_oferta))
-                            milestones = len(Incubada.objects.filter(fk_oferta=incubada.fk_oferta.id_oferta))                
-                            incubadas.append((incubada, milestones, consultores))
-        encontro=False
+            print "Incubada1: ",incubada.nombre, "  ", incubada.fk_oferta.id_oferta
+            if encontro == False:
+                encontro=True
+                propietario = MiembroEquipo.objects.all().filter(es_propietario=1,fk_oferta_en_que_participa=incubada.fk_oferta.id_oferta)
+                print propietario
+                if propietario.first().fk_participante == request.user.perfil:
+                    consultores = len(IncubadaConsultor.objects.filter(fk_oferta_incubada=incubada.fk_oferta.id_oferta))
+                    milestones = len(Incubada.objects.filter(fk_oferta=incubada.fk_oferta.id_oferta))
+                    incubadas.append((incubada, milestones, consultores))
+                else:
+                    encontro=False
 
     args['incubadas'] = incubadas
 
@@ -78,18 +78,16 @@ def inicio_incubacion(request):
     incubadas = []
     for incubacion in incubaciones:
         for incubada in Incubada.objects.filter(fk_incubacion=incubacion.id_incubacion):
-            for incubada1 in Incubada.objects.filter(fk_incubacion=incubacion.id_incubacion):
-
-                if incubada.fk_oferta.id_oferta == incubada1.fk_oferta.id_oferta:
-                    if encontro == False:
-                        encontro=True
-                        consultor= Consultor.objects.filter(fk_usuario_consultor=request.user.perfil).first()
-                        if consultor:
-                            if IncubadaConsultor.objects.filter(fk_consultor=consultor.id_consultor,fk_oferta_incubada=incubada.fk_oferta.id_oferta):
-                                consultores = len(IncubadaConsultor.objects.filter(fk_oferta_incubada=incubada.fk_oferta.id_oferta))
-                                milestones = len(Incubada.objects.filter(fk_oferta=incubada.fk_oferta.id_oferta))                
-                                incubadas.append((incubada, milestones, consultores))
-        encontro=False
+            if encontro == False:
+                encontro=True
+                consultor= Consultor.objects.filter(fk_usuario_consultor=request.user.perfil).first()
+                if consultor:
+                    if IncubadaConsultor.objects.filter(fk_consultor=consultor.id_consultor,fk_oferta_incubada=incubada.fk_oferta.id_oferta):
+                        consultores = len(IncubadaConsultor.objects.filter(fk_oferta_incubada=incubada.fk_oferta.id_oferta))
+                        milestones = len(Incubada.objects.filter(fk_oferta=incubada.fk_oferta.id_oferta))
+                        incubadas.append((incubada, milestones, consultores))
+            else:
+                encontro=False
 
     args['consultores'] = incubadas
 
@@ -173,15 +171,22 @@ def definir_milestone(request):
     fechaRetroalimentacion = ""+listaFR[2]+"-"+listaFR[0]+"-"+listaFR[1]
     #Obtengo la incubada actual
     incubada_actual = Incubada.objects.get(id_incubada=idIncubada)
+    print "Creando un Milestone Incubada"
+    print "Incubada Actual",incubada_actual.id_incubada
     #CLONO la incubada actual para crear un nuevo Milestone
     incubada_clonada = incubada_actual
+    print "Incubada Clonada",incubada_clonada.id_incubada
 
 
     imagen_actual = ImagenIncubada.objects.get(fk_incubada_id=incubada_actual.id_incubada)
+    print "Imagen Actual", imagen_actual.fk_incubada_id
 
     imagen_clonada = imagen_actual
+    print "Imagen Clonada", imagen_clonada.fk_incubada_id
+
     #ID OFERTA
     id_oferta= incubada_clonada.fk_oferta.id_oferta
+    print "ID Oferta: ", id_oferta
 
     print "Obtengo los datos para crear Milestone"
 
@@ -216,8 +221,14 @@ def definir_milestone(request):
     incubada_clonada.codigo = incubada_clonada.id_incubada+nuevo_id_diagrama_canvas+nuevo_id_diagrama_porter
     incubada_clonada.id_incubada = None
     incubada_clonada.save()
+
+    id_incubada_clonada = incubada_clonada.id_incubada
+    print "id_clonada1", id_incubada_clonada
+    imagen_clonada.fk_incubada_id = id_incubada_clonada
+    print "id_clonada2",imagen_clonada.fk_incubada_id
     imagen_clonada.save()
 
+    print "nose que pasa"
     print "Guardo ID canvas y porter"
 
     #Crea una instancia de Milestone

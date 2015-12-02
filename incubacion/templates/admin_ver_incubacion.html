@@ -466,7 +466,7 @@ $(document).ready(function() {
           url: '/AdminEditarEstadoIncubacion/',
           success: function (data) {
             $('#msgEstadoDetalle').attr('class','pull-left')
-            if(data==0)
+            if(data == 0)
             {
               $('#msgEstadoDetalle').addClass('bg-danger text-danger');
               $('#msgEstadoDetalle').html("Petición invalida");
@@ -483,8 +483,6 @@ $(document).ready(function() {
               $('#msgEstadoDetalle').html("El estado ha sido cambiado");
               $('#cambiarestadobtn').attr("disabled", "disabled");
               $('#selectEstado').attr("disabled", "disabled");
-
-
             }
             else if(data == 3)
             {
