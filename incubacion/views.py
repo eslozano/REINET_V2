@@ -265,17 +265,17 @@ def participar_incubacion(request):
             ofertaParticipar = Oferta.objects.filter(publicada=1).filter(
                 miembroequipo=MiembroEquipo.objects.filter(fk_participante=usuario.id_perfil, es_propietario=1))
             
-            ofertas_disponibles=[]
-            for oferta in ofertaParticipar:
-                encontro = False
-                for incubada in ofertas_incubadas:
-                    if oferta == incubada.fk_oferta:
-                        encontro= True
-                    if encontro == False:
-                        ofertas_disponibles.append(oferta)
-
-            for of in ofertas_disponibles:
-                print of.nombre
+            if ofertas_incubadas is not None:
+                ofertas_disponibles=[]
+                for oferta in ofertaParticipar:
+                    nencontro = 0
+                    for incubada in ofertas_incubadas:
+                        if oferta != incubada.fk_oferta:
+                            nencontro= nencontro+1
+                        if nencontro == len(ofertas_incubadas):
+                            ofertas_disponibles.append(oferta)
+            else:
+                ofertas_disponibles= ofertaParticipar
 
                     
             args['ofertasincubadas']=ofertas_incubadas
@@ -855,6 +855,26 @@ def usuario_ver_incubacion(request, id_incubacion):
                             solicitud=True             
 
 
+                
+
+                ofertas_incubadas = Incubada.objects.filter(equipo= MiembroEquipo.objects.filter(fk_participante=usuario.id_perfil, es_propietario=1))
+                
+                ofertaParticipar = Oferta.objects.filter(publicada=1).filter(
+                    miembroequipo=MiembroEquipo.objects.filter(fk_participante=usuario.id_perfil, es_propietario=1))
+                
+                if ofertas_incubadas:
+                    ofertas_disponibles=[]
+                    for oferta in ofertaParticipar:
+                        nencontro = 0
+                        for incubada in ofertas_incubadas:
+                            if oferta != incubada.fk_oferta:
+                                nencontro= nencontro+1
+                            if nencontro == len(ofertas_incubadas):
+                                ofertas_disponibles.append(oferta)
+                else:
+                    ofertas_disponibles= ofertaParticipar
+
+                args['participarIncubacion'] = ofertas_disponibles    
                 args['administrador']=administrador
                 args['consultor']=consultor
                 args['participante']=participante
