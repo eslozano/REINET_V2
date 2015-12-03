@@ -68,18 +68,7 @@
 
                     <a href="#" class="btn btn-red pull-right" style="color:white;margin-bot: 0px;margin-right: 3px;" data-toggle="modal" data-target="#CrearConvocatoria" disabled><i class="fa fa-plus"></i>&nbsp;&nbsp;Crear convocatoria</a>
 
-                {%endif%}
-
-                <!--
-                {% if convocatoria == False %}
-                  <a href="#" class="btn btn-red pull-right" style="color:white;margin-bot: 0px;margin-right: 3px;" data-toggle="modal" data-target="#CrearConvocatoria"><i class="fa fa-plus"></i>&nbsp;&nbsp;Crear convocatoria</a>
-                  
-                {% else %}
-                  <a href="#" class="btn btn-red pull-right" style="color:white;margin-bot: 0px;margin-right: 3px;" data-toggle="modal" data-target="#CrearConvocatoria" disabled><i class="fa fa-plus"></i>&nbsp;&nbsp;Crear convocatoria</a>
-
-                {%endif%}
-                -->
-                
+                {%endif%}     
             </div>
   		</div>
       <div class="col-sm-12" style="border-bottom:1px solid #eee;">
@@ -96,6 +85,9 @@
               {% if incubacion.estado_incubacion == 2 %}
                 DESACTIVADA
               {% endif %}  
+              {% if incubacion.estado_incubacion == 3 %}
+                CENSURADA
+              {% endif %} 
             </li>
             </ul>
         </div>
@@ -441,12 +433,31 @@
            <button {% if incubacion.estado_incubacion != 0 %}
                     disabled="disabled"
                     {% endif %}
-            id="cambiarestadobtn"class="btn btn-dark" style="color:white;margin-bot: 0px;margin-right: 3px;"><i class="fa fa-wrench"></i>&nbsp;&nbsp;Cambiar</button>
+            id="cambiarestadobtn"class="btn btn-dark" style="color:white;margin-bot: 0px;margin-right: 3px;" data-dismiss="modal" data-target="#confirmacion_cambiar_estado" data-toggle="modal" ><i class="fa fa-wrench"></i>&nbsp;&nbsp;Cambiar</button>
         </div>
       </div>
       
     </div>
 </div>
+
+
+<div id="confirmacion_cambiar_estado" class="modal fade" role="dialog">
+  <div class="modal-dialog" style="width: 40% !important;">
+    <div class="modal-content" style=" width: 550px;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">CAMBIAR ESTADO</h4>
+      </div>
+      <div class="modal-body media" style="font-size:14px;padding-top: 0px;width: 540px;">
+        <span>El estado ha sido cambiado con &eacute;xito </span>
+        <div align=right>
+          <a class="btn btn-red" href="/AdminIncubacion/{{incubacion.id_incubacion}}"><i class="fa fa-check-square"></i>&nbsp;&nbsp;Aceptar&nbsp;&nbsp;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script type="text/javascript">
 $(document).ready(function() {
     //bandera para controlar el numero de peticiones ajax a la vez
@@ -466,17 +477,17 @@ $(document).ready(function() {
           url: '/AdminEditarEstadoIncubacion/',
           success: function (data) {
             $('#msgEstadoDetalle').attr('class','pull-left')
-            if(data == 0)
+            if(estado == 0)
             {
               $('#msgEstadoDetalle').addClass('bg-danger text-danger');
               $('#msgEstadoDetalle').html("Petición invalida");
             }
-            else if(data == 1)
+            else if(estado == 1)
             {
               $('#msgEstadoDetalle').addClass('bg-info text-info');
               $('#msgEstadoDetalle').html("El estado no puede ser cambiado");   
             }
-            else if( data ==2 )
+            else if( estado ==2 )
             {
               //si los datos son validos se desahabiltan los controles y muestra el mensaje de exito
               $('#msgEstadoDetalle').addClass('bg-success text-success');
@@ -484,11 +495,13 @@ $(document).ready(function() {
               $('#cambiarestadobtn').attr("disabled", "disabled");
               $('#selectEstado').attr("disabled", "disabled");
             }
-            else if(data == 3)
+            else if(estado == 3)
             {
               //En caso de que el estado sea activo
               $('#msgEstadoDetalle').addClass('bg-warning text-warining');
-              $('#msgEstadoDetalle').html("Cambie de estado");   
+              $('#msgEstadoDetalle').html("El estado ha sido cambiado");  
+              $('#cambiarestadobtn').attr("disabled", "disabled");
+              $('#selectEstado').attr("disabled", "disabled"); 
             }
             ajaxPendiente = false;
            

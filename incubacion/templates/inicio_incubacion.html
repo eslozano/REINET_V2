@@ -112,10 +112,9 @@
                                             <li><i style="color:#515151" class="fa fa-cogs"></i> Tipo de Oferta:
                                             {%if incubacion.tipos_oferta == 0 %}
                                                 Emprendimiento
-                                            {%endif%}
-                                            {%if incubacion.tipos_oferta == 1%}
+                                            {%elif incubacion.tipos_oferta == 1%}
                                                 Tecnología
-                                            {%else%}
+                                            {%elif incubacion.tipos_oferta == 2%}
                                                 Prototipo
                                             {%endif%}
                                             </li>
@@ -149,7 +148,7 @@
                                           <h3><a href="/ConsultorIncubada/{{incubada.0.fk_oferta.id_oferta}}">{{ incubada.0.nombre }}</a></h3>
                                           <ul class="text-muted list-inline">
                                             <li><i class="fa fa-calendar"></i> Fecha De Creación: {{ incubada.0.fecha_creacion.date }}</li>
-                                            
+                                            <li ><i class="fa fa-user"></i> Incubacion: <li style="text-transform: uppercase;">{{ incubada.3 }}</li> </li>
                                           </ul>
                                           <ul class="text-muted list-inline">
                                             <li><i class="fa fa-cogs"></i> Dominio: {{ incubada.0.dominio|truncatewords:30}}</li>

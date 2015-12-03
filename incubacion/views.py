@@ -58,17 +58,16 @@ def inicio_incubacion(request):
     incubadas_last = []
     last_lista = []
     for incubacion in incubaciones:
-        print "Nombre Incubacion:  ", incubacion.nombre
         incubadaIncubacion = Incubada.objects.filter(fk_incubacion=incubacion.id_incubacion)
+        
         for incubada in incubadaIncubacion:
             propietario = MiembroEquipo.objects.all().filter(es_propietario=1,fk_oferta_en_que_participa=incubada.fk_oferta.id_oferta)
             if propietario.first().fk_participante == request.user.perfil:
-                print "PROPIETARIO"
                 consultores = len(IncubadaConsultor.objects.filter(fk_oferta_incubada=incubada.fk_oferta.id_oferta))
                 milestones = len(Incubada.objects.filter(fk_oferta=incubada.fk_oferta.id_oferta))
                 nombreIncubacion = incubacion.nombre
-                #tipo_oferta = incubada.
                 incubadas_last.append((incubada, milestones, consultores, nombreIncubacion))
+
         if incubadas_last != []:
             last_lista = incubadas_last[-1]
             incubadas.append(last_lista)
@@ -79,18 +78,24 @@ def inicio_incubacion(request):
     #Para el tab de consultores
     encontro=False
     incubadas = []
+    incubadas_last = []
+    last_lista = []
     for incubacion in incubaciones:
-        for incubada in Incubada.objects.filter(fk_incubacion=incubacion.id_incubacion):
-            if encontro == False:
-                encontro=True
-                consultor= Consultor.objects.filter(fk_usuario_consultor=request.user.perfil).first()
-                if consultor:
-                    if IncubadaConsultor.objects.filter(fk_consultor=consultor.id_consultor,fk_oferta_incubada=incubada.fk_oferta.id_oferta):
-                        consultores = len(IncubadaConsultor.objects.filter(fk_oferta_incubada=incubada.fk_oferta.id_oferta))
-                        milestones = len(Incubada.objects.filter(fk_oferta=incubada.fk_oferta.id_oferta))
-                        incubadas.append((incubada, milestones, consultores))
-            else:
-                encontro=False
+        incubadaIncubacion = Incubada.objects.filter(fk_incubacion=incubacion.id_incubacion)
+        
+        for incubada in incubadaIncubacion:
+            consultor= Consultor.objects.filter(fk_usuario_consultor=request.user.perfil).first()
+            if consultor:
+                if IncubadaConsultor.objects.filter(fk_consultor=consultor.id_consultor,fk_oferta_incubada=incubada.fk_oferta.id_oferta):
+                    consultores = len(IncubadaConsultor.objects.filter(fk_oferta_incubada=incubada.fk_oferta.id_oferta))
+                    milestones = len(Incubada.objects.filter(fk_oferta=incubada.fk_oferta.id_oferta))
+                    nombreIncubacion = incubacion.nombre
+                    incubadas_last.append((incubada, milestones, consultores, nombreIncubacion))
+
+        if incubadas_last != []:
+            last_lista = incubadas_last[-1]
+            incubadas.append(last_lista)
+            incubadas_last = []
 
     args['consultores'] = incubadas
 
@@ -689,7 +694,7 @@ def editar_estado_incubacion(request):
             #se recupera el nuevo estado a ser fijado
             estado_nuevo = request.GET.get("estado")
             # se valida que que el estado enviado tengo un valor valido
-            estadoValido = re.search(u'^[12]$', estado_nuevo)
+            estadoValido = re.search(u'^[123]$', estado_nuevo)
             if estadoValido is not None:
                 try:
                     incubacion_cambiar = Incubacion.objects.get(id_incubacion=incubacionid)
