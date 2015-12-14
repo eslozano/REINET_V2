@@ -66,58 +66,70 @@
     <div class="tab-content col-sm-12">
         <!-- COMIENZA TAB DE OFERTAS PUBLICADAS-->
         <div role="tabpanel" class="tab-pane active" id="ofertasPublicadas" ng-controller="MisOfertasControlador">
-
-            <div class="col-sm-12">
-                <div class="timeline-block">
-                    <!-- First blog post -->
-                    <div ng-repeat="publicada in MOlistaOfertas">
-                        <div class="blog-summary">
-                            <h4 class="col-md-12" style="padding-left: 0px;padding-right: 0px;">
-                                <div class="col-md-9 col-sm-6" align="left" style="padding-left: 0px;">
-                                    <a class="ng-binding" href="/administrarOferta/[[ publicada.id_oferta ]]">[[publicada.nombre]]</a>
-                                </div>
-                                <div class="thumbnail col-md-3 col-sm-6" style="margin-bottom:-10px;" align="right">
-                                    <div class="caption" style="padding-bottom:0px;padding-top: 0px;padding-right: 0px;">
-                                        <div class="rating" ng-repeat="n in [] | range:[[publicada.calificacion_total]]">
-                                            <i class="fa fa-star"></i>
+            {% if incubadas %}
+                <div class="col-sm-12">
+                    <div class="timeline-block">
+                        <!-- First blog post -->
+                        <div ng-repeat="publicada in MOlistaOfertas">
+                            <div class="blog-summary">
+                                <h4 class="col-md-12" style="padding-left: 0px;padding-right: 0px;">
+                                    <div class="col-md-9 col-sm-6" align="left" style="padding-left: 0px;">
+                                        <a class="ng-binding" href="/administrarOferta/[[ publicada.id_oferta ]]">[[publicada.nombre]]</a>
+                                    </div>
+                                    <div class="thumbnail col-md-3 col-sm-6" style="margin-bottom:-10px;" align="right">
+                                        <div class="caption" style="padding-bottom:0px;padding-top: 0px;padding-right: 0px;">
+                                            <div class="rating" ng-repeat="n in [] | range:[[publicada.calificacion_total]]">
+                                                <i class="fa fa-star"></i>
+                                            </div>
                                         </div>
                                     </div>
+                                </h4>
+                                <time datetime="2013-11-10" class="timestamp hidden-xs">[[
+                                    publicada.fecha_publicacion.substring(0,4) ]]/ [[ publicada.fecha_publicacion.substring(5,7)
+                                    ]]/ [[ publicada.fecha_publicacion.substring(8,10) ]]
+                                </time>
+                                <div class="col-md-12" style="padding-left: 0px;padding-right: 0px;">
+                                    <div class="col-md-6 col-xs-7" style="padding-left: 0px;">
+                                        <ul class="text-muted list-inline">
+                                            <li><i class="fa fa-user"></i> <a href="/perfilUsuario">[[ publicada.dueno ]]</a>
+                                            </li>
+                                            <li><i class="fa fa-calendar"></i> [[ publicada.fecha_publicacion.substring(0,10) ]]
+                                            </li>
+                                            <li><i class="fa fa-comments-o"></i> [[publicada.numComentarios]] comentarios</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6 col-xs-5" align="right" style="padding-right: 0px;">
+                                        <a href="/administrarOferta/[[ publicada.id_oferta ]]" class="btn btn-green btn-sm">
+                                            <i class="fa fa-pencil"></i>&nbsp;&nbsp;Administrar</a>
+                                    </div>
                                 </div>
-                            </h4>
-                            <time datetime="2013-11-10" class="timestamp hidden-xs">[[
-                                publicada.fecha_publicacion.substring(0,4) ]]/ [[ publicada.fecha_publicacion.substring(5,7)
-                                ]]/ [[ publicada.fecha_publicacion.substring(8,10) ]]
-                            </time>
-                            <div class="col-md-12" style="padding-left: 0px;padding-right: 0px;">
-                                <div class="col-md-6 col-xs-7" style="padding-left: 0px;">
-                                    <ul class="text-muted list-inline">
-                                        <li><i class="fa fa-user"></i> <a href="/perfilUsuario">[[ publicada.dueno ]]</a>
-                                        </li>
-                                        <li><i class="fa fa-calendar"></i> [[ publicada.fecha_publicacion.substring(0,10) ]]
-                                        </li>
-                                        <li><i class="fa fa-comments-o"></i> [[publicada.numComentarios]] comentarios</li>
-                                    </ul>
+                                <div style="clear:both;">
                                 </div>
-                                <div class="col-md-6 col-xs-5" align="right" style="padding-right: 0px;">
-                                    <a href="/administrarOferta/[[ publicada.id_oferta ]]" class="btn btn-green btn-sm">
-                                        <i class="fa fa-pencil"></i>&nbsp;&nbsp;Administrar</a>
-                                </div>
+                                <hr style="margin-top: 10px;">
+                                <p class="blog-text" style="height: 125px"  align="justify">
+                                    <img class="img-responsive blog-img" alt="Imagen de mi Oferta"
+                                         src="[[ publicada.galeria[0].imagen ]]" style="height: 115px; width: 115px;" align="left">
+                                    [[publicada.descripcion]]
+                                </p>
+                                <p class="tags">
+                                    <a ng-repeat="tag in publicada.palabras_clave">[[tag.palabra]]</a>
+                                </p>
                             </div>
-                            <div style="clear:both;">
-                            </div>
-                            <hr style="margin-top: 10px;">
-                            <p class="blog-text" style="height: 125px">
-                                <img class="img-responsive blog-img" alt="Imagen de mi Oferta"
-                                     src="[[ publicada.galeria[0].imagen ]]" style="height: 115px; width: 115px;" align="left">
-                                [[publicada.descripcion]]
-                            </p>
-                            <p class="tags">
-                                <a ng-repeat="tag in publicada.palabras_clave">[[tag.palabra]]</a>
-                            </p>
                         </div>
+
+                        
                     </div>
                 </div>
-            </div>
+                <div id='page_navigation_ofertaPublicada' class="about-btn"></div>
+            
+            {% else %}
+                <div class="alert alert-info alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    Usted no tiene aun una oferta publicada; para hacerlo, deber&aacute; publicar un borrador de una oferta.
+                </div>
+            {% endif %} 
+            
+            <!--
             <div class="pagination">
                 <button class="btn btn-green" ng-click='irAlanteriorPublicada()'>Anterior</button>
                 <span class="current">
@@ -125,56 +137,49 @@
                 </span>
                 <button class="btn btn-green" ng-click='irAlsiguientePublicada()'>Siguiente</button>
             </div>
+            -->
         </div>
         <!-- TERMINA TAB DE OFERTAS PUBLICADAS-->
 
         <!-- COMIENZA TAB DE BORRADORES-->
         <div role="tabpanel" class="tab-pane" id="borradorOferta" ng-controller="MisOfertasBorradoresControlador">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="timeline-block">
-                            <!-- First blog post -->
-                            <div ng-repeat="borrador in BorradoreslistaOfertas">
-                                <div class="blog-summary">
-                                    <h4 style="padding-left: 0px;padding-right: 0px;">
-                                        <a href="/administrarBorrador/[[ borrador.id_oferta ]]">[[borrador.nombre]]</a>
-                                    </h4>
-                                    <time datetime="2013-11-10" class="timestamp hidden-xs">[[
-                                        borrador.fecha_creacion.substring(0,4) ]]/ [[ borrador.fecha_creacion.substring(5,7)
-                                        ]]/ [[ borrador.fecha_creacion.substring(8,10) ]]
-                                    </time>
-                                    <div class="col-md-12" style="padding-left: 0px;padding-right: 0px;">
-                                        <div class="col-md-6 col-xs-7" style="padding-left: 0px;">
-                                            <ul class="text-muted list-inline">
-                                                <li><i class="fa fa-user"></i> <a href="/perfilUsuario">[[ borrador.dueno
-                                                    ]]</a></li>
-                                                <li><i class="fa fa-calendar"></i> [[
-                                                    borrador.fecha_creacion.substring(0,10) ]]
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-md-6 col-xs-5" align="right" style="padding-right: 0px;">
-                                            <a href="/EditarBorrador/[[ borrador.id_oferta ]]" class="btn btn-green btn-sm">
-                                                <i class="fa fa-pencil"></i>&nbsp;&nbsp;Editar</a>
-                                        </div>
-                                    </div>
-                                    <div style="clear:both;">
-                                    </div>
-                                    <hr style="margin-top: 10px;">
-                                    <p class="blog-text">
-                                        [[borrador.descripcion]]
-                                    </p>
-                                    <p class="tags">
-                                        <a ng-repeat="tag in borrador.palabras_clave">[[tag.palabra]]</a>
-                                    </p>
+            <div class="col-sm-12">
+                <div class="timeline-block">
+                    <!-- First blog post -->
+                    <div ng-repeat="borrador in BorradoreslistaOfertas">
+                        <div class="blog-summary">
+                            <h4 style="padding-left: 0px;padding-right: 0px;">
+                                <a href="/administrarBorrador/[[ borrador.id_oferta ]]">[[borrador.nombre]]</a>
+                            </h4>
+                            <time datetime="2013-11-10" class="timestamp hidden-xs">[[borrador.fecha_creacion.substring(0,4) ]]/ 
+                            [[ borrador.fecha_creacion.substring(5,7)]]/ [[ borrador.fecha_creacion.substring(8,10) ]]
+                            </time>
+                            <div class="col-md-12" style="padding-left: 0px;padding-right: 0px;">
+                                <div class="col-md-6 col-xs-7" style="padding-left: 0px;">
+                                    <ul class="text-muted list-inline">
+                                        <li><i class="fa fa-user"></i> <a href="/perfilUsuario">[[ borrador.dueno]]</a></li>
+                                        <li><i class="fa fa-calendar"></i> [[borrador.fecha_creacion.substring(0,10) ]]</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6 col-xs-5" align="right" style="padding-right: 0px;">
+                                    <a href="/EditarBorrador/[[ borrador.id_oferta ]]" class="btn btn-green btn-sm">
+                                    <i class="fa fa-pencil"></i>&nbsp;&nbsp;Editar</a>
                                 </div>
                             </div>
+                            <div style="clear:both;">
+                            </div>
+                            <hr style="margin-top: 10px;">
+                            <p class="blog-text" style="height: 125px" align="justify">
+                                [[borrador.descripcion]]
+                            </p>
+                            <p class="tags">
+                                <a ng-repeat="tag in borrador.palabras_clave">[[tag.palabra]]</a>
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
-
+            <!--
             <div class="pagination">
                 <button class="btn btn-green" ng-click='irAlanteriorBorrador()'>Anterior</button>
                 <span class="current">
@@ -182,6 +187,7 @@
                 </span>
                 <button class="btn btn-green" ng-click='irAlsiguienteBorrador()'>Siguiente</button>
             </div>
+            -->
         </div>
         <!-- TERMINA TAB DE BORRADORES-->
 
@@ -223,7 +229,7 @@
                             <div style="clear:both;">
                             </div>
                             <hr style="margin-top: 10px;">
-                            <p class="blog-text" style="height: 125px">
+                            <p class="blog-text" style="height: 125px"  align="justify">
                                 <img class="img-responsive blog-img" alt="Imagen de mi Oferta"
                                      src="[[ o.galeria[0].imagen ]]" style="height: 115px; width: 115px;" align="left">
                                 [[o.descripcion]]
@@ -237,14 +243,14 @@
                 </div>
             </div>
             <!-- PAGINACION DE OFERTA PUBLICADAS-->
-            <!-- PAGINACION DE OFERTA PUBLICADAS-->
+            <!-- PAGINACION DE OFERTA PUBLICADAS
             <div class="pagination">
                 <button class="btn btn-green" ng-click='irAlanterior()'>Anterior</button>
                 <span class="current">
                   Página [[ pagina ]] de [[ contador ]].
                 </span>
                 <button class="btn btn-green" ng-click='irAlsiguiente()'>Siguiente</button>
-            </div>
+            </div>-->
         </div>
         <!-- TERMINA OFERTAS DE LA RED-->
 
@@ -287,7 +293,7 @@
                             <div style="clear:both;">
                             </div>
                             <hr style="margin-top: 10px;">
-                            <p class="blog-text" style="height: 125px">
+                            <p class="blog-text" style="height: 125px"  align="justify">
                                 <img class="img-responsive blog-img" alt="Imagen de mi Oferta"
                                      src="[[ miembro.galeria[0].imagen ]]" style="height: 115px; width: 115px;" align="left">
                                 [[miembro.descripcion]]
@@ -301,14 +307,14 @@
                 </div>
             </div>
             <!-- PAGINACION DE OFERTA PUBLICADAS-->
-            <!-- PAGINACION DE OFERTA PUBLICADAS-->
+            <!-- PAGINACION DE OFERTA PUBLICADAS-
             <div class="pagination">
                 <button class="btn btn-green" ng-click='irAlanteriorMiembro()'>Anterior</button>
                 <span class="current">
                     Página [[ miembropagina ]] de [[ miembrocontador ]].
                 </span>
                 <button class="btn btn-green" ng-click='irAlsiguienteMiembro()'>Siguiente</button>
-            </div>
+            </div>-->
 
         </div>
         <!-- TERMINA EQUIPO-->
@@ -329,7 +335,7 @@
                     {% csrf_token %}
                     <div class="modal-header">
                         <button type="button" class="close cancelar" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Crear Oferta</h4>
+                        <h4 class="modal-title">Crear Borrador de Oferta</h4>
                     </div>
                     <div class="modal-body">
                         <div class="col-md-offset-1">
@@ -381,7 +387,163 @@
     </script>
 
     </div>
+<script>
+    $(document).ready(function(){  
+        //how much items per page to show  
+        var show_per_page = show_per_page = 5;  
 
+
+        //// MIS INCUBADAS
+        //getting the amount of elements inside content div  
+        var number_of_items_mias = $('#misIncubadas .comment').children().size();  
+        //calculate the number of pages we are going to have  
+        var number_of_pages_mias = Math.ceil(number_of_items_mias/show_per_page);  
+      
+        //set the value of our hidden input fields  
+        $('#current_page_misIncubadas').val(0);  
+        $('#show_per_page').val(show_per_page);  
+      
+        //now when we got all we need for the navigation let's make it '  
+      
+        var navigation_html = '<a class="btn btn-default" href="javascript:previous();">Anterior </a>';  
+        var current_link = 0;  
+        while(number_of_pages_mias > current_link){  
+            navigation_html += '<a class="btn btn-default page_link" href="javascript:go_to_page(' + current_link +')" longdesc="' + current_link +'">'+ (current_link + 1) +' </a>';  
+            current_link++;  
+        }  
+        navigation_html += '<a class="btn btn-default" href="javascript:next();">Siguiente </a>';
+
+
+        $('#page_navigation_ofertaPublicada').html(navigation_html);  
+      
+        //add active_page class to the first page link  
+        $('#page_navigation_ofertaPublicada .page_link:first').addClass('active_page');
+      
+        //hide all the elements inside content div 
+        $('#misIncubadas .comment').children().css('display', 'none'); 
+      
+        //and show the first n (show_per_page) elements  
+        $('#misIncubadas .comment').children().slice(0, show_per_page).css('display', 'block'); 
+         
+
+
+
+         //INCUBACIONES RED
+        var number_of_items_mias = $('#incubacionesRed .comment').children().size();  
+        //calculate the number of pages we are going to have  
+        var number_of_pages_mias = Math.ceil(number_of_items_mias/show_per_page);  
+      
+        //set the value of our hidden input fields  
+        $('#current_page_incubacionesRed').val(0);  
+
+        //now when we got all we need for the navigation let's make it '  
+      
+        var navigation_html = '<a class="btn btn-default" href="javascript:previous();">Anterior </a>';  
+        var current_link = 0;  
+        while(number_of_pages_mias > current_link){  
+            navigation_html += '<a class="btn btn-default page_link" href="javascript:go_to_page(' + current_link +')" longdesc="' + current_link +'">'+ (current_link + 1) +' </a>';  
+            current_link++;  
+        }  
+        navigation_html += '<a class="btn btn-default" href="javascript:next();">Siguiente </a>';
+
+
+        $('#page_navigation_incubacionesRed').html(navigation_html);  
+      
+        //add active_page class to the first page link  
+        $('#page_navigation_incubacionesRed .page_link:first').addClass('active_page');
+      
+        //hide all the elements inside content div 
+        $('#incubacionesRed .comment').children().css('display', 'none'); 
+      
+        //and show the first n (show_per_page) elements  
+        $('#incubacionesRed .comment').children().slice(0, show_per_page).css('display', 'block'); 
+
+
+
+
+        //CONSULTOR DE INCUBADAS
+
+        var number_of_items_mias = $('#incubacionesConsultor .comment').children().size();  
+        //calculate the number of pages we are going to have  
+        var number_of_pages_mias = Math.ceil(number_of_items_mias/show_per_page);  
+      
+        //set the value of our hidden input fields  
+        $('#current_page_incubacionesConsultor').val(0);  
+
+        //now when we got all we need for the navigation let's make it '  
+      
+        var navigation_html = '<a class="btn btn-default" href="javascript:previous();">Anterior </a>';  
+        var current_link = 0;  
+        while(number_of_pages_mias > current_link){  
+            navigation_html += '<a class="btn btn-default page_link" href="javascript:go_to_page(' + current_link +')" longdesc="' + current_link +'">'+ (current_link + 1) +' </a>';  
+            current_link++;  
+        }  
+        navigation_html += '<a class="btn btn-default" href="javascript:next();">Siguiente </a>';
+
+
+        $('#page_navigation_incubacionesConsultor').html(navigation_html);  
+      
+        //add active_page class to the first page link  
+        $('#page_navigation_incubacionesConsultor .page_link:first').addClass('active_page');
+      
+        //hide all the elements inside content div 
+        $('#incubacionesConsultor .comment').children().css('display', 'none'); 
+      
+        //and show the first n (show_per_page) elements  
+        $('#incubacionesConsultor .comment').children().slice(0, show_per_page).css('display', 'block'); 
+        //////
+    });  
+      
+    function previous(){  
+        var name = $('.tab-pane.active').data('page');
+        new_page = parseInt($('#current_page_'+name).val())-1 ;  
+        //if there is an item before the current active link run the function  
+        if($('#'+name+' .active_page').prev('.page_link').length==true){  
+            go_to_page(new_page, name);  
+        }  
+      
+    }  
+      
+    function next(){  
+        var name = $('.tab-pane.active').data('page');
+        new_page = parseInt($('#current_page_'+name).val()) + 1;  
+        //if there is an item after the current active link run the function  
+        if($('#'+name+' .active_page').next('.page_link').length==true){  
+
+            go_to_page(new_page,name);  
+        }  
+      
+    }  
+
+    function go_to_page(page_num, name){  
+        //get the number of items shown per page  
+        if(name == null)
+            name = $('.tab-pane.active').data('page');
+        console.log(name);
+        console.log(page_num);
+        var show_per_page = parseInt($('#show_per_page').val());  
+        console.log(show_per_page);
+      
+        //get the element number where to start the slice from  
+        start_from = page_num * show_per_page;  
+      
+        //get the element number where to end the slice  
+        end_on = start_from + show_per_page;  
+      
+        //hide all children elements of content div, get specific items and show them  
+        console.log(start_from);
+        console.log(end_on);
+        console.log($('#'+name+' .comment'));
+        $('#'+name+' .comment').children().css('display', 'none').slice(start_from, end_on).css('display', 'block');  
+      
+        /*get the page link that has longdesc attribute of the current page and add active_page class to it 
+        and remove that class from previously active page link*/  
+        $('.page_link[longdesc=' + page_num +']').addClass('active_page').siblings('.active_page').removeClass('active_page');  
+      
+        //update the current page input field  
+        $('#current_page_'+name).val(page_num);  
+    } 
+    </script>
 {% endblock %}
 
 

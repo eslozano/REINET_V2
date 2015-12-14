@@ -113,7 +113,7 @@
     		</div>
     		
 			<div class="col-sm-12">
-	            <h4 class="hl"><i class="fa fa-info-circle"></i> Descripción</h4>
+	            <h4 class="hl"><i class="fa fa-info-circle"></i> Descripci&oacute;n</h4>
 	            <p class="bottom-15" align="justify" >{{ incubacion.descripcion}}</p>
 	           	<h4 class="hl"><i class="fa fa-question-circle"></i> Condiciones</h4>
 	            <p class="bottom-15" align="justify">{{ incubacion.condiciones }}</p>
@@ -128,11 +128,9 @@
 		                <p class="col-md-7">
                       {% if incubacion.tipos_oferta == 0 %}
                           Emprendimiento
-                      {% endif %}
-                      {% if incubacion.tipos_oferta == 1 %}
-                          Tecnología
-                      {% endif %}
-                      {% if incubacion.tipos_oferta == 2 %}
+                      {% elif incubacion.tipos_oferta == 1 %}
+                          Tecnolog&iacute;a
+                      {% elif incubacion.tipos_oferta == 2 %}
                           Prototipo
                       {% endif %}
                     </p>
@@ -428,6 +426,7 @@
               </div>
           </div>
         </div>
+        
         <div class="modal-footer">
            <span id="msgEstado"><p class="pull-left" id="msgEstadoDetalle"></p></span>
            <button {% if incubacion.estado_incubacion != 0 %}
