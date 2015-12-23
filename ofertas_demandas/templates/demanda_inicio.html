@@ -49,173 +49,204 @@
 
     <div class="tab-content col-sm-12">
 
-        <!-- COMIENZA DEMANDAS DE LA RED-->
+    <!-- COMIENZA DEMANDAS EN LA RED-->
     <div role="tabpanel" class="tab-pane" id="demandasdelaREd" ng-controller="DemandasControlador">
         <div class="col-sm-12">
             <div class="timeline-block">
                 <!-- First blog post -->
                 <div ng-repeat="demanda in listaDemandas">
-                    <div class="blog-summary">
-                        <h4 class="col-md-12" style="padding-left: 0px;padding-right: 0px;">
-                            <a class="ng-binding" href="/demanda/[[ demanda.id_demanda ]]">[[demanda.nombre]]</a>
-                        </h4>
-                        <time datetime="2013-11-10" class="timestamp hidden-xs">[[ demanda.fecha_publicacion.substring(0,4) ]]/
-                            [[ demanda.fecha_publicacion.substring(5,7) ]]/ [[ demanda.fecha_publicacion.substring(8,10) ]]
-                        </time>
-                        <div class="col-md-12" style="padding-left: 0px;padding-right: 0px;">
-                            <div class="col-md-6 col-xs-7" style="padding-left: 0px;">
-                                <ul class="text-muted list-inline">
-                                    <li><i class="fa fa-user"></i> <a href="/usuario/[[ demanda.duenoUsername ]]">[[ demanda.dueno ]]</a></li>
-                                    <li><i class="fa fa-calendar"></i> [[ demanda.fecha_publicacion.substring(0,10) ]]</li>
-                                    <li><i class="fa fa-comments-o"></i> [[ demanda.numComentarios ]] comentarios</li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6 col-xs-5" align="right" style="padding-right: 0px;">
+                    <div  ng-if="demanda">
+                        <div class="blog-summary">
+                            <h4 class="col-md-12" style="padding-left: 0px;padding-right: 0px;">
+                                <a class="ng-binding" href="/demanda/[[ demanda.id_demanda ]]">[[demanda.nombre]]</a>
+                            </h4>
+                            <time datetime="2013-11-10" class="timestamp hidden-xs">[[ demanda.fecha_publicacion.substring(0,4) ]]/
+                                [[ demanda.fecha_publicacion.substring(5,7) ]]/ [[ demanda.fecha_publicacion.substring(8,10) ]]
+                            </time>
+                            <div class="col-md-12" style="padding-left: 0px;padding-right: 0px;">
+                                <div class="col-md-6 col-xs-7" style="padding-left: 0px;">
+                                    <ul class="text-muted list-inline">
+                                        <li><i class="fa fa-user"></i> <a href="/usuario/[[ demanda.duenoUsername ]]">[[ demanda.dueno ]]</a></li>
+                                        <li><i class="fa fa-calendar"></i> [[ demanda.fecha_publicacion.substring(0,10) ]]</li>
+                                        <li><i class="fa fa-comments-o"></i> [[ demanda.numComentarios ]] comentarios</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6 col-xs-5" align="right" style="padding-right: 0px;">
 
+                                </div>
                             </div>
-                        </div>
-                        <div style="clear:both;">
-                        </div>
-                        <hr style="margin-top: 10px;">
-                        <p class="blog-text" style="height: 125px">
-                            <img class="img-responsive blog-img" alt="Imagen de la demanda"
-                                 src="[[ demanda.galeria[0].imagen ]]" style="height: 115px; width: 115px;" align="left">
-                            [[demanda.descripcion]]
-                        </p>
+                            <div style="clear:both;">
+                            </div>
+                            <hr style="margin-top: 10px;">
+                            <p class="blog-text" style="height: 125px">
+                                <img class="img-responsive blog-img" alt="Imagen de la demanda"
+                                     src="[[ demanda.galeria[0].imagen ]]" style="height: 115px; width: 115px;" align="left">
+                                [[demanda.descripcion]]
+                            </p>
 
-                        <div class="tags">
-                            <a ng-repeat="tag in o.palabras_clave">[[tag.palabra]]</a>
+                            <div class="tags">
+                                <a ng-repeat="tag in o.palabras_clave">[[tag.palabra]]</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- PAGINACION DE OFERTA PUBLICADAS-->
-        <div class="pagination">
-            <button class="btn btn-warning" ng-click='irAlanterior()'>Anterior</button>
-            <span class="current">
-              Página [[ pagina ]] de [[ contador ]].
-            </span>
-            <button class="btn btn-warning" ng-click='irAlsiguiente()'>Siguiente</button>
+        <div ng-if="contador === 0">
+            <div class="alert alert-info alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                No existe niguna demanda publicada en la Red; si desea publique una demaanda.
+            </div>
+        </div>
+
+        <!-- PAGINACION DE DEMANDAS EN LA RED-->
+        <div ng-if="contador !== 0">
+            <div class="about-btn">
+                <button  ng-click='irAlanterior()'>Anterior</button>
+                <span class="current">
+                    P&aacute;gina [[ pagina ]] de [[ contador ]].
+                </span>
+                <button ng-click='irAlsiguiente()'>Siguiente</button>
+            </div>
         </div>
     </div>
+    <!-- TERMINA DEMANDAS EN LA RED-->
 
-    <!-- COMIENZA TAB DE OFERTAS PUBLICADAS-->
+    <!-- COMIENZA TAB DE DEMANDAS PUBLICADAS-->
     <div role="tabpanel" class="tab-pane active" id="demandasPublicadas" ng-controller="MisDemandasControlador">
         <div class="col-sm-12">
             <div class="timeline-block">
                 <!-- First blog post -->
                 <div ng-repeat="publicada in MDlistaOfertas">
-                    <div class="blog-summary">
-                        <h4 class="col-md-12" style="padding-left: 0px;padding-right: 0px;">
-                            <div class="col-md-9 col-sm-6" align="left" style="padding-left: 0px;">
-                                <a class="ng-binding" href="/administrarDemanda/[[ publicada.id_demanda ]]">[[publicada.nombre]]</a>
-                            </div>
-                            <div class="thumbnail col-md-3 col-sm-6" style="margin-bottom:-10px;" align="right">
-                                <div class="caption" style="padding-bottom:0px;padding-top: 0px;padding-right: 0px;">
-                                    <div class="rating" ng-repeat="n in [] | range:[[publicada.calificacion_total]]">
-                                        <i class="fa fa-star"></i>
+                    <div  ng-if="publicada">
+                        <div class="blog-summary">
+                            <h4 class="col-md-12" style="padding-left: 0px;padding-right: 0px;">
+                                <div class="col-md-9 col-sm-6" align="left" style="padding-left: 0px;">
+                                    <a class="ng-binding" href="/administrarDemanda/[[ publicada.id_demanda ]]">[[publicada.nombre]]</a>
+                                </div>
+                                <div class="thumbnail col-md-3 col-sm-6" style="margin-bottom:-10px;" align="right">
+                                    <div class="caption" style="padding-bottom:0px;padding-top: 0px;padding-right: 0px;">
+                                        <div class="rating" ng-repeat="n in [] | range:[[publicada.calificacion_total]]">
+                                            <i class="fa fa-star"></i>
+                                        </div>
                                     </div>
                                 </div>
+                            </h4>
+                            <time datetime="2013-11-10" class="timestamp hidden-xs">[[
+                                publicada.fecha_publicacion.substring(0,4) ]]/ [[ publicada.fecha_publicacion.substring(5,7)
+                                ]]/ [[ publicada.fecha_publicacion.substring(8,10) ]]
+                            </time>
+                            <div class="col-md-12" style="padding-left: 0px;padding-right: 0px;">
+                                <div class="col-md-6 col-xs-7" style="padding-left: 0px;">
+                                    <ul class="text-muted list-inline">
+                                        <li><i class="fa fa-user"></i> <a href="/perfilUsuario">[[ publicada.dueno ]]</a>
+                                        </li>
+                                        <li><i class="fa fa-calendar"></i> [[ publicada.fecha_publicacion.substring(0,10) ]]
+                                        </li>
+                                        <li><i class="fa fa-comments-o"></i> [[publicada.numComentarios]] comentarios</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6 col-xs-5" align="right" style="padding-right: 0px;">
+                                    <a href="/administrarDemanda/[[ publicada.id_demanda ]]" class="btn btn-warning btn-sm">
+                                        <i class="fa fa-pencil"></i>&nbsp;&nbsp;Administrar</a>
+                                </div>
                             </div>
-                        </h4>
-                        <time datetime="2013-11-10" class="timestamp hidden-xs">[[
-                            publicada.fecha_publicacion.substring(0,4) ]]/ [[ publicada.fecha_publicacion.substring(5,7)
-                            ]]/ [[ publicada.fecha_publicacion.substring(8,10) ]]
-                        </time>
-                        <div class="col-md-12" style="padding-left: 0px;padding-right: 0px;">
-                            <div class="col-md-6 col-xs-7" style="padding-left: 0px;">
-                                <ul class="text-muted list-inline">
-                                    <li><i class="fa fa-user"></i> <a href="/perfilUsuario">[[ publicada.dueno ]]</a>
-                                    </li>
-                                    <li><i class="fa fa-calendar"></i> [[ publicada.fecha_publicacion.substring(0,10) ]]
-                                    </li>
-                                    <li><i class="fa fa-comments-o"></i> [[publicada.numComentarios]] comentarios</li>
-                                </ul>
+                            <div style="clear:both;">
                             </div>
-                            <div class="col-md-6 col-xs-5" align="right" style="padding-right: 0px;">
-                                <a href="/administrarDemanda/[[ publicada.id_demanda ]]" class="btn btn-warning btn-sm">
-                                    <i class="fa fa-pencil"></i>&nbsp;&nbsp;Administrar</a>
-                            </div>
+                            <hr style="margin-top: 10px;">
+                            <p class="blog-text" style="height: 125px">
+                                <img class="img-responsive blog-img" alt="Imagen de mi Demanda"
+                                     src="[[ publicada.galeria[0].imagen ]]" style="height: 115px; width: 115px;" align="left">
+                                [[publicada.descripcion]]
+                            </p>
+                            <p class="tags">
+                                <a ng-repeat="tag in publicada.palabras_clave">[[tag.palabra]]</a>
+                            </p>
                         </div>
-                        <div style="clear:both;">
-                        </div>
-                        <hr style="margin-top: 10px;">
-                        <p class="blog-text" style="height: 125px">
-                            <img class="img-responsive blog-img" alt="Imagen de mi Demanda"
-                                 src="[[ publicada.galeria[0].imagen ]]" style="height: 115px; width: 115px;" align="left">
-                            [[publicada.descripcion]]
-                        </p>
-                        <p class="tags">
-                            <a ng-repeat="tag in publicada.palabras_clave">[[tag.palabra]]</a>
-                        </p>
-                    </div>
+                    </div>   
                 </div>
             </div>
         </div>
-        <div class="pagination">
-            <button class="btn btn-warning" ng-click='irAlanteriorPublicada()'>Anterior</button>
-            <span class="current">
-              Página [[ MDpagina ]] de [[ MDcontador ]].
-            </span>
-            <button class="btn btn-warning" ng-click='irAlsiguientePublicada()'>Siguiente</button>
+        <div ng-if="MDcontador === 0">
+            <div class="alert alert-info alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                Usted no tiene ninguna demanda publicada; para  hacerlo, deber&aacute; publicar un borrador  de demanda.
+            </div>
+        </div>
+
+        <!-- PAGINACION DE DEMANDAS PUBLICADAS-->
+        <div ng-if="MDcontador !== 0">
+            <div class="about-btn">
+                <button  ng-click='irAlanteriorPublicada()'>Anterior</button>
+                <span class="current">
+                    P&aacute;gina [[ MDpagina ]] de [[ MDcontador ]].
+                </span>
+                <button ng-click='irAlsiguientePublicada()'>Siguiente</button>
+            </div>
         </div>
     </div>
     <!-- TERMINA TAB DE OFERTAS PUBLICADAS-->
 
     <!-- COMIENZA TAB DE BORRADORES-->
     <div role="tabpanel" class="tab-pane" id="borradorDemanda" ng-controller="MisDemandasBorradoresControlador">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="timeline-block">
-                        <!-- First blog post -->
-                        <div ng-repeat="borrador in BorradoreslistaDemandas">
-                            <div class="blog-summary">
-                                <h4 style="padding-left: 0px;padding-right: 0px;">
-                                    <a href="/administrarBorradorDemanda/[[ borrador.id_demanda ]]">[[borrador.nombre]]</a>
-                                </h4>
-                                <time datetime="2013-11-10" class="timestamp hidden-xs">[[
-                                    borrador.fecha_creacion.substring(0,4) ]]/ [[ borrador.fecha_creacion.substring(5,7)
-                                    ]]/ [[ borrador.fecha_creacion.substring(8,10) ]]
-                                </time>
-                                <div class="col-md-12" style="padding-left: 0px;padding-right: 0px;">
-                                    <div class="col-md-6 col-xs-7" style="padding-left: 0px;">
-                                        <ul class="text-muted list-inline">
-                                            <li><i class="fa fa-user"></i> <a href="/perfilUsuario">[[ borrador.dueno
-                                                ]]</a></li>
-                                            <li><i class="fa fa-calendar"></i> [[
-                                                borrador.fecha_creacion.substring(0,10) ]]
-                                            </li>
-                                        </ul>
+        <div class="col-sm-12">
+            <div class="timeline-block">
+                <!-- First blog post -->
+                <div ng-repeat="borrador in BorradoreslistaDemandas">
+                    <div  ng-if="borrador">
+                        <div class="blog-summary">
+                                    <h4 style="padding-left: 0px;padding-right: 0px;">
+                                        <a href="/administrarBorradorDemanda/[[ borrador.id_demanda ]]">[[borrador.nombre]]</a>
+                                    </h4>
+                                    <time datetime="2013-11-10" class="timestamp hidden-xs">[[
+                                        borrador.fecha_creacion.substring(0,4) ]]/ [[ borrador.fecha_creacion.substring(5,7)
+                                        ]]/ [[ borrador.fecha_creacion.substring(8,10) ]]
+                                    </time>
+                                    <div class="col-md-12" style="padding-left: 0px;padding-right: 0px;">
+                                        <div class="col-md-6 col-xs-7" style="padding-left: 0px;">
+                                            <ul class="text-muted list-inline">
+                                                <li><i class="fa fa-user"></i> <a href="/perfilUsuario">[[ borrador.dueno
+                                                    ]]</a></li>
+                                                <li><i class="fa fa-calendar"></i> [[
+                                                    borrador.fecha_creacion.substring(0,10) ]]
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-6 col-xs-5" align="right" style="padding-right: 0px;">
+                                            <a href="/EditarBorradorDemanda/[[ borrador.id_demanda ]]" class="btn btn-warning btn-sm">
+                                                <i class="fa fa-pencil"></i>&nbsp;&nbsp;Editar</a>
+                                        </div>
                                     </div>
-                                    <div class="col-md-6 col-xs-5" align="right" style="padding-right: 0px;">
-                                        <a href="/EditarBorradorDemanda/[[ borrador.id_demanda ]]" class="btn btn-warning btn-sm">
-                                            <i class="fa fa-pencil"></i>&nbsp;&nbsp;Editar</a>
+                                    <div style="clear:both;">
                                     </div>
-                                </div>
-                                <div style="clear:both;">
-                                </div>
-                                <hr style="margin-top: 10px;">
-                                <p class="blog-text">
-                                    [[borrador.descripcion]]
-                                </p>
-                                <p class="tags">
-                                    <a ng-repeat="tag in borrador.palabras_clave">[[tag.palabra]]</a>
-                                </p>
-                            </div>
+                                    <hr style="margin-top: 10px;">
+                                    <p class="blog-text">
+                                        [[borrador.descripcion]]
+                                    </p>
+                                    <p class="tags">
+                                        <a ng-repeat="tag in borrador.palabras_clave">[[tag.palabra]]</a>
+                                    </p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div ng-if="Borradorescontador === 0">
+            <div class="alert alert-info alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                Usted no tiene ninguna demanda creada; para  hacerlo, deber&aacute; crear un borrador de demanda.
+            </div>
+        </div>
 
-        <div class="pagination">
-            <button class="btn btn-warning" ng-click='irAlanteriorBorrador()'>Anterior</button>
-            <span class="current">
-                Página [[ Borradorespagina ]] de [[ Borradorescontador ]].
-            </span>
-            <button class="btn btn-warning" ng-click='irAlsiguienteBorrador()'>Siguiente</button>
+        <!-- PAGINACION DE DEMANDAS BORRADORES-->
+        <div ng-if="Borradorescontador !== 0">
+            <div class="about-btn">
+                <button  ng-click='irAlanteriorBorrador()'>Anterior</button>
+                <span class="current">
+                    P&aacute;gina [[ Borradorespagina ]] de [[ Borradorescontador ]].
+                </span>
+                <button ng-click='irAlsiguienteBorrador()'>Siguiente</button>
+            </div>
         </div>
 
     </div>

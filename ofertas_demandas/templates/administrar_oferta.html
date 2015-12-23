@@ -75,7 +75,14 @@
                     <div class="col-md-8 col-sm-8 col-xs-8">
                         <!--Tipo-->
                         <p style="color: darkgray" for="Tipo" class="col-md-3">Tipo</p>
-                        <p>{{ oferta.tipo }}</p>
+                        <p >
+                            {% if oferta.tipo == 0 %}Emprendimiento
+                            {% elif oferta.tipo == 1 %}
+                                Tecnologia
+                            {% elif oferta.tipo == 2 %}
+                                Prototipo
+                            {% endif %}
+                        </p>
                         <!--Descripcion-->
                         <p  style="color: darkgray" for="Nombres" class="col-md-3">Descripci&oacute;n</p>
                         <p>{{ oferta.descripcion }} </p>
