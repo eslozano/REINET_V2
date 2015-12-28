@@ -62,7 +62,7 @@ def inicio_demanda(request):
 	args['usuario']=request.user
 	args['es_admin']=request.session['es_admin']
 
-	demandas=Demanda.objects.all()
+	demandas=Demanda.objects.exclude(publicada=0).all()
 	args['demandas'] = demandas
 
 	

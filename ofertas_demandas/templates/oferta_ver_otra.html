@@ -83,24 +83,26 @@
             <div class="col-md-8 col-sm-8 col-xs-8">
                 <!--Tipo-->
                 <p style="color: darkgray" class="col-md-3">Tipo</p>
-                {% if oferta.tipo == 0 %}
-                    <p>Emprendimiento</p>
-                {% elif oferta.tipo == 1 %}
-                    <p>Tecnologia</p>
-                {% elif oferta.tipo == 2 %}
-                    <p>Prototipo</p>
-                {% endif %}
+                <p class="bottom-15" align="justify" >
+                                    {% if oferta.tipo == 0 %}
+                                        Emprendimiento
+                                    {% elif oferta.tipo == 1 %}
+                                        Tecnolog&iacute;a
+                                    {% elif oferta.tipo == 2 %}
+                                        Prototipo
+                                    {% endif %}
+                </p>
                 <!--Descripcion-->
                 <p style="color: darkgray" class="col-md-3">Descripci&oacute;n</p>
-                <p>{{ oferta.descripcion  | title}} </p>
+                <p class="bottom-15" align="justify">{{ oferta.descripcion  | title}} </p>
 
                 <!--Dominio-->
                 <p style="color: darkgray" class="col-md-3">Dominio</p>
-                <p>{{ oferta.dominio }}</p>
+                <p class="bottom-15" align="justify">{{ oferta.dominio }}</p>
 
                 <!--Subdominio-->
                 <p style="color: darkgray" class="col-md-3">Sub-dominio</p>
-                <p>{{ oferta.subdominio }}</p>
+                <p class="bottom-15" align="justify">{{ oferta.subdominio }}</p>
 
                 <!--Palabras Clave-->
                 <p style="color: darkgray" class="col-md-3">Palabras Claves</p>
@@ -120,7 +122,7 @@
             <!--Perfil Cliente-->
             <p style="color: darkgray" for="Descripcion" class="col-md-3">Perfil del Cliente</p>
 
-            <p class="col-md-9">
+            <p class="bottom-15" align="justify" class="col-md-9">
                 {% if oferta.perfil_cliente != None %}
                     {{ oferta.perfil_cliente }}
                 {% else %}
@@ -130,7 +132,7 @@
             <!--Perfil Beneficiario-->
             <p style="color: darkgray" for="Descripcion" class="col-md-3">Perfil del Beneficiario</p>
 
-            <p class="col-md-9">
+            <p class="bottom-15" align="justify" class="col-md-9">
                 {% if oferta.perfil_beneficiario != None %}
                     {{ oferta.perfil_beneficiario }}
                 {% else %}
@@ -189,7 +191,7 @@
             <!--Tendencias-->
             <p style="color: darkgray" for="Descripcion" class="col-md-5">Tendencias Relevantes</p>
 
-            <p class="col-md-12">
+            <p class="bottom-15" align="justify" class="col-md-12">
                 {% if oferta.cuadro_tendencias_relevantes != None %}
                     {{ oferta.cuadro_tendencias_relevantes }}
                 {% else %}
@@ -198,7 +200,7 @@
             <!--Alternativas de solucion-->
             <p style="color: darkgray" for="Descripcion" class="col-md-5">Alternativas de Soluci&oacute;n
                 Existentes</p>
-            <p class="col-md-12">
+            <p class="bottom-15" align="justify" class="col-md-12">
                 {% if oferta.descripcion_soluciones_existentes != None %}
                     {{ oferta.descripcion_soluciones_existentes }}
                 {% else %}
@@ -257,7 +259,7 @@
             <!--Evidencia de Traccion-->
             <p style="color: darkgray" for="Descripcion" class="col-md-6">Evidencia de Tracci&oacute;n</p>
             <br>
-            <p class="col-md-12">
+            <p class="bottom-15" align="justify" class="col-md-12">
                 {% if oferta.evidencia_traccion != None %}
                     {{ oferta.evidencia_traccion }}
                 {% else %}
