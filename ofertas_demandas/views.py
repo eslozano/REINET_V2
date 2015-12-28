@@ -61,6 +61,14 @@ def inicio_demanda(request):
 	args = {}
 	args['usuario']=request.user
 	args['es_admin']=request.session['es_admin']
+
+	demandas=Demanda.objects.all()
+	args['demandas'] = demandas
+
+	
+
+
+
 	return render_to_response('demanda_inicio.html', args)
 
 

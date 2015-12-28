@@ -22,7 +22,7 @@
         <div class="col-md-6  col-sm-6 col-xs-6">
             <div class="col-sm-9">
                 <input type="text" class="form-control" ng-model="busqueda_demandas"
-                       placeholder="Buscar Demandas por Nombre o por Tag (Solo para las demandas de la red)"/>
+                       placeholder="Buscar Demandas por Nombre o por Tag (Solo para las demandas en la red)"/>
             </div>
             <div class="col-sm-3" ng-controller="busquedaDemandaControlador">
                 <button class="btn btn-blue" ng-click='buscarDemandas()'>Buscar</button>
@@ -42,15 +42,16 @@
             <a href="#borradorDemanda" aria-controls="borradorDemanda" role="tab" data-toggle="tab">Borradores</a>
         </li>
         <li role="presentation">
-            <a href="#demandasdelaREd" aria-controls="demandasdelaREd" role="tab" data-toggle="tab">Demandas de la Red</a>
+            <a href="#demandasdelaREd" aria-controls="demandasdelaREd" role="tab" data-toggle="tab">Demandas en la Red</a>
         </li>
     </ul>
 
 
     <div class="tab-content col-sm-12">
+    <input type='hidden' id='current_page_demandasdelaREd' />
 
     <!-- COMIENZA DEMANDAS EN LA RED-->
-    <div role="tabpanel" class="tab-pane" id="demandasdelaREd" ng-controller="DemandasControlador">
+    <div role="tabpanel" class="tab-pane" id="demandasdelaREd" data-page="demandasdelaREd" ng-controller="DemandasControlador">
         <div class="col-sm-12">
             <div class="timeline-block">
                 <!-- First blog post -->
@@ -100,6 +101,8 @@
         </div>
 
         <!-- PAGINACION DE DEMANDAS EN LA RED-->
+        <div id='page_navigation_demandasdelaREd' class="about-btn"></div>
+
         <div ng-if="contador !== 0">
             <div class="about-btn">
                 <button  ng-click='irAlanterior()'>Anterior</button>
@@ -321,6 +324,94 @@
             $('#radio1').prop("checked", true);
             $('#select_demanda').val("");
         });
+    </script>
+
+    <script>
+    $(document).ready(function(){  
+        //how much items per page to show  
+        var show_per_page = show_per_page = 5;  
+
+
+         //INCUBACIONES RED
+        var number_of_items_mias = $('#demandasdelaREd .comment').children().size();  
+        //calculate the number of pages we are going to have  
+        var number_of_pages_mias = Math.ceil(number_of_items_mias/show_per_page);  
+      
+        //set the value of our hidden input fields  
+        $('#current_page_demandasdelaREd').val(0);  
+
+        //now when we got all we need for the navigation let's make it '  
+      
+        var navigation_html = '<a class="btn btn-default" href="javascript:previous();">Anterior </a>';  
+        var current_link = 0;  
+        while(number_of_pages_mias > current_link){  
+            navigation_html += '<a class="btn btn-default page_link" href="javascript:go_to_page(' + current_link +')" longdesc="' + current_link +'">'+ (current_link + 1) +' </a>';  
+            current_link++;  
+        }  
+        navigation_html += '<a class="btn btn-default" href="javascript:next();">Siguiente </a>';
+
+
+        $('#page_navigation_demandasdelaREd').html(navigation_html);  
+      
+        //add active_page class to the first page link  
+        $('#page_navigation_demandasdelaREd .page_link:first').addClass('active_page');
+      
+        //hide all the elements inside content div 
+        $('#demandasdelaREd .comment').children().css('display', 'none'); 
+      
+        //and show the first n (show_per_page) elements  
+        $('#demandasdelaREd .comment').children().slice(0, show_per_page).css('display', 'block'); 
+
+
+    });  
+      
+    function previous(){  
+        var name = $('.tab-pane.active').data('page');
+        new_page = parseInt($('#current_page_'+name).val())-1 ;  
+        //if there is an item before the current active link run the function  
+        if($('#'+name+' .active_page').prev('.page_link').length==true){  
+            go_to_page(new_page, name);  
+        }  
+    }  
+      
+    function next(){  
+        var name = $('.tab-pane.active').data('page');
+        new_page = parseInt($('#current_page_'+name).val()) + 1;  
+        //if there is an item after the current active link run the function  
+        if($('#'+name+' .active_page').next('.page_link').length==true){  
+
+            go_to_page(new_page,name);  
+        }  
+    }  
+
+    function go_to_page(page_num, name){  
+        //get the number of items shown per page  
+        if(name == null)
+            name = $('.tab-pane.active').data('page');
+        console.log(name);
+        console.log(page_num);
+        var show_per_page = parseInt($('#show_per_page').val());  
+        console.log(show_per_page);
+      
+        //get the element number where to start the slice from  
+        start_from = page_num * show_per_page;  
+      
+        //get the element number where to end the slice  
+        end_on = start_from + show_per_page;  
+      
+        //hide all children elements of content div, get specific items and show them  
+        console.log(start_from);
+        console.log(end_on);
+        console.log($('#'+name+' .comment'));
+        $('#'+name+' .comment').children().css('display', 'none').slice(start_from, end_on).css('display', 'block');  
+      
+        /*get the page link that has longdesc attribute of the current page and add active_page class to it 
+        and remove that class from previously active page link*/  
+        $('.page_link[longdesc=' + page_num +']').addClass('active_page').siblings('.active_page').removeClass('active_page');  
+      
+        //update the current page input field  
+        $('#current_page_'+name).val(page_num);  
+    } 
     </script>
 
     </div>
