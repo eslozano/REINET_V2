@@ -43,10 +43,10 @@
                     <a class="btn btn-dark pull-right" style="color:white;margin-bot: 0px;margin-right: 3px;" data-toggle="modal" data-target="#IncuEstado"><i class="fa fa-wrench"></i>&nbsp;&nbsp;Cambiar estado</a>
 
                     {% if convocatoria == False %}
-                      <a href="#" class="btn btn-red pull-right" style="color:white;margin-bot: 0px;margin-right: 3px;" data-toggle="modal" data-target="#CrearConvocatoria"><i class="fa fa-plus"></i>&nbsp;&nbsp;Crear convocatoria</a>
+                      <a href="#" class="btn btn-green pull-right" style="color:white;margin-bot: 0px;margin-right: 3px;" data-toggle="modal" data-target="#CrearConvocatoria"><i class="fa fa-plus"></i>&nbsp;&nbsp;Crear convocatoria</a>
                       
                     {% else %}
-                      <a href="#" class="btn btn-red pull-right" style="color:white;margin-bot: 0px;margin-right: 3px;" data-toggle="modal" data-target="#CrearConvocatoria" disabled><i class="fa fa-plus"></i>&nbsp;&nbsp;Crear convocatoria</a>
+                      <a href="#" class="btn btn-green pull-right" style="color:white;margin-bot: 0px;margin-right: 3px;" data-toggle="modal" data-target="#CrearConvocatoria" disabled><i class="fa fa-plus"></i>&nbsp;&nbsp;Crear convocatoria</a>
 
                     {%endif%}
 
@@ -54,19 +54,19 @@
 
                     <a class="btn btn-dark pull-right" style="color:white;margin-bot: 0px;margin-right: 3px;" data-toggle="modal" data-target="#IncuEstado" disabled><i class="fa fa-wrench"></i>&nbsp;&nbsp;Cambiar estado</a>
 
-                    <a href="#" class="btn btn-red pull-right" style="color:white;margin-bot: 0px;margin-right: 3px;" data-toggle="modal" data-target="#CrearConvocatoria" disabled><i class="fa fa-plus"></i>&nbsp;&nbsp;Crear convocatoria</a>
+                    <a href="#" class="btn btn-green pull-right" style="color:white;margin-bot: 0px;margin-right: 3px;" data-toggle="modal" data-target="#CrearConvocatoria" disabled><i class="fa fa-plus"></i>&nbsp;&nbsp;Crear convocatoria</a>
 
                 {% elif incubacion.estado_incubacion == 2 %} <!-- INCUBACION DESACTIVADA-->
 
                     <a class="btn btn-dark pull-right" style="color:white;margin-bot: 0px;margin-right: 3px;" data-toggle="modal" data-target="#IncuEstado" disabled><i class="fa fa-wrench"></i>&nbsp;&nbsp;Cambiar estado</a>
 
-                    <a href="#" class="btn btn-red pull-right" style="color:white;margin-bot: 0px;margin-right: 3px;" data-toggle="modal" data-target="#CrearConvocatoria" disabled><i class="fa fa-plus"></i>&nbsp;&nbsp;Crear convocatoria</a>
+                    <a href="#" class="btn btn-green pull-right" style="color:white;margin-bot: 0px;margin-right: 3px;" data-toggle="modal" data-target="#CrearConvocatoria" disabled><i class="fa fa-plus"></i>&nbsp;&nbsp;Crear convocatoria</a>
 
                 {% elif incubacion.estado_incubacion == 3 %} <!-- INCUBACION CENSURADA-->
 
                     <a class="btn btn-dark pull-right" style="color:white;margin-bot: 0px;margin-right: 3px;" data-toggle="modal" data-target="#IncuEstado" disabled><i class="fa fa-wrench"></i>&nbsp;&nbsp;Cambiar estado</a>
 
-                    <a href="#" class="btn btn-red pull-right" style="color:white;margin-bot: 0px;margin-right: 3px;" data-toggle="modal" data-target="#CrearConvocatoria" disabled><i class="fa fa-plus"></i>&nbsp;&nbsp;Crear convocatoria</a>
+                    <a href="#" class="btn btn-green pull-right" style="color:white;margin-bot: 0px;margin-right: 3px;" data-toggle="modal" data-target="#CrearConvocatoria" disabled><i class="fa fa-plus"></i>&nbsp;&nbsp;Crear convocatoria</a>
 
                 {%endif%}     
             </div>
@@ -163,7 +163,7 @@
                   </div>
 
                 {% else %}
-                <div class="info-board info-board-red"> Esta incubación no tiene una convocatoria abierta </div>
+                <div class="info-board info-board-red"> Esta incubaci&oacute;n no tiene una convocatoria abierta </div>
                 {%endif%}
 		        </div>
 			    </div>
@@ -326,7 +326,7 @@
                                 {% csrf_token %}
                                 <div class="form-group">
                                   <div class="text-muted col-md-12" style="margin-bottom:15px">
-                                    Para comenzar un periodo de incubación debe crear una convocatoria en la cual apliquen ofertas publicadas de la red. Ingrese la fecha máxima que permanecerá abierta la convocatoria.  
+                                    Para comenzar un periodo de incubaci&oacute;n debe crear una convocatoria en la cual apliquen ofertas publicadas de la red. Ingrese la fecha máxima que permanecer&aacute; abierta la convocatoria.  
                                   </div>
                                   <label for="Nombres" class="col-md-12">
                                     Fecha M&aacute;xima de la convocatoria
@@ -348,7 +348,7 @@
                 <div class="modal-footer">
                   <div align="right">
                     <a data-dismiss="modal"  class="btn btn-dark"><i class="fa fa-times"></i>&nbsp;&nbsp;Cancelar&nbsp;&nbsp;</a>
-                    <button id="btncrearconvocatoria" class="btn btn-red" data-dismiss="modal" data-target="#confirmacion_crearconvocatoria" data-toggle="modal"><i class="fa fa-check-square"></i>&nbsp;&nbsp;Crear&nbsp;&nbsp;</button>
+                    <button id="btncrearconvocatoria" class="btn btn-green " data-dismiss="modal" data-target="#confirmacion_crearconvocatoria" data-toggle="modal"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;C  r  e  a  r&nbsp;&nbsp;&nbsp;</button>
                   </div>    
                 </div>
             </div>
@@ -365,7 +365,7 @@
           <div class="modal-body media" style="font-size:14px;padding-top: 0px;width: 540px;">
              <span>La Convocatoria se ha creado con &eacute;xito </span>
              <div align=right>
-                 <a class="btn btn-red" href="/AdminIncubacion/{{incubacion.id_incubacion}}"><i class="fa fa-check-square"></i>&nbsp;&nbsp;Aceptar&nbsp;&nbsp;</a>
+                 <a class="btn btn-green" href="/AdminIncubacion/{{incubacion.id_incubacion}}"><i class="fa fa-check-square"></i>&nbsp;&nbsp;Aceptar&nbsp;&nbsp;</a>
              </div>
           </div>
         </div>
@@ -450,7 +450,7 @@
       <div class="modal-body media" style="font-size:14px;padding-top: 0px;width: 540px;">
         <span>El estado ha sido cambiado con &eacute;xito </span>
         <div align=right>
-          <a class="btn btn-red" href="/AdminIncubacion/{{incubacion.id_incubacion}}"><i class="fa fa-check-square"></i>&nbsp;&nbsp;Aceptar&nbsp;&nbsp;</a>
+          <a class="btn btn-green" href="/AdminIncubacion/{{incubacion.id_incubacion}}"><i class="fa fa-check-square"></i>&nbsp;&nbsp;Aceptar&nbsp;&nbsp;</a>
         </div>
       </div>
     </div>
