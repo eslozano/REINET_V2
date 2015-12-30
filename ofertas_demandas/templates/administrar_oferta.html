@@ -323,7 +323,7 @@
                             <p>
                                 <a href="#" class="btn btn-green btn-sm" style="color:white;margin-top: 15px;" data-toggle="modal" data-target="#solicitudesEquipo">
                                     <span class="badge" style="background-color:white; color:#5D8731">{{solicitudes|length}}</span>
-                                    &nbsp;&nbsp;Solicitudes de participación</a>
+                                    &nbsp;&nbsp;Solicitudes de participaci&oacute;n</a>
                             </p>
                         </div>
                         <hr style="margin-top: 15px;">
@@ -468,7 +468,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Solicitudes de participaci&oacute;n al equipo</h4>
+                    <h4 class="modal-title">SOLICITUDES DE PARTICIPACI&Oacute;N AL EQUIPO</h4>
                 </div>
                 <div class="modal-body"style="font-size:12px;overflow-y:auto">
 
@@ -482,15 +482,17 @@
                         <div class="comment" id="{{solicitud.fk_participante.id_perfil}}" name="Solicitud01">
                             <div class="media">
                                 <a class="pull-left" href="#">
-                                    <img class="media-object img-circle" src="/../../media/ofertas-demandas/face3.jpg" alt="...">
+                                    <img class="media-object img-circle" src="/media/{{imagen_principal.imagen}}" alt="...">
                                 </a>
+
+
                                 <div class=" media-body">
                                     <p><a href="profile.html">{{solicitud.fk_participante.username}}</a></p>
                                     <div id="{{solicitud.fk_participante.id_perfil}}" name="datosSolicitud01">
                                         {% if solicitud.comentario_peticion %}
                                             <p>{{solicitud.comentario_peticion}}</p>
                                         {%  else %}
-                                            <p>Hola que tal, agrégame a tu oferta </p>
+                                            <p>Hola que tal, agr&eacute;game a tu oferta </p>
                                         {% endif %}
                                         <ul class="text-muted list-inline">
                                             <li><i class="fa fa-calendar"></i> {{solicitud.fecha_aceptacion}}</li>
@@ -508,20 +510,20 @@
                                                 <input hidden value="{{solicitud.fk_oferta_en_que_participa.id_oferta}}" id="{{solicitud.fk_participante.id_perfil}}" name="id_oferta">
                                                 <input hidden id="{{solicitud.fk_participante.id_perfil}}"  value="{{solicitud.fk_participante.id_perfil}}" name="id_user_peticion">
                                             </div>
-                                            <button type="button" class="btn btn-green btn-sm" id="{{solicitud.fk_participante.id_perfil}}" name="aceptarRolEquipo01">
-                                                <span class="glyphicon glyphicon-plus-sign"></span> Aceptar</button>
+                                            <button type="button" class="btn btn-green " id="{{solicitud.fk_participante.id_perfil}}" name="aceptarRolEquipo01" >
+                                                <span class="fa fa-check-square"></span> Aceptar</button>
                                         </div>
                                     </form>
                                 </div>
                                 <div align=right id="{{solicitud.fk_participante.id_perfil}}" name="botonesSolicitud01">
 
-                                    <button type="button"class="btn btn-green btn-xs" id="{{solicitud.fk_participante.id_perfil}}" name="aceptarSolicitudEquipo01">
+                                    <button type="button"class="btn btn-green" id="{{solicitud.fk_participante.id_perfil}}" name="aceptarSolicitudEquipo01">
                                         <span class="glyphicon glyphicon-plus-sign"></span> Agregar</button>
-                                    <button type="button" class="btn btn-dark btn-xs " id="{{solicitud.fk_participante.id_perfil}}" name="rechazarSolicitudEquipo01">
+                                    <button type="button" class="btn btn-dark" id="{{solicitud.fk_participante.id_perfil}}" name="rechazarSolicitudEquipo01">
                                         <span class="glyphicon glyphicon-minus-sign"></span> Rechazar</button>
                                 </div>
                             </div>
-                            <br>
+                         
                         </div>
 
                     {%endfor%}
@@ -631,12 +633,12 @@
                     <h4 class="modal-title">Inactivar oferta</h4>
                 </div>
                 <div class="modal-body" style="overflow-y:auto">
-                    <p>Está seguro que desea desactivar la oferta. Recuerde que este cambio no es reversible</p>
+                    <p>Est&aacute; seguro que desea desactivar la oferta. Recuerde que este cambio no es reversible</p>
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-green" data-dismiss="modal" data-toggle="modal" data-target="#guardarEditarEquipo">Aceptar</button>
-                    <button id="btnCancelarEditarEquipo" type="button" class="btn btn-dark" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-green" data-dismiss="modal" data-toggle="modal" data-target="#guardarEditarEquipo"><i class="fa fa-check-square"></i>&nbsp;&nbsp;Aceptar</button>
+                    <button id="btnCancelarEditarEquipo" type="button" class="btn btn-dark" data-dismiss="modal"><i class="fa fa-times"></i>&nbsp;&nbsp;Cancelar</button>
 
                 </div>
             </div>
@@ -711,20 +713,20 @@
             dataType : 'text',
             success: function(data){
                 if(data=="ok"){
-                    $("[id='"+idObtenido+"'][name='Solicitud01']").html("<a>Solicitud RECHAZADA con éxito</a>");
+                    $("[id='"+idObtenido+"'][name='Solicitud01']").html("<p>Solicitud RECHAZADA con &eacute;xito</p>");
 
                     $("[id='"+idObtenido+"'][name='Solicitud01']").show();
 
 
                 }else{
-                    $("[id='"+idObtenido+"'][name='Solicitud01']").html("<a>Ocurrió un error. Recargue la página</a>");
+                    $("[id='"+idObtenido+"'][name='Solicitud01']").html("<p>Ocurri&oacute; un error. Recargue la p&aacute;gina</p>");
 
                     $("[id='"+idObtenido+"'][name='Solicitud01']").show();
                 }
             },
             error: function(e){
 
-                $("[id='"+idObtenido+"'][name='Solicitud01']").html("<a>Ocurrió un error. Recargue la página</a>");
+                $("[id='"+idObtenido+"'][name='Solicitud01']").html("<p>Ocurri&oacute; un error. Recargue la p&aacute;gina</p>");
 
                 $("[id='"+idObtenido+"'][name='Solicitud01']").show();
 
@@ -762,13 +764,13 @@
             dataType : 'text',
             success: function(data){
                 if(data=="ok"){
-                    $("[id='"+idObtenido+"'][name='Solicitud01']").html("<a>Solicitud aprobada con éxito</a>");
+                    $("[id='"+idObtenido+"'][name='Solicitud01']").html("<p>Solicitud aprobada con éxito</p>");
 
                     $("[id='"+idObtenido+"'][name='Solicitud01']").show();
                     actualizarListaMiembros();
 
                 }else{
-                    $("[id='"+idObtenido+"'][name='Solicitud01']").html("<a>Ocurrió un error. Recargue la página</a>");
+                    $("[id='"+idObtenido+"'][name='Solicitud01']").html("<p>Ocurrió un error. Recargue la página</p>");
 
                     $("[id='"+idObtenido+"'][name='Solicitud01']").show();
 

@@ -20,14 +20,9 @@
     <div class="row" style="margin-bottom: 25px;">
 
         <div align=left class="col-md-2 col-sm-2 col-xs-3">
-<<<<<<< HEAD
-             <div class="pull-left">
+            <div class="pull-left">
                 <a href="#" class="btn btn-green" data-toggle="modal" data-target="#modalCrearOferta"><i class="fa fa-plus-square"></i>&nbsp;&nbsp;Crear Oferta</a>
             </div> 
-=======
-            <button type="button" class="btn btn-green" data-toggle="modal" data-target="#modalCrearOferta">Crear Oferta
-            </button>
->>>>>>> 40907e1e9c6a2756b811bee7922d607b5b72aabf
         </div>
 
         <div class="col-md-4 col-sm-4 col-xs-3">
@@ -41,7 +36,7 @@
         <div class="col-md-6  cofl-sm-6 col-xs-6">
             <div class="col-sm-9">
                 <input type="text" class="form-control" ng-model="busqueda_ofertas"
-                       placeholder="Buscar Oferta por Nombre o por Tag (Ofertas en la red)"/>
+                       placeholder="Buscar Oferta por Nombre, Tag (Ofertas en la red)"/>
             </div>
             <div class="col-sm-3" ng-controller="busquedaControlador">
                 <button class="btn btn-blue" ng-click='buscarOfertas()'><i class="fa fa-search-plus"></i>&nbsp;&nbsp;Buscar Oferta</button>
@@ -130,7 +125,7 @@
             <div ng-if="MOcontador === 0">
                 <div class="alert alert-info alert-dismissable">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                    Usted no tiene ninguna oferta publicada; para  hacerlo, deber&aacute; publicar un borrador de oferta.
+                    Usted no tiene ninguna oferta publicada; para  hacerlo, deber&aacute; publicar un borrador de una oferta.
                 </div>
             </div>  
 
@@ -171,7 +166,7 @@
                                         </ul>
                                     </div>
                                     <div class="col-md-6 col-xs-5" align="right" style="padding-right: 0px;">
-                                        <a href="/EditarBorrador/[[ borrador.id_oferta ]]" class="btn btn-green btn-sm">
+                                        <a href="/EditarBorrador/[[ borrador.id_oferta ]]" class="btn btn-dark btn-sm">
                                         <i class="fa fa-pencil"></i>&nbsp;&nbsp;Editar</a>
                                     </div>
                                 </div>
@@ -264,7 +259,7 @@
             <div ng-if="contador === 0">
                 <div class="alert alert-info alert-dismissable">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                    No existe niguna oferta publicada en la Red; si desea publique un oferta.
+                    No existe niguna oferta publicada en la Red; si desea publique un borrador de una oferta.
                 </div>
             </div>
 

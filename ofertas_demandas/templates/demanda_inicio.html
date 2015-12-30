@@ -7,9 +7,10 @@
     <div class="container">
     <div class="row" style="margin-bottom: 25px;">
         <div align=left class="col-md-2 col-sm-2 col-xs-3">
-            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalCrearDemanda">Crear
-                Demanda
-            </button>
+
+            <div class="pull-left">
+                <a href="#" class="btn btn-green" data-toggle="modal" data-target="#modalCrearDemanda"><i class="fa fa-plus-square"></i>&nbsp;&nbsp;Crear Demanda</a>
+            </div> 
         </div>
         <div class="col-md-4 col-sm-4 col-xs-3">
             {% if msg != None %}
@@ -22,10 +23,10 @@
         <div class="col-md-6  col-sm-6 col-xs-6">
             <div class="col-sm-9">
                 <input type="text" class="form-control" ng-model="busqueda_demandas"
-                       placeholder="Buscar Demandas por Nombre o por Tag (Solo para las demandas en la red)"/>
+                       placeholder="Buscar Demanda por Nombre, Tag (Demandas en la red)"/>
             </div>
             <div class="col-sm-3" ng-controller="busquedaDemandaControlador">
-                <button class="btn btn-blue" ng-click='buscarDemandas()'>Buscar</button>
+                <button class="btn btn-blue" ng-click='buscarDemandas()'><i class="fa fa-search-plus"></i>&nbsp;&nbsp;Buscar Demanda</button>
             </div>
         </div>
     </div>
@@ -168,7 +169,7 @@
         <div ng-if="MDcontador === 0">
             <div class="alert alert-info alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                Usted no tiene ninguna demanda publicada; para  hacerlo, deber&aacute; publicar un borrador  de demanda.
+                Usted no tiene ninguna demanda publicada; para  hacerlo, deber&aacute; publicar un borrador un borrador de una demanda.
             </div>
         </div>
 
@@ -211,7 +212,7 @@
                                             </ul>
                                         </div>
                                         <div class="col-md-6 col-xs-5" align="right" style="padding-right: 0px;">
-                                            <a href="/EditarBorradorDemanda/[[ borrador.id_demanda ]]" class="btn btn-warning btn-sm">
+                                            <a href="/EditarBorradorDemanda/[[ borrador.id_demanda ]]" class="btn btn-dark btn-sm">
                                                 <i class="fa fa-pencil"></i>&nbsp;&nbsp;Editar</a>
                                         </div>
                                     </div>
@@ -270,14 +271,13 @@
                     {% csrf_token %}
                     <div class="modal-header">
                         <button type="button" class="close cancelar" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Crear Demanda</h4>
+                        <h4 class="modal-title">Crear Borrador de Demanda</h4>
                     </div>
                     <div class="modal-body">
                         <div class="col-md-offset-1">
                             <input type="radio" name="radioName" id="radio1" value="1" checked
                                    class="'disabled':'disabled';"/>&nbsp;&nbsp;Nueva demanda<br/>
-                            <input type="radio" name="radioName" id="radio2" value="2"/>&nbsp;&nbsp;De demanda
-                            existente<br/>
+                            <input type="radio" name="radioName" id="radio2" value="2"/>&nbsp;&nbsp;De demanda existente<br/>
 
                             <div class="" id="lista_de_demandas" style="display:none;">
 
@@ -293,8 +293,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button id="bt1" type="submit" class="btn btn-green"> Aceptar</button>
-                        <button type="button" class="btn btn-dark cancelar" data-dismiss="modal">Cancelar</button>
+                        <button id="bt1" type="submit" class="btn btn-green"><i class="fa fa-check-square"></i>&nbsp;&nbsp;Aceptar</button>
+                        <button type="button" class="btn btn-dark cancelar" data-dismiss="modal"><i class="fa fa-times"></i>&nbsp;&nbsp;Cancelar</button>
                     </div>
                 </form>
             </div>
