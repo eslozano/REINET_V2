@@ -53,7 +53,7 @@
                 </ul>
 
 
-                <div class="tab-content col-sm-8" id="asd">
+                <div class="tab-content col-sm-12" id="asd">
                     <!-- COMIENZA TAB DE MIS INCUBADAS-->
                     
                     <input type='hidden' id='current_page_misIncubadas' />  
@@ -73,8 +73,8 @@
                                     <li ><i class="fa fa-user"></i> Incubacion: <li style="text-transform: uppercase;">{{ incubada.3 }}</li> </li>
                                   </ul>
                                   <ul class="text-muted list-inline">
-                                    <li><i class="fa fa-cogs"></i> Dominio: {{ incubada.0.dominio|truncatewords:30}}</li>
-                                    <li><i class="fa fa-cog"></i> Subdominio: {{ incubada.0.subdominio|truncatewords:30 }}</li>
+                                    <li align="justify"><i class="fa fa-cogs"></i> Dominio: {{ incubada.0.dominio|truncatewords:70}}</li>
+                                    <li align="justify"><i class="fa fa-cog"></i> Subdominio: {{ incubada.0.subdominio|truncatewords:70 }}</li>
                                   </ul>
                                   <ul class="text-muted list-inline">
                                     <li><i class="fa fa-bars"></i> Numero de milestones: {{ incubada.1 }}</li>
@@ -85,12 +85,12 @@
                         </div>          
                         {% endfor %}
                          <div id='page_navigation_misIncubadas' class="about-btn"></div>
-                        {% else %}
+                    {% else %}
                             <div class="alert alert-info alert-dismissable">
                                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                                 Usted no tiene aun una incubada; para hacerlo, deber&aacute; participar en algunas de las incubaciones de la red con alguna de sus ofertas publicadas.
                             </div>
-                        {% endif %}            
+                    {% endif %}            
                     </div>
                     <!-- TERMINA TAB DE MIS INCUBADAS-->
 
@@ -120,7 +120,7 @@
                                             </li>
                                         </ul>
                                         <ul class="text-muted list-inline">
-                                            <li><i class="fa fa-bars"></i> Condiciones: {{ incubacion.condiciones|truncatewords:30 }} </li>
+                                            <li align="justify"><i class="fa fa-bars"></i> Condiciones: {{ incubacion.condiciones|truncatewords:70 }} </li>
                                             
                                         </ul>
                                     </div>
@@ -151,8 +151,8 @@
                                             <li ><i class="fa fa-user"></i> Incubacion: <li style="text-transform: uppercase;">{{ incubada.3 }}</li> </li>
                                           </ul>
                                           <ul class="text-muted list-inline">
-                                            <li><i class="fa fa-cogs"></i> Dominio: {{ incubada.0.dominio|truncatewords:30}}</li>
-                                            <li><i class="fa fa-cog"></i> Subdominio: {{ incubada.0.subdominio|truncatewords:30 }}</li>
+                                            <li align="justify"><i class="fa fa-cogs"></i> Dominio: {{ incubada.0.dominio|truncatewords:70}</li>
+                                            <li align="justify"><i class="fa fa-cog"></i> Subdominio: {{ incubada.0.subdominio|truncatewords:70}}</li>
                                           </ul>
                                           <ul class="text-muted list-inline">
                                             <li><i class="fa fa-bars"></i> Numero de milestones: {{ incubada.1 }}</li>

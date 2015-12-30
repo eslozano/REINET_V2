@@ -69,7 +69,11 @@
         <div class="col-md-9">
             <div class="row" style="margin-bottom: 25px;">
                 <div class="pull-right">
+<<<<<<< HEAD
                   <a href="/CrearIncubacion/" class="btn btn-red"><i class="fa fa-plus-square"></i>&nbsp;&nbsp;Crear Incubaci&oacute;n</a>
+=======
+                  <a href="/CrearIncubacion/" class="btn btn-green"><i class="fa fa-user-plus"></i>&nbsp;&nbsp;Crear Incubaci&oacute;n</a>
+>>>>>>> 40907e1e9c6a2756b811bee7922d607b5b72aabf
                 </div> 
             </div>
 
@@ -111,22 +115,28 @@
                                             </li>
                                         </ul>
                                         <ul class="text-muted list-inline">
-                                            <li><i class="fa fa-bars"></i> Condiciones: {{ incubacion.condiciones|truncatewords:30 }} </li>
+                                            <li align="justify" ><i class="fa fa-bars"></i> Condiciones: {{ incubacion.condiciones|truncatewords:50 }} </li>
                                             
                                         </ul>
                                     </div>
                                 </div>
                             </div>
-                          {% endfor %}
+                        {% endfor %}
+                        <!-- PAGINACION DE VER INCUBACIONES DEL ADMINISTRADOR-->
+                        <div id='page_navigation' class="about-btn"></div>
+
                     {% else %}
                         <div class="alert alert-info alert-dismissable">
+<<<<<<< HEAD
                             Usted no ha creado ninguna incubaci&oacute;n en la red. Una incubaci&oacute;n le permitir&aacute; incubar ofertas aplicantes, asignarles consultores, definirles milestones y permitir que los consultores den retroalimentaci&oacute;n
+=======
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            Usted no ha creado ninguna incubaci&oacute;n en la red. Una incubaci&oacute;n le permitir&aacute; incubar ofertas aplicantes, asignarles consultores, definirles milestones y permitir que los consultores den retroalimentaci&oacute;n.
+>>>>>>> 40907e1e9c6a2756b811bee7922d607b5b72aabf
                         </div>
                     {% endif %}
                 </div>
-                <!-- PAGINACION DE VER INCUBACIONES DEL ADMINISTRADOR-->
-                <div id='page_navigation' class="about-btn"></div>
-            </div>
+                            </div>
         </div>
     </div>
 

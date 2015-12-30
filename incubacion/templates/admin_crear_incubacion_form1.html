@@ -8,7 +8,13 @@
         <label for="Nombres" class="col-md-2">Fecha de inicio</label>
         <div class="col-md-6">
 
+<<<<<<< HEAD
             <input autofocus type="datepicker" class="form-control" placeholder="Fecha de la Incubacion" id="fecMaxAlcance" name="fecha_incubacion"  style="resize:none" data-trigger="focus" ng-model="incubacion.fecha_inicio" ng-required="true" validar-fecha>
+=======
+            <input autofocus type="date" class="form-control" placeholder="Fecha de la Incubacion"
+            id="fecha" name="fecha_incubacion"  data-trigger="focus" ng-model="incubacion.fecha_inicio" 
+            ng-required="true" validar-fecha>
+>>>>>>> 40907e1e9c6a2756b811bee7922d607b5b72aabf
 
             <span ng-show="fecha_incorrecta"><p class="bg-danger text-danger">Fecha de la Incubacion debe ser una fecha futura</p></span>
             <span ng-show="admin_crear_incubacion_form1.fecha_incubacion.$error.required" ng-if="!admin_crear_incubacion_form1.$pristine"><p class="bg-danger text-danger">Este campo es obligatorio</p></span>
@@ -60,9 +66,3 @@
     </div>      
 </div>
 
-<script>
-    $(function() {
-    $("#fecMaxAlcance").datepicker({ minDate: 0 });
-
-    });
-</script>

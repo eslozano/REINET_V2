@@ -1,6 +1,6 @@
 {% extends "admin_incubacion_inicio.html" %}
 
-{% block sliderPagina %}CREAR INCUBACION{% endblock %}
+{% block sliderPagina %}CREAR INCUBACI&Oacute;N{% endblock %}
 {% block contenido %}
 <style>
 textarea { resize: none; }
@@ -17,7 +17,7 @@ textarea { resize: none; }
     <div class="row col-md-12">
             <div align=right>
 
-                <button href="#" class="btn btn-red" id="btn_crear_incubacion" ng-disabled="admin_crear_incubacion_form1.$invalid" ng-click="guardar()" data-dismiss="modal" data-target="#crear_incubacion" data-toggle="modal"  ><i class="fa fa-floppy-o"></i>&nbsp;&nbsp;Guardar&nbsp;&nbsp;</button>
+                <button href="#" class="btn btn-blue" id="btn_crear_incubacion" ng-disabled="admin_crear_incubacion_form1.$invalid" ng-click="guardar()" data-dismiss="modal" data-target="#crear_incubacion" data-toggle="modal"  ><i class="fa fa-floppy-o"></i>&nbsp;&nbsp;Guardar&nbsp;&nbsp;</button>
 
                 <a href="/InicioIncubacion/" class="btn btn-dark"><i class="fa fa-times"></i>&nbsp;&nbsp;Cancelar&nbsp;&nbsp;</a>
 
@@ -61,12 +61,12 @@ textarea { resize: none; }
 
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">GUARDAR  INCUBACION</h4>
+                <h4 class="modal-title">GUARDAR  INCUBACI&Oacute;N</h4>
               </div>
               <div class="modal-body media" style="font-size:14px;padding-top: 0px;width: 540px;">
-                <span>La Incubacion se ha creado exitosamente </span>
+                <span>La Incubaci&oacute;n se ha creado exitosamente. </span>
                 <div align=right>
-                  <a href="/InicioIncubacion/" class="btn btn-red" ><i class="fa fa-check-square"></i>&nbsp;&nbsp;Aceptar&nbsp;&nbsp;</a>
+                  <a href="/InicioIncubacion/" class="btn btn-green" ><i class="fa fa-check-square"></i>&nbsp;&nbsp;Aceptar&nbsp;&nbsp;</a>
                 </div>
               </div>
 

@@ -20,9 +20,14 @@
     <div class="row" style="margin-bottom: 25px;">
 
         <div align=left class="col-md-2 col-sm-2 col-xs-3">
+<<<<<<< HEAD
              <div class="pull-left">
                 <a href="#" class="btn btn-green" data-toggle="modal" data-target="#modalCrearOferta"><i class="fa fa-plus-square"></i>&nbsp;&nbsp;Crear Oferta</a>
             </div> 
+=======
+            <button type="button" class="btn btn-green" data-toggle="modal" data-target="#modalCrearOferta">Crear Oferta
+            </button>
+>>>>>>> 40907e1e9c6a2756b811bee7922d607b5b72aabf
         </div>
 
         <div class="col-md-4 col-sm-4 col-xs-3">
@@ -65,7 +70,7 @@
     </ul>
 
 
-    <div class="tab-content col-sm-12">
+    <div class="tab-content col-sm-12" id="asd">
         <!-- COMIENZA TAB DE OFERTAS PUBLICADAS-->
         <div role="tabpanel" class="tab-pane active" id="ofertasPublicadas" ng-controller="MisOfertasControlador">
           
@@ -111,7 +116,7 @@
                                         <hr style="margin-top: 10px;">
                                         <p class="blog-text" style="height: 125px"  class="bottom-15" align="justify">
                                             <img class="img-responsive blog-img" alt="Imagen de mi Oferta" src="[[ publicada.galeria[0].imagen ]]" style="height: 115px; width: 115px;" align="left">
-                                            [[publicada.descripcion]]
+                                            [[publicada.descripcion ]]
                                         </p>
                                         <p class="tags">
                                             <a ng-repeat="tag in publicada.palabras_clave">[[tag.palabra]]</a>
