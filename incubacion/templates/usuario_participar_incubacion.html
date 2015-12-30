@@ -1,22 +1,45 @@
-<label>Lista de ofertas</label>
-{% if pariciparIncubacion%}
+<label>Lista de ofertas incubadas que ya estan participando en una incubación</label>
+{% if ofertasincubadas%}
 
-<select name="alcance" style="resize:none" class="form-control selectOferta" id="selectOFertasParticipar" onchange="(this.value)">
-  {% for oferta in pariciparIncubacion %}
-  <div  id="divContenedor" align="left" class="media" style="margin-bottom: 1px solid gray">
-    <!-- Lista de mis ofertas -->
-      <div>
-        <option value="" disabled selected style="display:none;">Seleccione una oferta</option>
-        <option value="{{oferta.id_oferta}}" id='{{oferta.id_oferta}}'>{{oferta.nombre}}</option>
-      </div>
-  </div>
-  {% endfor %}
-</select>
+  <select name="alcance" style="resize:none" class="form-control selectOfertaIncubada">
+    {% for incubada in ofertasincubadas %}
+    <div  id="divContenedor" align="left" class="media" style="margin-bottom: 1px solid gray">
+      <!-- Lista de mis ofertas -->
+        <div>
+          <option value="{{oferta.id_oferta}}" disabled id='{{incubada.fk_oferta.id_oferta}}'>{{incubada.fk_oferta.nombre}}</option>
+        </div>
+    </div>
+    {% endfor %}
+  </select>
 
-  <br>
+    <br>
+      
+{% else %}
+  <div class="note">
+    No tiene ofertas incubadas 
+  </div><br>
+{% endif %}
+
+<label>Lista de ofertas disponibles para participar en esta incubación</label>
+{% if participarIncubacion%}
+
+  <select name="alcance" style="resize:none" class="form-control selectOferta" id="selectOFertasParticipar" onchange="(this.value)">
+    {% for oferta in participarIncubacion %}
+    <div  id="divContenedor" align="left" class="media" style="margin-bottom: 1px solid gray">
+      <!-- Lista de mis ofertas -->
+        <div>
+          <option value="" disabled selected style="display:none;">Seleccione una oferta</option>
+          <option value="{{oferta.id_oferta}}" id='{{oferta.id_oferta}}'>{{oferta.nombre}}</option>
+        </div>
+    </div>
+    {% endfor %}
+  </select>
+
+    <br>
     
 {% else %}
   <div class="note">
-  No exites datos para mostrar
-  </div>
+    No tiene ofertas publicadas 
+  </div><br>
 {% endif %}
+
