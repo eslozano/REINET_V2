@@ -38,60 +38,61 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Advertencia</h4>
+                    <h4 class="modal-title">PUBLICAR BORRADOR DE OFERTA</h4>
                 </div>
                 <div class="modal-body">
 
-<div class="form-group">
-    <label for="alcance_instituciones" class="col-md-2">Instituciones para Alcance</label>
-    <div class="col-md-6">
-        <tags-input class="tags" name="alcance_tags" ng-model="alcance_tags" placeholder="Agrege siglas de las Instituciones">
-              <auto-complete source="loadInstituciones($query)"
-                     min-length="0"
-                     load-on-focus="true"
-                     load-on-empty="true"
-                     max-results-to-show="32"
-                     ></auto-complete>
-        </tags-input>
-    </div>
-</div>
-
-                    <p>Una vez publicada una oferta, &eacute;sta no podr&aacute; ser modificada.</p>
-                    <p>¿Desea continuar?</p>
+                        <label for="alcance_instituciones" >Instituciones para Alcance</label>
+                        <div >
+                            <tags-input class="tags" name="alcance_tags" ng-model="alcance_tags" placeholder="Agrege siglas de las Instituciones">
+                                  <auto-complete source="loadInstituciones($query)"
+                                         min-length="0"
+                                         load-on-focus="true"
+                                         load-on-empty="true"
+                                         max-results-to-show="32"
+                                         ></auto-complete>
+                            </tags-input>
+                        </div>
+                        <div >
+                            <p>Una vez publicado un borrador de una oferta, &eacute;ste no se podr&aacute; ser modificado.<br>¿Desea eliminarlo?</p> 
+                        </div>                    
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-dark" data-dismiss="modal">Cancelar</button>
-                    <a href="/publicarBorrador/{{ oferta.id_oferta }}" type="button" class="btn btn-green">Aceptar</a>
+                    <div align="right">
+                        <a data-dismiss="modal"  class="btn btn-dark"><i class="fa fa-times"></i>&nbsp;&nbsp;Cancelar&nbsp;&nbsp;</a>
+                        <a class="btn btn-green" href="/publicarBorrador/{{ oferta.id_oferta }}"><i class="fa fa-check-square"></i>&nbsp;&nbsp;Aceptar&nbsp;&nbsp;</a>
+                    </div>
                 </div>
             </div>
 
         </div>
     </div>
 
+
+    <!--MODAL ELIMINAR BORRADOR OFERTA-->
     <div id="aceptarEliminar" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Advertencia</h4>
+                    <h4 class="modal-title">ELIMINAR BORRADOR DE OFERTA</h4>
                 </div>
                 <div class="modal-body">
-                    <p>Una vez eliminada un borrador de una oferta, &eacute;ste no se podr&aacute; recuperar.</p>
-                    <p>¿Desea eliminarlo?</p>
+                    <p>Una vez eliminado un borrador de una oferta, &eacute;ste no se podr&aacute; recuperar.<br>¿Desea eliminarlo?</p> 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-dark" data-dismiss="modal">Cancelar</button>
-                    <a href="/eliminarBorrador/{{ oferta.id_oferta }}" type="button" class="btn btn-green">Aceptar</a>
+                    <div align="right">
+                        <a data-dismiss="modal"  class="btn btn-dark"><i class="fa fa-times"></i>&nbsp;&nbsp;Cancelar&nbsp;&nbsp;</a>
+                        <a class="btn btn-green" href="/eliminarBorrador/{{ oferta.id_oferta }}"><i class="fa fa-check-square"></i>&nbsp;&nbsp;Aceptar&nbsp;&nbsp;</a>
+                    </div>
                 </div>
             </div>
-
         </div>
     </div>
 
     <div class="col-md-12">
-        <div class="col-md-8" style="padding-left: 0px;">
+        <div class="col-md-10" style="padding-left: 0px;">
             <div class="blog-text">
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs " role="tablist">
@@ -136,25 +137,25 @@
                             </div>
                             <div class="col-md-8 col-sm-8 col-xs-8">
                                 <!--Tipo-->
-                                <p style="color: darkgray" for="Tipo" class="col-md-3">Tipo</p>
-                                <p>
-                                {% if oferta.tipo == 0 %}
-                                Emprendimiento
-                                {% elif oferta.tipo == 1 %}
-                                Tecnologia
-                                {% elif oferta.tipo == 2 %}
-                                Prototipo
-                                {% endif %}
-                                </label>
+                                <p  style="color: darkgray" for="Nombres" class="col-md-3">Tipo</p>
+                                <p class="bottom-15" align="justify" >
+                                    {% if oferta.tipo == 0 %}
+                                        Emprendimiento
+                                    {% elif oferta.tipo == 1 %}
+                                        Tecnolog&iacute;a
+                                    {% elif oferta.tipo == 2 %}
+                                        Prototipo
+                                    {% endif %}
+                                </p>
                                     <!--Descripcion-->
                                 <p  style="color: darkgray" for="Nombres" class="col-md-3">Descripci&oacute;n</p>
-                                <p>{{ oferta.descripcion }} </p>
+                                <p class="bottom-15" align="justify" >{{ oferta.descripcion }} </p>
                                 <!--Dominio-->
                                 <p style="color: darkgray" for="Nombres" class="col-md-3">Dominio</p>
-                                <p>{{ oferta.dominio }}</label>
+                                <p class="bottom-15" align="justify" >{{ oferta.dominio }}</p>
                                     <!--Subdominio-->
                                 <p style="color: darkgray" for="Nombres" class="col-md-3">Sub-dominio</p>
-                                <p>{{ oferta.subdominio }}</label>
+                                <p class="bottom-15" align="justify" >{{ oferta.subdominio }}</p>
                                     <!--Palabras Clave-->
                                 <p  style="color: darkgray" for="Nombres" class="col-md-3">Palabras Claves</p>
                                 <p class="tags">
@@ -169,7 +170,7 @@
                         <div class="col-md-12">
                             <!--Perfil Cliente-->
                             <p style="color: darkgray" for="Descripcion" class="col-md-3">Perfil del Cliente</p>
-                            <p class="col-md-9">
+                            <p class="bottom-15" align="justify" class="col-md-9">
                             {% if oferta.perfil_cliente != None %}
                             {{ oferta.perfil_cliente }} 
                             {% else %}
@@ -178,7 +179,7 @@
                             </p>
                             <!--Perfil Beneficiario-->
                             <p style="color: darkgray" for="Descripcion" class="col-md-3">Perfil del Beneficiario</p>
-                            <p class="col-md-9">
+                            <p class="bottom-15" align="justify" class="col-md-9">
                             {% if oferta.perfil_beneficiario != None %}
                             {{ oferta.perfil_beneficiario }} 
                             {% else %}
@@ -234,7 +235,7 @@
                             <!--Tendencias-->
                             <p style="color: darkgray" for="Descripcion" class="col-md-5">Tendencias Relevantes</p>
                             <br>
-                            <p class="col-md-12">
+                            <p class="bottom-15" align="justify" class="col-md-12">
                             {% if oferta.cuadro_tendencias_relevantes != None %}
                             {{ oferta.cuadro_tendencias_relevantes }} 
                             {% else %}
@@ -243,7 +244,7 @@
                             <!--Alternativas de solucion-->
                             <p style="color: darkgray" for="Descripcion" class="col-md-5">Alternativas de Soluci&oacute;n Existentes</p>
                             <br>
-                            <p class="col-md-12">
+                            <p class="bottom-15" align="justify" class="col-md-12">
                             {% if oferta.descripcion_soluciones_existentes != None %}
                             {{ oferta.descripcion_soluciones_existentes }} 
                             {% else %}
@@ -290,7 +291,7 @@
                             <!--Estado de propiedad Intelectual-->
                             <p style="color: darkgray" for="Descripcion" class="col-md-6">Estado de propiedad Intelectual</p>
                             <br>
-                            <p class="col-md-12">
+                            <p class="bottom-15" align="justify" class="col-md-12">
                             {% if oferta.estado_propieada_intelectual != None %}
                             {{ oferta.estado_propieada_intelectual }} 
                             {% else %}
@@ -300,7 +301,7 @@
                             <!--Evidencia de Traccion-->
                             <p style="color: darkgray" for="Descripcion" class="col-md-6">Evidencia de Tracci&oacute;n</p>
                             <br>
-                            <p class="col-md-12">
+                            <p class="bottom-15" align="justify" class="col-md-12">
                             {% if oferta.evidencia_traccion != None %}
                             {{ oferta.evidencia_traccion }} 
                             {% else %}

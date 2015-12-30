@@ -88,20 +88,19 @@
 						</div>
 						<div class="col-md-8 col-sm-8 col-xs-8">
 							<!--Descripcion-->
-							<p style="color: darkgray" class="col-md-3">Descripci&oacute;n</p>
-							<p>{{ demanda.descripcion  | title}} </p>
+							<p  style="color: darkgray" for="Nombres" class="col-md-3">Descripci&oacute;n</p>
+							<p class="bottom-15" align="justify" >{{ demanda.descripcion  | title}} </p>
 
 							<!--Dominio-->
-							<p style="color: darkgray" class="col-md-3">Dominio</p>
-							<p>{{ demanda.dominio }}</p>
+							<p style="color: darkgray" for="Nombres" class="col-md-3">Dominio</p>
+							<p class="bottom-15" align="justify" >{{ demanda.dominio }}</p>
 
 							<!--Subdominio-->
-							<p style="color: darkgray" class="col-md-3">Sub-dominio</p>
-							<p>{{ demanda.subdominio }}</p>
+							<p style="color: darkgray" for="Nombres" class="col-md-3">Sub-dominio</p>
+							<p class="bottom-15" align="justify" >{{ demanda.subdominio }}</p>
 
 							<!--Palabras Clave-->
-							<p style="color: darkgray" class="col-md-3">Palabras Claves</p>
-
+							<p  style="color: darkgray" for="Nombres" class="col-md-3">Palabras Claves</p>
 							<p class="tags">
 								{% for tag in palabras_claves %}
 									<a>{{ tag.palabra }}</a>
@@ -116,7 +115,7 @@
 					<div class="col-md-12">
 						<!--Perfil Cliente-->
 						<p style="color: darkgray" for="Descripcion" class="col-md-3">Perfil del Cliente</p>
-						<p class="col-md-9">
+						<p class="bottom-15" align="justify" class="col-md-9">
 							{% if demanda.perfil_cliente != None %}
 								{{ demanda.perfil_cliente }}
 							{% else %}
@@ -125,7 +124,7 @@
 						</p>
 						<!--Perfil Beneficiario-->
 						<p style="color: darkgray" for="Descripcion" class="col-md-3">Perfil del Beneficiario</p>
-						<p class="col-md-9">
+						<p class="bottom-15" align="justify" class="col-md-9">
 							{% if demanda.perfil_beneficiario != None %}
 								{{ demanda.perfil_beneficiario }}
 							{% else %}
@@ -139,7 +138,7 @@
 					<div class="col-md-12">
 						<!--Importancia de Resolver la Necesidad-->
 						<p style="color: darkgray" for="Descripcion" class="col-md-6">Importancia de Resolver la Necesidad</p>
-						<p class="col-md-6">
+						<p class="bottom-15" align="justify" class="col-md-6">
 							{% if demanda.importancia_resolver_necesidad != None %}
 								{{ demanda.importancia_resolver_necesidad }}
 							{% else %}
@@ -148,7 +147,7 @@
 						</p>
 						<!--Alternativas de Solución Existentes-->
 						<p style="color: darkgray" for="Descripcion" class="col-md-6">Alternativas de Solución Existentes</p>
-						<p class="col-md-6">
+						<p class="bottom-15" align="justify" class="col-md-6">
 							{% if demanda.alternativas_soluciones_existentes != None %}
 								{{ demanda.alternativas_soluciones_existentes }}
 							{% else %}
@@ -163,7 +162,7 @@
 				<div role="tabpanel" class="tab-pane" id="estado">
 					<div class="col-md-12">
 						<p style="color: darkgray" for="Descripcion" class="col-md-6">Tiempo en que se necesita disponer de solución</p>
-						<p class="col-md-6">
+						<p class="bottom-15" align="justify" class="col-md-6">
 							{% if demanda.tiempo_para_estar_disponible != None %}
 								{{ demanda.tiempo_para_estar_disponible }}
 							{% else %}
@@ -173,7 +172,7 @@
 						</br>
 						<!--Estado del producto o servicio-->
 						<p style="color: darkgray" for="Descripcion" class="col-md-6">Lugar/es donde se necesita</p>
-						<p class="col-md-6">
+						<p class="bottom-15" align="justify" class="col-md-6">
 							{% if demanda.lugar_donde_necesita != None %}
 								{{ demanda.lugar_donde_necesita }}
 							{% else %}

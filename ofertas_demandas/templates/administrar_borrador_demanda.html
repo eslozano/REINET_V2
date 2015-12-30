@@ -19,11 +19,11 @@
             </ul>
         </div>
         <div class="col-md-6 col-xs-6" align="right" style="padding-top: 15px;padding-right: 0px;">
-            <a href="/EditarBorradorDemanda/{{demanda.id_demanda}}" class="btn btn-warning">
+            <a href="/EditarBorradorDemanda/{{demanda.id_demanda}}" class="btn btn-green">
                 <i class="fa fa-pencil"></i>
                 Editar
             </a>
-            <a href="#" class="btn btn-warning" data-toggle="modal" data-target="#aceptarPublicar">
+            <a href="#" class="btn btn-green" data-toggle="modal" data-target="#aceptarPublicar">
                 <i class="fa fa-globe"></i>
                 Publicar
             </a>
@@ -39,15 +39,14 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Advertencia</h4>
+                    <h4 class="modal-title">PUBLICAR BORRADOR DE DEMANDA</h4>
                 </div>
                 <div class="modal-body">
-                    <p>Una vez publicada una demanda, &eacute;sta no podr&aacute; ser modificada.</p>
-                    <p>¿Desea continuar?</p>
+                    <p>Una vez publicado un borrador de una demanda, &eacute;sta no podr&aacute; ser modificado.<br>¿Desea publicarlo?</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-dark" data-dismiss="modal">Cancelar</button>
-                    <a href="/PublicarBorradorDemanda/{{ demanda.id_demanda }}" type="button" class="btn btn-green">Aceptar</a>
+                    <a data-dismiss="modal"  class="btn btn-dark"><i class="fa fa-times"></i>&nbsp;&nbsp;Cancelar&nbsp;&nbsp;</a>
+                    <a href="/PublicarBorradorDemanda/{{ demanda.id_demanda }}" type="button" class="btn btn-green"><i class="fa fa-check-square"></i>&nbsp;&nbsp;Aceptar</a>
                 </div>
             </div>
 
@@ -59,15 +58,14 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Advertencia</h4>
+                    <h4 class="modal-title">ELIMINAR BORRADOR DE DEMANDA</h4>
                 </div>
                 <div class="modal-body">
-                    <p>Una vez eliminada un borrador de una demanda, &eacute;ste no se podr&aacute; recuperar.</p>
-                    <p>¿Desea eliminarlo?</p>
+                    <p>Una vez eliminado un borrador de una demanda, &eacute;ste no se podr&aacute; recuperar.<br>¿Desea eliminarlo?</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-dark" data-dismiss="modal">Cancelar</button>
-                    <a href="/EliminarBorradorDemanda/{{ demanda.id_demanda }}" type="button" class="btn btn-green">Aceptar</a>
+                    <a data-dismiss="modal"  class="btn btn-dark"><i class="fa fa-times"></i>&nbsp;&nbsp;Cancelar&nbsp;&nbsp;</a>
+                    <a href="/EliminarBorradorDemanda/{{ demanda.id_demanda }}" type="button" class="btn btn-green"><i class="fa fa-check-square"></i>&nbsp;&nbsp;Aceptar</a>
                 </div>
             </div>
 
@@ -119,13 +117,13 @@
                                 
                                 <!--Descripcion-->
                                 <p  style="color: darkgray" for="Nombres" class="col-md-3">Descripci&oacute;n</p>
-                                <p>{{ demanda.descripcion }} </p>
+                                <p class="bottom-15" align="justify">{{ demanda.descripcion }} </p>
                                 <!--Dominio-->
                                 <p style="color: darkgray" for="Nombres" class="col-md-3">Dominio</p>
-                                <p>{{ demanda.dominio }}</label>
+                                <p class="bottom-15" align="justify">{{ demanda.dominio }}</label>
                                     <!--Subdominio-->
                                 <p style="color: darkgray" for="Nombres" class="col-md-3">Sub-dominio</p>
-                                <p>{{ demanda.subdominio }}</label>
+                                <p class="bottom-15" align="justify">{{ demanda.subdominio }}</label>
                                     <!--Palabras Clave-->
                                 <p  style="color: darkgray" for="Nombres" class="col-md-3">Palabras Claves</p>
                                 <p class="tags">
@@ -140,7 +138,7 @@
                         <div class="col-md-12">
                             <!--Perfil Cliente-->
                             <p style="color: darkgray" for="Descripcion" class="col-md-3">Perfil del Cliente</p>
-                            <p class="col-md-9">
+                            <p class="bottom-15" align="justify" class="col-md-9">
                             {% if demanda.perfil_cliente != None %}
                             {{ demanda.perfil_cliente }} 
                             {% else %}
@@ -149,7 +147,7 @@
                             </p>
                             <!--Perfil Beneficiario-->
                             <p style="color: darkgray" for="Descripcion" class="col-md-3">Perfil del Beneficiario</p>
-                            <p class="col-md-9">
+                            <p class="bottom-15" align="justify" class="col-md-9">
                             {% if demanda.perfil_beneficiario != None %}
                             {{ demanda.perfil_beneficiario }} 
                             {% else %}
@@ -162,7 +160,7 @@
                             <!--Tendencias-->
                             <p style="color: darkgray" for="Descripcion" class="col-md-5">Importancia de resolver la necesidad</p>
                             <br>
-                            <p class="col-md-12">
+                            <p class="bottom-15" align="justify" class="col-md-12">
                             {% if demanda.importancia_resolver_necesidad != None %}
                             {{ demanda.importancia_resolver_necesidad }} 
                             {% else %}
@@ -171,7 +169,7 @@
                             <!--Alternativas de solucion-->
                             <p style="color: darkgray" for="Descripcion" class="col-md-5">Alternativas de Soluci&oacute;n Existentes</p>
                             <br>
-                            <p class="col-md-12">
+                            <p class="bottom-15" align="justify" class="col-md-12">
                             {% if demanda.alternativas_soluciones_existentes != None %}
                             {{ demanda.alternativas_soluciones_existentes }} 
                             {% else %}

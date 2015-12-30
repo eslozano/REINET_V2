@@ -26,7 +26,7 @@
     <div class="container">
 
     	<div class="alert alert-info">
-	        <strong>Recuerde!</strong> Usted es CONSULTOR de esta incubada, podrá dar retroalimentación cuando los milestones definidos por el administrador terminen.
+	        <strong>Recuerde!</strong> Usted es CONSULTOR de esta incubada, podr&aacute; dar retroalimentaci&oacute;n cuando los milestones definidos por el administrador terminen.
 	     </div>
 
 	    <div class="col-md-12" style="padding-right: 0px;padding-left: 0px;">
@@ -48,7 +48,7 @@
 	                <!-- Nav tabs -->
 	                <ul class="nav nav-tabs " role="tablist" style="margin-bottom: 0px;">
 	                    <li role="presentation" class="active">
-	                        <a href="#informacion" aria-controls="home" role="tab" data-toggle="tab">Información General</a>
+	                        <a href="#informacion" aria-controls="home" role="tab" data-toggle="tab">Informaci&oacute;n General</a>
 	                    </li>
 	                    <li role="presentation" class="">
 	                        <a href="#cliente_usuario" aria-controls="profile" role="tab" data-toggle="tab">Cliente/Usuario</a>
@@ -156,15 +156,15 @@
 						                {% endif %}
 	                                <!--Descripcion-->
 	                                </p>
-	                                <p style="color: darkgray" for="Nombres" class="col-md-4">Descripción
+	                                <p style="color: darkgray" for="Nombres" class="col-md-4">Descripci&oacute;n
 	                                </p>
-	                                <p class="col-md-8">{{incubada.descripcion}} 
+	                                <p class="col-md-8" align="justify">{{incubada.descripcion}} 
 	                                <br>
 	                                <p style="color: darkgray" for="Nombres" class="col-md-4">Dominio</p>
-	                                <p class="col-md-8">{{incubada.dominio}}
+	                                <p class="col-md-8" align="justify">{{incubada.dominio}}
 	                                <!--Subdominio-->
 	                                </p><p style="color: darkgray" for="Nombres" class="col-md-4">Sub-dominio</p>
-	                                <p class="col-md-8">{{incubada.subdominio}}
+	                                <p class="col-md-8" align="justify">{{incubada.subdominio}}
 	                                <!--Palabras Clave-->
 	                                </p><p style="color: darkgray" for="Nombres" class="col-md-4">Palabras Claves</p>
 	                                <p class="tags col-md-8">
@@ -193,7 +193,7 @@
 					                    <textarea class="form-control" style="resize:none" rows="5" placeholder="Escriba su retroalimentación para la información general..."  id="textAreaRetro1"></textarea>					                    
 					                  	</div>
 					                  	<div class="col-sm-12" style="margin-top:10px" align="right">
-					                  	<a class="btn btn-dark btn-sm"  id="retroal1">Enviar retroalimentación</a>
+					                  	<a class="btn btn-green btn-sm"  id="retroal1" data-dismiss="modal" data-target="#confirmacion_retro1" data-toggle="modal">Enviar retroalimentación</a>
 					                  	</div>
 				       
 					                  	
@@ -203,7 +203,7 @@
 					                    <textarea disabled class="form-control" style="resize:none" rows="5" id="textAreaRetro1" placeholder="Escriba su retroalimentación para la información general..." ></textarea>					                    
 					                  	</div>
 					                  	<div class="col-sm-12" style="margin-top:10px" align="right">
-					                  	<a disabled class="btn btn-dark btn-sm" id="retroal1">Enviar retroalimentación</a>
+					                  	<a disabled class="btn btn-green btn-sm" id="retroal1" data-dismiss="modal" data-target="#confirmacion_retro1" data-toggle="modal">Enviar retroalimentación</a>
 					                  	</div>
 					                  	<div class="col-md-12" align="right">
 						            	<div style="font-size:11px;margin-right: 15px;">*No puede retroalimentar este milestone, no está dentro de las fechas indicadas</div>
@@ -238,7 +238,6 @@
 
 												function mostrarRetroalimentaciones1() {
 													if (retroal!=0){
-														alert("Retroalimentación enviada con éxito")
 														retroal=0
 													}													
 		                                            $.ajax({
@@ -309,7 +308,7 @@
 					                    <textarea id="textAreaRetro2" class="form-control" style="resize:none" rows="4" placeholder="Escriba su retroalimentación para los clientes/usuarios..." ></textarea>					                    
 					                  	</div>
 					                  	<div class="col-sm-12" style="margin-top:10px" align="right">
-					                  	<a id="retroal2" class="btn btn-dark btn-sm">Enviar retroalimentación</a>
+					                  	<a id="retroal2" class="btn btn-dark btn-sm" data-dismiss="modal" data-target="#confirmacion_retro2" data-toggle="modal">Enviar retroalimentación</a>
 					                  	</div>
 					                  	
 
@@ -318,7 +317,7 @@
 					                    <textarea id="textAreaRetro2" disabled class="form-control" style="resize:none" rows="4" placeholder="Escriba su retroalimentación para los clientes/usuarios..." ></textarea>					                    
 					                  	</div>
 					                  	<div class="col-sm-12" style="margin-top:10px" align="right">
-					                  	<a disabled id="retroal2" class="btn btn-dark btn-sm">Enviar retroalimentación</a>
+					                  	<a disabled id="retroal2" class="btn btn-dark btn-sm" data-dismiss="modal" data-target="#confirmacion_retro2" data-toggle="modal">Enviar retroalimentación</a>
 					                  	</div>
 					                  	<div class="col-md-12" align="right">
 						            	<div style="font-size:11px;margin-right: 15px;">*No puede retroalimentar este milestone, no está dentro de las fechas indicadas</div>
@@ -353,7 +352,6 @@
 
 												function mostrarRetroalimentaciones2() {
 													if (retroali2!=0){
-														alert("Retroalimentación enviada con éxito")
 														retroali2=0
 													}													
 		                                            $.ajax({
@@ -504,7 +502,7 @@
 					                    <textarea class="form-control" style="resize:none" rows="3" placeholder="Escriba su retroalimentación para el modelo de negocio..." id="textAreaRetro3" ></textarea>					                    
 					                  	</div>
 					                  	<div class="col-sm-12" style="margin-top:10px" align="right">
-					                  	<a id="retroal3" class="btn btn-dark btn-sm">Enviar retroalimentación</a>
+					                  	<a id="retroal3" class="btn btn-green btn-sm" data-dismiss="modal" data-target="#confirmacion_retro3" data-toggle="modal">Enviar retroalimentación</a>
 					                  	</div>
 					                  	
 
@@ -513,7 +511,7 @@
 					                    <textarea disabled class="form-control" style="resize:none" rows="3" placeholder="Escriba su retroalimentación para lel modelo de negocio..." id="textAreaRetro3"></textarea>					                    
 					                  	</div>
 					                  	<div class="col-sm-12" style="margin-top:10px" align="right">
-					                  	<a id="retroal3" disabled class="btn btn-dark btn-sm">Enviar retroalimentación</a>
+					                  	<a id="retroal3" disabled class="btn btn-green btn-sm" data-dismiss="modal" data-target="#confirmacion_retro3" data-toggle="modal">Enviar retroalimentación</a>
 					                  	</div>
 					                  	<div class="col-md-12" align="right">
 						            	<div style="font-size:11px;margin-right: 15px;">*No puede retroalimentar este milestone, no está dentro de las fechas indicadas</div>
@@ -549,7 +547,6 @@
 
 												function mostrarRetroalimentaciones3() {
 													if (retroali3!=0){
-														alert("Retroalimentación enviada con éxito")
 														retroali3=0
 													}													
 		                                            $.ajax({
@@ -694,7 +691,7 @@
 					                    <textarea id="textAreaRetro4"class="form-control" style="resize:none" rows="3" placeholder="Escriba su retroalimentación para los competidores..." ></textarea>					                    
 					                  	</div>
 					                  	<div class="col-sm-12" style="margin-top:10px" align="right">
-					                  	<a id="retroal4" class="btn btn-dark btn-sm">Enviar retroalimentación</a>
+					                  	<a id="retroal4" class="btn btn-green btn-sm" data-dismiss="modal" data-target="#confirmacion_retro4" data-toggle="modal">Enviar retroalimentación</a>
 					                  	</div>
 					                  	
 
@@ -703,7 +700,7 @@
 					                    <textarea id="textAreaRetro4" disabled class="form-control" style="resize:none" rows="3" placeholder="Escriba su retroalimentación para los competidores..." ></textarea>					                    
 					                  	</div>
 					                  	<div class="col-sm-12" style="margin-top:10px" align="right">
-					                  	<a id="retroal4" disabled class="btn btn-dark btn-sm">Enviar retroalimentación</a>
+					                  	<a id="retroal4" disabled class="btn btn-green btn-sm" data-dismiss="modal" data-target="#confirmacion_retro4" data-toggle="modal">Enviar retroalimentación</a>
 					                  	</div>
 					                  	<div class="col-md-12" align="right">
 						            	<div style="font-size:11px;margin-right: 15px;">*No puede retroalimentar este milestone, no está dentro de las fechas indicadas</div>
@@ -739,7 +736,6 @@
 
 												function mostrarRetroalimentaciones4() {
 													if (retroali4!=0){
-														alert("Retroalimentación enviada con éxito")
 														retroali4=0
 													}													
 		                                            $.ajax({
@@ -795,7 +791,7 @@
 		                            	{%if incubada.estado_propiedad_intelectual %}
 		                            		{{incubada.estado_propiedad_intelectual }}
 		                            	{%else%}
-		                            		No existen datos para presentar
+		                            		No existen datos para presentar.
 		                            	{%endif%}
 		                            <br>
 				                   </p>
@@ -806,7 +802,7 @@
 		                            {%if incubada.evidencia_traccion %}
 		                            		{{incubada.evidencia_traccion }}
 		                            	{%else%}
-		                            		No existen datos para presentar
+		                            		No existen datos para presentar.
 		                            	{%endif%}
 		                            <br>
 				                    </p>
@@ -822,7 +818,7 @@
 					                    <textarea id="textAreaRetro5" class="form-control" style="resize:none" rows="3" placeholder="Escriba su retroalimentación para los logros..." ></textarea>					                    
 					                  	</div>
 					                  	<div class="col-sm-12" style="margin-top:10px" align="right">
-					                  	<a id="retroal5"class="btn btn-dark btn-sm">Enviar retroalimentación</a>
+					                  	<a id="retroal5"class="btn btn-green btn-sm" data-dismiss="modal" data-target="#confirmacion_retro5" data-toggle="modal">Enviar retroalimentación</a>
 					                  	</div>
 					                  	
 
@@ -831,10 +827,10 @@
 					                    <textarea id="textAreaRetro5" disabled class="form-control" style="resize:none" rows="3" placeholder="Escriba su retroalimentación para los logros..." ></textarea>					                    
 					                  	</div>
 					                  	<div class="col-sm-12" style="margin-top:10px" align="right">
-					                  	<a id="retroal5" disabled class="btn btn-dark btn-sm">Enviar retroalimentación</a>
+					                  	<a id="retroal5" disabled class="btn btn-green btn-sm" data-dismiss="modal" data-target="#confirmacion_retro5" data-toggle="modal">Enviar retroalimentación</a>
 					                  	</div>
 					                  	<div class="col-md-12" align="right">
-						            	<div style="font-size:11px;margin-right: 15px;">*No puede retroalimentar este milestone, no está dentro de las fechas indicadas</div>
+						            	<div style="font-size:11px;margin-right: 15px;">*No puede retroalimentar este milestone, no está dentro de las fechas indicadas.</div>
 						            	</div>
 										
 						          		{%endif%}
@@ -867,7 +863,6 @@
 
 												function mostrarRetroalimentaciones5() {
 													if (retroali5!=0){
-														alert("Retroalimentación enviada con éxito")
 														retroali5=0
 													}													
 		                                            $.ajax({
@@ -990,6 +985,7 @@
                                             });
 
                                         }
+                                        
                                     });
                                 });
                             </script>
@@ -1014,7 +1010,7 @@
 						    <p>{{milestone.requerimientos|truncatewords:20}}<br></p>
 
 						{%else%}
-							<div class="info-board info-board-orange"> No hay ningún milestone anterior</div>
+							<div class="info-board info-board-orange"> No hay ningn milestone anterior</div>
 			          	{%endif%}
 			         	
 		              
@@ -1031,9 +1027,88 @@
 	</div>
 
 
-	
-    
+	<div id="confirmacion_retro1" class="modal fade" role="dialog">
+      <div class="modal-dialog" style="width: 40% !important;">
+        <div class="modal-content" style=" width: 550px;">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">RETROALIMENTACI&Oacute;N  - INFORMACI&Oacute;N GENERAL</h4>
+          </div>
+          <div class="modal-body media" style="font-size:14px;padding-top: 0px;width: 540px;">
+             <span>Retroalimentaci&oacute;n enviada con &eacute;xito </span>
+             <div align=right>
 
-	
+             	<button id="btn_aceptar_conf" type="button" class="btn btn-green" data-dismiss="modal" ><i class="fa fa-check-square"></i>&nbsp;&nbsp;Aceptar&nbsp;&nbsp;</button>
+             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="confirmacion_retro2" class="modal fade" role="dialog">
+      <div class="modal-dialog" style="width: 40% !important;">
+        <div class="modal-content" style=" width: 550px;">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">RETROALIMENTACI&Oacute;N  - CLIENTE/USUARIO</h4>
+          </div>
+          <div class="modal-body media" style="font-size:14px;padding-top: 0px;width: 540px;">
+             <span>Retroalimentaci&oacute;n enviada con &eacute;xito</span>
+             <div align=right>
+                 <button id="btn_aceptar_conf" type="button" class="btn btn-green" data-dismiss="modal" ><i class="fa fa-check-square"></i>&nbsp;&nbsp;Aceptar&nbsp;&nbsp;</button>
+             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="confirmacion_retro3" class="modal fade" role="dialog">
+      <div class="modal-dialog" style="width: 40% !important;">
+        <div class="modal-content" style=" width: 550px;">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">RETROALIMENTACI&Oacute;N  - MODELO DE NEGOCIO</h4>
+          </div>
+          <div class="modal-body media" style="font-size:14px;padding-top: 0px;width: 540px;">
+             <span>Retroalimentaci&oacute;n enviada con &eacute;xito </span>
+             <div align=right>
+                 <button id="btn_aceptar_conf" type="button" class="btn btn-green" data-dismiss="modal" ><i class="fa fa-check-square"></i>&nbsp;&nbsp;Aceptar&nbsp;&nbsp;</button>
+             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="confirmacion_retro4" class="modal fade" role="dialog">
+      <div class="modal-dialog" style="width: 40% !important;">
+        <div class="modal-content" style=" width: 550px;">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">RETROALIMENTACI&Oacute;N  - COMPETIDORES</h4>
+          </div>
+          <div class="modal-body media" style="font-size:14px;padding-top: 0px;width: 540px;">
+             <span>Retroalimentaci&oacute;n enviada con &eacute;xito </span>
+             <div align=right>
+                 <button id="btn_aceptar_conf" type="button" class="btn btn-green" data-dismiss="modal" ><i class="fa fa-check-square"></i>&nbsp;&nbsp;Aceptar&nbsp;&nbsp;</button>
+             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="confirmacion_retro5" class="modal fade" role="dialog">
+      <div class="modal-dialog" style="width: 40% !important;">
+        <div class="modal-content" style=" width: 550px;">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">RETROALIMENTACI&Oacute;N - LOGROS</h4>
+          </div>
+          <div class="modal-body media" style="font-size:14px;padding-top: 0px;width: 540px;">
+             <span>Retroalimentaci&oacute;n enviada con &eacute;xito </span>
+             <div align=right>
+                 <button id="btn_aceptar_conf" type="button" class="btn btn-green" data-dismiss="modal" ><i class="fa fa-check-square"></i>&nbsp;&nbsp;Aceptar&nbsp;&nbsp;</button>             </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
 {% endblock%}

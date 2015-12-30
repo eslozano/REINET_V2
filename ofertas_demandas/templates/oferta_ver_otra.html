@@ -83,24 +83,26 @@
             <div class="col-md-8 col-sm-8 col-xs-8">
                 <!--Tipo-->
                 <p style="color: darkgray" class="col-md-3">Tipo</p>
-                {% if oferta.tipo == 0 %}
-                    <p>Emprendimiento</p>
-                {% elif oferta.tipo == 1 %}
-                    <p>Tecnologia</p>
-                {% elif oferta.tipo == 2 %}
-                    <p>Prototipo</p>
-                {% endif %}
+                <p class="bottom-15" align="justify" >
+                                    {% if oferta.tipo == 0 %}
+                                        Emprendimiento
+                                    {% elif oferta.tipo == 1 %}
+                                        Tecnolog&iacute;a
+                                    {% elif oferta.tipo == 2 %}
+                                        Prototipo
+                                    {% endif %}
+                </p>
                 <!--Descripcion-->
                 <p style="color: darkgray" class="col-md-3">Descripci&oacute;n</p>
-                <p>{{ oferta.descripcion  | title}} </p>
+                <p class="bottom-15" align="justify">{{ oferta.descripcion  | title}} </p>
 
                 <!--Dominio-->
                 <p style="color: darkgray" class="col-md-3">Dominio</p>
-                <p>{{ oferta.dominio }}</p>
+                <p class="bottom-15" align="justify">{{ oferta.dominio }}</p>
 
                 <!--Subdominio-->
                 <p style="color: darkgray" class="col-md-3">Sub-dominio</p>
-                <p>{{ oferta.subdominio }}</p>
+                <p class="bottom-15" align="justify">{{ oferta.subdominio }}</p>
 
                 <!--Palabras Clave-->
                 <p style="color: darkgray" class="col-md-3">Palabras Claves</p>
@@ -120,7 +122,7 @@
             <!--Perfil Cliente-->
             <p style="color: darkgray" for="Descripcion" class="col-md-3">Perfil del Cliente</p>
 
-            <p class="col-md-9">
+            <p class="bottom-15" align="justify" class="col-md-9">
                 {% if oferta.perfil_cliente != None %}
                     {{ oferta.perfil_cliente }}
                 {% else %}
@@ -130,7 +132,7 @@
             <!--Perfil Beneficiario-->
             <p style="color: darkgray" for="Descripcion" class="col-md-3">Perfil del Beneficiario</p>
 
-            <p class="col-md-9">
+            <p class="bottom-15" align="justify" class="col-md-9">
                 {% if oferta.perfil_beneficiario != None %}
                     {{ oferta.perfil_beneficiario }}
                 {% else %}
@@ -189,7 +191,7 @@
             <!--Tendencias-->
             <p style="color: darkgray" for="Descripcion" class="col-md-5">Tendencias Relevantes</p>
 
-            <p class="col-md-12">
+            <p class="bottom-15" align="justify" class="col-md-12">
                 {% if oferta.cuadro_tendencias_relevantes != None %}
                     {{ oferta.cuadro_tendencias_relevantes }}
                 {% else %}
@@ -198,7 +200,7 @@
             <!--Alternativas de solucion-->
             <p style="color: darkgray" for="Descripcion" class="col-md-5">Alternativas de Soluci&oacute;n
                 Existentes</p>
-            <p class="col-md-12">
+            <p class="bottom-15" align="justify" class="col-md-12">
                 {% if oferta.descripcion_soluciones_existentes != None %}
                     {{ oferta.descripcion_soluciones_existentes }}
                 {% else %}
@@ -257,7 +259,7 @@
             <!--Evidencia de Traccion-->
             <p style="color: darkgray" for="Descripcion" class="col-md-6">Evidencia de Tracci&oacute;n</p>
             <br>
-            <p class="col-md-12">
+            <p class="bottom-15" align="justify" class="col-md-12">
                 {% if oferta.evidencia_traccion != None %}
                     {{ oferta.evidencia_traccion }}
                 {% else %}
@@ -292,8 +294,8 @@
                 </div>
                 <div class="form-group" style="margin-bottom: 0px;">
                     <div class="col-sm-offset-2 col-sm-10" align="right">
-                        <button id="enviarMensaje"  type="submit" class="btn btn-green btn-sm">Publicar
-                        </button>
+                    
+                        <button id="enviarMensaje" type="submit" class="btn btn-green" ><i class="fa fa-comment-o"></i>&nbsp;&nbsp;Publicar</button>
                     </div>
                 </div>
             </form>
@@ -468,7 +470,7 @@
                                             style="color:white;margin-top: 15px;" data-toggle="modal"
                                             data-target="#solicitarEquipo">
                                         <i class="fa fa-sign-in"></i>
-                                        &nbsp;&nbsp;Enviar Peticion de Nuevo
+                                        &nbsp;&nbsp;Enviar Petici&oacute;n de Nuevo
                                     </button>
                                     <hr style="margin-top: 15px;">
                                 {% elif estado_membresia == 1 %}
@@ -546,9 +548,8 @@
                         </div>
                         <a href="/solicitarMembresiaOferta/" class="button" data-toggle="modal"
                            data-target="#confirmarcionSolicitud" style="float:right">
-                            <button id="enviarSolicitud" type="button" class="btn btn-green" data-dismiss="modal">
-                                Enviar
-                            </button>
+
+                            <button id="enviarSolicitud" type="button" class="btn btn-green" data-dismiss="modal"><i class="fa fa-send-o"></i>&nbsp;&nbsp;Enviar</button>
                         </a>
                     </form>
                 </div>
@@ -638,7 +639,7 @@
                             <label for="Confirmacion">Ha comentado la oferta con &eacute;xito</label>
                             {% endif %}
                             <p class="text-muted" style="font-size:11px;margin-bottom: 0px;">*Los comentarios deben ser
-                                aprobados por el dueño de la oferta para ser mostrados</p>
+                                aprobados por el due&ntilde;o de la oferta para ser mostrados</p>
                         </div>
                         <div align="right">
                             <a href="" class="button">
@@ -657,7 +658,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="sendemailtitle">Algo salió mal.</h4>
+                    <h4 class="modal-title" id="sendemailtitle">Algo sali&oacute; mal.</h4>
                     <div class="clearfix"></div>
                 </div>
                 <div class="modal-body">
@@ -688,7 +689,7 @@
                 <div class="modal-body">
                     <form role="form" action="" method=''>
                         <div class="form-group">
-                            <label for="Confirmacion">Debe calificar la Oferta para poder publicar su comentario. Esta calificación solo la podré hacer una sola vez.</label>
+                            <label for="Confirmacion">Debe calificar la Oferta para poder publicar su comentario. Esta calificaci&oacute;n solo la podr&aacute; hacer una sola vez.</label>
                         </div>
                         <div align="right">
                             <a href="" class="button">

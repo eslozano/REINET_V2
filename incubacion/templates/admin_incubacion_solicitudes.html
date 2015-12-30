@@ -10,19 +10,21 @@
                 {%else %}
                   <img src="/media/noPicture.png" alt="...">
                 {%endif%}
-                <a href="#" style="font-size:16px;color:black">{{ solicitud.0.fk_oferta.nombre}}</a><br>
+                <a href="#" style="font-size:16px;color:black">{{ solicitud.0.fk_oferta.nombre}} </a><br>
                   <i class="fa fa-user"></i>&nbsp;{{ solicitud.1.fk_participante.first_name }} {{ solicitud.1.fk_participante.last_name }}  
                 <br><i class="fa fa-calendar"></i>&nbsp;{{solicitud.2.date}}
               </p>
               <p class="text-muted" style="width:100%" align=right>
-                <button type="button" class="btn btn-red" id ="aceptar_solicitud{{solicitud.0.id_solicitud_ofertas_convocatoria}}" >
+                <button type="button" class="btn btn-green" id ="aceptar_solicitud{{solicitud.0.id_solicitud_ofertas_convocatoria}}" data-dismiss="modal" data-target="#aceptar_cambios" data-toggle="modal">
                 <span class="glyphicon glyphicon-plus-sign"></span> Aceptar</button>
 
-                <button type="button" class="btn btn-default" id ="rechazar_solicitud{{solicitud.0.id_solicitud_ofertas_convocatoria}}" style="margin-left:10px">
+                <button type="button" class="btn btn-dark" id ="rechazar_solicitud{{solicitud.0.id_solicitud_ofertas_convocatoria}}" style="margin-left:10px" data-dismiss="modal" data-target="#rechazar_cambios" data-toggle="modal" >
                 <span class="glyphicon glyphicon-minus-sign"></span> Rechazar</button>
               </p>
               <div class="clearfix"></div>
             </li>
+
+
             <script>
               $(document).ready(function () {
                 $(function () {
@@ -46,10 +48,8 @@
 
                 $(function () {
                   $('#aceptar_solicitud{{solicitud.0.id_solicitud_ofertas_convocatoria}}').click(function(){
-                    if (confirm("Desea Aceptar esta Solicitud?")){
-                      $('#solicitud{{solicitud.0.id_solicitud_ofertas_convocatoria}}').remove();
-                      aceptar();  
-                    }                    
+                    $('#solicitud{{solicitud.0.id_solicitud_ofertas_convocatoria}}').remove();
+                    aceptar();                      
                     function aceptar(){
                       $.ajax({
                         data: {
@@ -76,3 +76,41 @@
     Esta Incubación no tiene solicitudes pendientes
   </div>
 {%endif%}
+
+<!--Modal de aceptar solicitud-->
+<div id="aceptar_cambios" class="modal fade" role="dialog">
+  <div class="modal-dialog" style="width: 40% !important;">
+    <div class="modal-content" style=" width: 550px;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">OFERTAS APLICANTES</h4>
+      </div>
+      <div class="modal-body media" style="font-size:14px;padding-top: 0px;width: 540px;">
+        <span>Se acept&oacute; la oferta aplicante. </span>
+        <div align=right>
+          <a href="/AdminIncubacion/{{incubacion_id}}" class="btn btn-green" ><i class="fa fa-check-square"></i>&nbsp;&nbsp;Aceptar&nbsp;&nbsp;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Modal de rechazar solicitud-->
+<div id="rechazar_cambios" class="modal fade" role="dialog">
+  <div class="modal-dialog" style="width: 40% !important;">
+    <div class="modal-content" style=" width: 550px;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">OFERTAS APLICANTES</h4>
+      </div>
+      <div class="modal-body media" style="font-size:14px;padding-top: 0px;width: 540px;">
+        <span>Se rechaz&oacute; la oferta aplicante. </span>
+        <div align=right>
+          <a href="/AdminIncubacion/{{incubacion_id}}" class="btn btn-green" ><i class="fa fa-check-square"></i>&nbsp;&nbsp;Aceptar&nbsp;&nbsp;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

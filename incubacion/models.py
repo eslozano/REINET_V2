@@ -20,7 +20,7 @@ class Incubacion(models.Model):
 	condiciones = models.TextField()
 	tipos_oferta = models.PositiveSmallIntegerField()
 	otros = models.TextField(null=True,blank=True)
-	estado_incubacion = models.PositiveSmallIntegerField(default=0)#activa=0,terminada=1,desactivada=2
+	estado_incubacion = models.PositiveSmallIntegerField(default=0)#activa=0,terminada=1,desactivada=2,censurada=3
 	fk_perfil = models.ForeignKey(Perfil)
 	class Meta:
 		db_table = 'Incubacion'
@@ -88,6 +88,8 @@ class Milestone(models.Model):
 	fecha_maxima = models.DateTimeField()
 	requerimientos = models.TextField()
 	importancia = models.TextField()
+	completado = models.BooleanField(default=False)
+	num_ediciones=models.IntegerField()
 	otros = models.TextField(null=True,blank=True)
 	fk_incubada = models.ForeignKey(Incubada)
 	retroalimentaciones=models.ManyToManyField(Consultor,through='Retroalimentacion',through_fields=('fk_milestone','fk_consultor'),related_name='retroalimentaciones')

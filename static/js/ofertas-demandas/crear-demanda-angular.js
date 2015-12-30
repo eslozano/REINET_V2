@@ -248,7 +248,7 @@ function getQueryVariable(variable, url) {
 
 //CONTROLADOR LISTA DEMANDAS DE LA RED
 appdemanda.controller('DemandasControlador',['$scope','$http','urls',function($scope,$http,urls){
-    console.log("Demandas de la red!");
+    console.log("Demandas en la red!");
     $http.get(urls.BASE_API+'/demandas/' + "?busqueda=" + $scope.busqueda_demandas,{},{headers:{"Content-Type":"application/json"}})
     .success(function(response){
         $scope.pagina = 1;
