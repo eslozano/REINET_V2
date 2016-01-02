@@ -258,7 +258,7 @@
         <p><a href="#" class="btn btn-sm btn-green" style="color:white"data-toggle="modal" data-target="#solicitudesComentarios"><span class="badge" style="background-color:white; color:#5D8731">{{ comentariosPendientes | length }}</span>&nbsp;&nbsp;COMENTARIOS NUEVOS</a></p>
         <p class="text-muted" style="font-size:11px">*Los comentarios de otros usuarios deben ser aprobados para estar visibles<p>
     </div>
-    <!-- cOOOOOOOOOOOOOOOOOOOOOOMIENZAN LOS COMENTARIOS -->
+    <!-- COMIENZAN LOS COMENTARIOS -->
     <div class="comment">
         <ul id="lista_comentarios">
 
@@ -285,7 +285,7 @@
             });
         </script>
     </div>
-    <!-- TEEEEEEEEEEEEEEERMINANN LOS COMENTARIOS -->
+    <!-- TERMINAN LOS COMENTARIOS -->
     </div>
     <div class="col-md-4">
         <!-- Social Links -->
@@ -303,14 +303,6 @@
                         <h4 style="margin-top: 6px;">Equipo</h4>
                     </div>
                     <div class="col-md-7 col-sm-6 col-xs-6" align="right" style="padding-right: 0px;">
-
-                        <!--{%if participantes|length >= 5 %}
-                        <a disabled="true" id="btn_agregarMiembro" href="#" class="btn btn-dark btn-sm" style="color:white;" data-toggle="modal" data-target="#agregarMiembro"><i class="fa fa-plus"></i></a>
-                        {% else %}
-                        <a id="btn_agregarMiembro" href="#" class="btn btn-dark btn-sm" style="color:white;" data-toggle="modal" data-target="#agregarMiembro"><i class="fa fa-plus"></i></a>
-                        {% endif %}-->
-
-
                         <a href="#" class="btn btn-dark btn-sm" data-toggle="modal" id="botonEditarEquipo" data-target="#modalEditarEquipo" style="margin-left: 2px;margin-right: 3px;"><i class="fa fa-pencil"></i></a>
                     </div>
                 </div>
@@ -360,80 +352,40 @@
             </div>
         </div>
         <!-- TERMINA Panel del equipo -->
-
-
     </div>
     </div>
     </div>
-
-
-
-
 
     <!-- COMIENZAN Los modals que se usan en toda la pagina -->
-
-
-    <!-- comienza Mooooooooooooooooodal EDITAR Equipo -->
+    <!-- comienza MODAL EDITAR Equipo -->
     <div id="modalEditarEquipo" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header" style="background-color:#F6F7F7">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Editar Equipo</h4>
+                    <h4 class="modal-title">EDITAR EQUIPO</h4>
                 </div>
                 <div class="modal-body">
                     <div class="team" id="teamEditable"style="font-size:12px;height:200px;overflow-y:scroll">
-                        <!-- <form>
-                             <div class="member-left" style="margin-bottom: 0px;">
-
-                                <img src="/../../media/ofertas-demandas/face2.jpg" alt="Team Member" class="left" style="
-                                    margin-right: 40px; margin-left: 40px; width: 75px;height: 75px;">
-
-                                <a href="#"><h4 style="font-size: 14px;">Alex Smith</h4></a>
-
-                                <div class="col-md-2">
-                                    <p class="position" style="margin-bottom: 4px;">Estado&nbsp;:&nbsp;&nbsp;</p>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <input list="estado" name="estado2"id="estadoUsuario2" value="ACTIVO" disabled></input>
-                                    <datalist id="estado">
-                                        <option value="ACTIVO">
-                                        <option value="INACTIVO">
-                                    </datalist>
-                                    <a href="javascript:editarEstado($('#estadoUsuario2'))"><i class="fa fa-cog"></i>Editar Estado</a>
-                                </div>
-                                <div class="col-md-2">
-                                    <p class="position" style="margin-bottom: 4px;">Rol&nbsp;:&nbsp;&nbsp;</p>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <input type="text" id="rolUsuario2" name="rol2" value="Designer" disabled></input>
-                                    <a href="javascript:editarRol($('#rolUsuario2'))"><i class="fa fa-cog"></i>Editar Rol</a>
-                                </div>
-
-                            </div>
-                        </form>
-         -->      <a>Cargando..</a>
+                        <a>Cargando..</a>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-green" data-dismiss="modal" data-toggle="modal"  id="guardarEditarEquipo">Guardar</button>
-                    <button id="btnCancelarEditarEquipo" type="button" class="btn btn-dark" data-dismiss="modal">Cancelar</button>
-
+                    <button id="btnCancelarEditarEquipo" type="button" class="btn btn-dark" data-dismiss="modal"><i class="fa fa-times"></i>&nbsp;&nbsp;Cancelar&nbsp;&nbsp;</button>
+                    <button type="button" class="btn btn-green" data-dismiss="modal" data-toggle="modal"  id="guardarEditarEquipo"><i class="fa fa-floppy-o"></i>&nbsp;&nbsp;Guardar&nbsp;&nbsp;</button>
                 </div>
             </div>
         </div>
     </div>
-    <!-- termina Mooooooooooooooooodal EDITAR Equipo -->
+    <!-- termina MODAL EDITAR Equipo -->
 
-    <!-- comienza Mooooooooooooooooodal AGREGAR NUEVO MIEMBRO AL Equipo -->
+    <!-- comienza MODAL AGREGAR NUEVO MIEMBRO AL Equipo -->
     <div id="agregarMiembro" class="modal fade" role="dialog" tabindex="-1" style="width:100%">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Agregar nuevo integrante al equipo</h4>
+                    <h4 class="modal-title">AGREGAR NUEVO INTEGRANTE AL EQUIPO</h4>
                 </div>
                 <div class="modal-body"style="font-size:12px;overflow-y:auto;">
                     <form id="formulario" role="form" action="/agregarParticipante/" method='POST'>
@@ -460,9 +412,9 @@
             </div>
         </div>
     </div>
-    <!-- termina Mooooooooooooooooodal ACREGAR NUEVO MIEMBRO AL Equipo -->
+    <!-- termina MODAL ACREGAR NUEVO MIEMBRO AL Equipo -->
 
-    <!-- comienza Mooooooooooooooooodal ACEPTAR O RECHAZAR SOLICITUDES Equipo -->
+    <!-- comienza MODAL ACEPTAR O RECHAZAR SOLICITUDES Equipo -->
     <div id="solicitudesEquipo" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -472,8 +424,7 @@
                 </div>
                 <div class="modal-body"style="font-size:12px;overflow-y:auto">
 
-
-                    <!-- PRIMERA SOLICITUUUUUUUUUUUUUUUUUUUUUUUUUUUUUD -->
+                    <!-- PRIMERA SOLICITUD -->
                     {% if solicitudes|length == 0 %}
                         <a >No hay solicitudes </a>
                     {% endif %}
@@ -484,7 +435,6 @@
                                 <a class="pull-left" href="#">
                                     <img class="media-object img-circle" src="/media/{{imagen_principal.imagen}}" alt="...">
                                 </a>
-
 
                                 <div class=" media-body">
                                     <p><a href="profile.html">{{solicitud.fk_participante.username}}</a></p>
@@ -516,69 +466,25 @@
                                     </form>
                                 </div>
                                 <div align=right id="{{solicitud.fk_participante.id_perfil}}" name="botonesSolicitud01">
-
-                                    <button type="button"class="btn btn-green" id="{{solicitud.fk_participante.id_perfil}}" name="aceptarSolicitudEquipo01">
-                                        <span class="glyphicon glyphicon-plus-sign"></span> Agregar</button>
-                                    <button type="button" class="btn btn-dark" id="{{solicitud.fk_participante.id_perfil}}" name="rechazarSolicitudEquipo01">
-                                        <span class="glyphicon glyphicon-minus-sign"></span> Rechazar</button>
+                                    <button type="button" class="btn btn-dark" id="{{solicitud.fk_participante.id_perfil}}" name="rechazarSolicitudEquipo01"> <span class="glyphicon glyphicon-minus-sign"></span> Rechazar</button>
+                                    <button type="button"class="btn btn-green" id="{{solicitud.fk_participante.id_perfil}}" name="aceptarSolicitudEquipo01"> <span class="glyphicon glyphicon-plus-sign"></span> Agregar</button>
                                 </div>
                             </div>
-                         
                         </div>
-
                     {%endfor%}
-                    <!-- SEGUNDA SOLICITUUUUUUUUUUUUUUUUUUUUUUUUUUUUUD -->
-                    <!--
-                                    <div class="comment" id="Solicitud01">
-                                        <div class="media">
-                                            <a class="pull-left" href="#">
-                                                <img class="media-object img-circle" src="/../../media/ofertas-demandas/face3.jpg" alt="...">
-                                            </a>
-                                            <div class=" media-body">
-                                                <p><a href="profile.html">Username 3</a></p>
-                                                <div id="datosSolicitud01">
-                                                    <p>Hola que tal te recuerdo que ser&eacute; el diseñador de la oferta </p>
-                                <ul class="text-muted list-inline">
-                                    <li><i class="fa fa-calendar"></i> 11/10/2013</li>
-                                </ul>
-                            </div>
-                            <div class="form-group" id="rolSolicitud01" style="display: none;">
-                                <p>Para agregar a un usuario al equipo debe definirle un rol de trabajo</p>
-                                <label for="Nombres" class="col-md-2">Rol:</label>
-                                <div class="col-md-6">
-                                    <input required autofocus type="text" class="form-control" 
-                                         id="nombre" name="nombres"  data-placement="left" data-trigger="focus"
-                                         data-content="Ingresa tu nombre aquí." data-original-title="Rol">
-                                </div>
-                                <button type="button"class="btn btn-green btn-sm" id="aceptarRolEquipo01">
-                                <span class="glyphicon glyphicon-plus-sign"></span> Aceptar</button>
-                            </div>
-                        </div>
-                        <div align=right id="botonesSolicitud01">
-                            <button type="button"class="btn btn-green btn-xs" id="aceptarSolicitudEquipo01">
-                                <span class="glyphicon glyphicon-plus-sign"></span> Agregar</button>
-                            <button type="button" class="btn btn-dark btn-xs " id="rechazarSolicitudEquipo01">
-                                <span class="glyphicon glyphicon-minus-sign"></span> Rechazar</button>
-                            
-                            
-                        </div>                    
-                    </div>
-                    <br>
-                </div>
- -->
                 </div>
             </div>
         </div>
     </div>
-    <!-- TERMINAN Mooooooooooooooooodal ACEPTAR O RECHAZAR SOLICITUDES Equipo -->
+    <!-- TERMINAN Modal ACEPTAR O RECHAZAR SOLICITUDES Equipo -->
 
-    <!-- comienza Mooooooooooooooooodal ACEPTAR O RECHAZAR comentarios -->
+    <!-- comienza Modal ACEPTAR O RECHAZAR comentarios -->
     <div id="solicitudesComentarios" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Comentarios Nuevos</h4>
+                    <h4 class="modal-title">COMENTARIOS NUEVOS</h4>
                 </div>
                 <div class="modal-body" style="font-size:12px;overflow-y:auto">
                     {% if comentariosPendientes|length == 0 %}
@@ -611,8 +517,8 @@
                                     </ul>
                                 </div>
                                 <div align=right id="">
-                                    <a href="/aceptarComentario/{{ comentario.id_comentario_calificacion }}" type="button" class="btn btn-green btn-xs"><span class="glyphicon glyphicon-plus-sign"></span> Aceptar</a>
                                     <a href="/rechazarComentario/{{ comentario.id_comentario_calificacion }}" type="button" class="btn btn-dark btn-md btn-xs"><span class="glyphicon glyphicon-minus-sign"></span> Rechazar</a>
+                                    <a href="/aceptarComentario/{{ comentario.id_comentario_calificacion }}" type="button" class="btn btn-green btn-xs"><span class="glyphicon glyphicon-plus-sign"></span> Aceptar</a>
                                 </div>
                             </div>
                             <br>
@@ -622,15 +528,15 @@
             </div>
         </div>
     </div>
-    <!-- termina Mooooooooooooooooodal ACEPTAR O RECHAZAR comentarios -->
+    <!-- termina MODAL ACEPTAR O RECHAZAR comentarios -->
 
-    <!-- comienza INACTIVAAAAAAAAAAAAAAAAAAAR OFEEEEEEEEEEEEEEEEEEERTAAA-->
+    <!-- comienza INACTIVAR OFERTAS -->
     <div id="InactivarOferta" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Inactivar oferta</h4>
+                    <h4 class="modal-title">INACTIVAR OFERTA</h4>
                 </div>
                 <div class="modal-body" style="overflow-y:auto">
                     <p>Est&aacute; seguro que desea desactivar la oferta. Recuerde que este cambio no es reversible</p>
@@ -644,10 +550,7 @@
             </div>
         </div>
     </div>
-    <!-- termina INACTIVAAAAAAAAAAAAAAAAAAAR OFEEEEEEEEEEEEEEEEEEERTAAA -->
-
-
-
+    <!-- termina INACTIVAR OFERTA -->
     <!-- TERMINAN Los modals que se usan en toda la pagina -->
 
 
@@ -771,19 +674,13 @@
 
                 }else{
                     $("[id='"+idObtenido+"'][name='Solicitud01']").html("<p>Ocurrió un error. Recargue la página</p>");
-
                     $("[id='"+idObtenido+"'][name='Solicitud01']").show();
-
                 }
             },
             error: function(e){
-
-
                 $("[id='"+idObtenido+"'][name='Solicitud01']").show();
-
             }
         });
-
     });
 
 
@@ -834,13 +731,9 @@
 
                 }
             });
-
         });
 
-
-
         $.each($("#teamEditable :input[name='estadoEditable']"), function(){
-
             id_perfil=$(this).attr('id');
             estado=$(this).val();
 
@@ -861,7 +754,6 @@
                 error: function(e){
                 }
             });
-
         });
         $('#teamEditable #cargando_msj').remove();
         $(this).prop('disabled', false);
@@ -880,9 +772,7 @@
                 $('#lista_equipo').html(data)
             }
         });
-
     }
     </script>
     </div>
-
 {% endblock %}	    
