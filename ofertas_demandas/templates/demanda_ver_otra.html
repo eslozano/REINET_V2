@@ -192,8 +192,7 @@
             </div>
             <div class="form-group" style="margin-bottom: 0px;">
                 <div class="col-sm-offset-2 col-sm-10" align="right">
-                    <button id="enviarMensaje"  type="submit" class="btn btn-warning btn-sm">Publicar
-                    </button>
+                    <button id="enviarMensaje"  type="submit" class="btn btn-green btn-sm"><i class="fa fa-comment-o"></i>&nbsp;&nbsp;Publicar</button>
                 </div>
             </div>
         </form>
@@ -261,7 +260,7 @@
 
         </script>
     </div>
-    <!-- TEEEEEEEEEEEEEEERMINANN LOS COMENTARIOS -->
+    <!-- TERMINAN LOS COMENTARIOS -->
     </div>
     <div class="col-md-4">
         <!-- COMIENZA  Panel del equipo -->
@@ -270,7 +269,7 @@
                  style="margin-right: 0px;margin-left: 0px;padding-top: 5px;padding-bottom: 0px;  padding-right: 0px;">
                 <div class="col-md-12" style="padding-left: 0px;padding-right: 0px;">
                     <div class="col-md-12" align="left" style="padding-left: 0px;">
-                        <h4 style="margin-top: 6px;">Oferta que resolvió esta Demanda</h4>
+                        <h4 style="margin-top: 6px;">Oferta que resolvi&oacute; esta Demanda</h4>
                     </div>
                 </div>
             </div>
@@ -282,21 +281,19 @@
                         <div align=center>
                             <p>
                                 {% if estado == 1 %}
-                                    <button id="btn_resolver" class="btn btn-warning btn-sm"
-                                            style="color:white;margin-top: 15px;" data-toggle="modal"
-                                            data-target="#resolverDemanda">
+                                    <button id="btn_resolver" class="btn btn-green btn-sm" style="color:white;margin-top: 15px;" data-toggle="modal" data-target="#resolverDemanda">
                                         <i class="fa fa-sign-in"></i>
                                         &nbsp;&nbsp;Resolver Demanda
                                     </button>
                                     <hr style="margin-top: 15px;">
                                 {% elif estado == 2 %}
-                                    <label id="btn_resolver" class="btn btn-warning btn-sm">
+                                    <label id="btn_resolver" class="btn btn-green btn-sm">
                                         <i class="fa fa-sign-in"></i>
                                         &nbsp;&nbsp;Demanda Resuelta
                                     </label>
                                     <hr style="margin-top: 15px;">
                                 {% elif estado == 3 %}
-                                    <label id="btn_resolver" class="btn btn-warning btn-sm">
+                                    <label id="btn_resolver" class="btn btn-dark btn-sm">
                                         <i class="fa fa-sign-in"></i>
                                         &nbsp;&nbsp;Demanda Desactivada
                                     </label>
@@ -314,27 +311,6 @@
                             <ul id="lista_equipo">
 
                             </ul>
-                            <!--Script para mostrar el equipo de oferta-->
-                            <script>
-                            /*    $(document).ready(function () {
-                                    $(function () {
-                                        $('#lista_equipo').ready(mostrarOfertaQueResolvio);
-                                        function mostrarOfertaQueResolvio() {
-                                            $.ajax({
-                                                data: {
-                                                    'demanda':{{demanda.id_demanda}}
-                                                },
-                                                type: 'get',
-                                                url: '/ofertaResuelveDemanda/',
-                                                success: function (data) {
-                                                    $('#lista_equipo').html(data)
-                                                }
-                                            });
-                                        }
-                                    });
-                                });
-*/
-                            </script>
                         </div>
                     </div>
                 </div>
@@ -344,12 +320,7 @@
     </div>
     </div>
 
-
-
-
-
     <!-- COMIENZAN Los modals que se usan en toda la pagina -->
-
     <!-- //// VENTANA EMERGENTE SOLICITAR RESOLVER DEMANDA ///// -->
     <div class="modal modal-vcenter fade" id="resolverDemanda" tabindex="-1" role="dialog"
          aria-labelledby="sendemailtitle" aria-hidden="true">
@@ -358,7 +329,7 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 
-                    <h4 class="modal-title" id="sendemailtitle">Resolver Demanda</h4>
+                    <h4 class="modal-title" id="sendemailtitle">RESOLVER DEMANDA</h4>
 
                     <div class="clearfix"></div>
                 </div>
@@ -377,9 +348,7 @@
                         </div>
                         <a href="/resolverDemanda/" class="button" data-toggle="modal"
                            data-target="#confirmacionSolicitud" style="float:right">
-                            <button id="enviarResolucion" type="button" class="btn btn-warning" data-dismiss="modal">
-                                Enviar
-                            </button>
+                            <button id="enviarResolucion" type="button" class="btn btn-green" data-dismiss="modal"><i class="fa fa-send-o"></i>&nbsp;&nbsp;Enviar</button>
                         </a>
                     </form>
                 </div>

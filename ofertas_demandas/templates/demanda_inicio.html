@@ -1,7 +1,17 @@
-{% extends "oferta_inicio.html" %}
+{% extends "base-ofertas.tpl.html" %}
+
+{% if user.is_authenticated %}
+    {% block barraderecha %}
+        {% include 'menusuperior/menulogueado.tpl.html' %}
+    {% endblock %}
+
+    {% block busqueda %}
+        {% include 'menusuperior/barrabusqueda.tpl.html' %}
+    {% endblock %}
+
+{% endif %}
 
 {% block sliderPagina %}DEMANDAS{% endblock %}
-
 
 {% block contenido %}
     <div class="container">
@@ -22,15 +32,13 @@
         </div>
         <div class="col-md-6  col-sm-6 col-xs-6">
             <div class="col-sm-9">
-                <input type="text" class="form-control" ng-model="busqueda_demandas"
-                       placeholder="Buscar Demanda por Nombre, Tag (Demandas en la red)"/>
+                <input type="text" class="form-control" ng-model="busqueda_demandas" placeholder="Buscar Demanda por Nombre, Tag (Demandas en la red)"/>
             </div>
             <div class="col-sm-3" ng-controller="busquedaDemandaControlador">
                 <button class="btn btn-blue" ng-click='buscarDemandas()'><i class="fa fa-search-plus"></i>&nbsp;&nbsp;Buscar Demanda</button>
             </div>
         </div>
     </div>
-
 
     <div class="row">
     <div class=" col-sm-12">
@@ -40,7 +48,7 @@
             <a href="#demandasPublicadas" aria-controls="home" role="tab" data-toggle="tab">Mis Demandas</a>
         </li>
         <li role="presentation">
-            <a href="#borradorDemanda" aria-controls="borradorDemanda" role="tab" data-toggle="tab">Borradores</a>
+            <a href="#borradorDemanda" aria-controls="borradorDemanda" role="tab" data-toggle="tab">Borradores de Demandas</a>
         </li>
         <li role="presentation">
             <a href="#demandasdelaREd" aria-controls="demandasdelaREd" role="tab" data-toggle="tab">Demandas en la Red</a>
@@ -54,6 +62,7 @@
 
     <!-- COMIENZA DEMANDAS EN LA RED-->
     <div role="tabpanel" class="tab-pane" id="demandasdelaREd" data-page="demandasdelaREd" ng-controller="DemandasControlador">
+
         <div class="col-sm-12">
             <div class="timeline-block" id="demandasdelaREd">
                 <!-- First blog post -->
@@ -97,7 +106,7 @@
         <div ng-if="contador === 0">
             <div class="alert alert-info alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                No existe niguna demanda publicada en la Red; si desea publique un borrador de una demanda.
+                No existe niguna demanda publicada en la Red; si desea publicar una demanda deber&aacute; crear un borrador de una demanda y publicarla.
             </div>
         </div>
         <div ng-if="contador !== 0">
@@ -147,7 +156,7 @@
                                     </ul>
                                 </div>
                                 <div class="col-md-6 col-xs-5" align="right" style="padding-right: 0px;">
-                                    <a href="/administrarDemanda/[[ publicada.id_demanda ]]" class="btn btn-warning btn-sm">
+                                    <a href="/administrarDemanda/[[ publicada.id_demanda ]]" class="btn btn-green btn-sm">
                                         <i class="fa fa-pencil"></i>&nbsp;&nbsp;Administrar</a>
                                 </div>
                             </div>
@@ -169,10 +178,9 @@
         <div ng-if="MDcontador === 0">
             <div class="alert alert-info alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                Usted no tiene ninguna demanda publicada; para  hacerlo, deber&aacute; publicar un borrador un borrador de una demanda.
+                Usted no tiene ninguna demanda publicada en la Red; para  hacerlo, deber&aacute; publicar un borrador de una demanda.
             </div>
         </div>
-
         <!-- PAGINACION DE DEMANDAS PUBLICADAS-->
         <div ng-if="MDcontador !== 0">
             <div class="about-btn">
@@ -233,7 +241,7 @@
         <div ng-if="Borradorescontador === 0">
             <div class="alert alert-info alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                Usted no tiene ninguna demanda creada; para  hacerlo, deber&aacute; crear un borrador de demanda.
+                Usted no tiene ningun borrador de demanda; para hacerlo, deber&aacute; crear un borrador de demanda.
             </div>
         </div>
 
@@ -251,16 +259,12 @@
     </div>
     <!-- TERMINA TAB DE BORRADORES-->
 
-
-    <!-- TERMINA OFERTAS DE LA RED-->
-    <!-- TERMINA EQUIPO-->
     </div>
     </div>
     </div>
     </div>
 
-    <!--MODAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAL CREAAAAAAAAAAAAAAAAAAR OFEEEEEEEEEEEEEERTA-->
-
+    <!--MODAL CREA DEMANDA-->
     <div class="modal fade" id="modalCrearDemanda" role="dialog">
         <div class="modal-dialog">
 
@@ -271,13 +275,13 @@
                     {% csrf_token %}
                     <div class="modal-header">
                         <button type="button" class="close cancelar" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Crear Borrador de Demanda</h4>
+                        <h4 class="modal-title">CREAR BORRADOR DEMANDA</h4>
                     </div>
                     <div class="modal-body">
                         <div class="col-md-offset-1">
                             <input type="radio" name="radioName" id="radio1" value="1" checked
-                                   class="'disabled':'disabled';"/>&nbsp;&nbsp;Nueva demanda<br/>
-                            <input type="radio" name="radioName" id="radio2" value="2"/>&nbsp;&nbsp;De demanda existente<br/>
+                                   class="'disabled':'disabled';"/>&nbsp;&nbsp;Nueva Demanda<br/>
+                            <input type="radio" name="radioName" id="radio2" value="2"/>&nbsp;&nbsp;De una Demanda Existente<br/>
 
                             <div class="" id="lista_de_demandas" style="display:none;">
 
@@ -302,8 +306,6 @@
         </div>
     </div>
 
-
-
     <script>
         $('#formCrearDemanda input').on('change', function () {
             var valor = $('input[name=radioName]:checked', '#formCrearDemanda').val();
@@ -320,9 +322,6 @@
             $('#select_demanda').val("");
         });
     </script>
-
-    
-
     </div>
 
 {% endblock %}

@@ -1,7 +1,7 @@
 
 <br>
-<hr style="border-top:1px solid red">
-<h4 class="hl" style="color:red">Retroalimentaciones de 
+<hr style="border-top:1px solid #1d9d74">
+<h4 class="hl" style="color:#1d9d74"><b>Retroalimentaciones de 
   {%if numTabIncubada|add:0 == 1%}
       la informaci&oacute;n General
     {%elif numTabIncubada|add:0 == 2%}
@@ -12,7 +12,7 @@
       los competidores
     {%else%}
       los logros
-    {%endif%}
+    {%endif%}</b>
 </h4>
 
 <div>A la fecha existen: {{num_Retroal}}</div>
@@ -53,7 +53,7 @@
   </div>
  {% empty %}
     <!-- PRIMER MIEMBRO DEL EQUIPO-->
-    <div class="info-board info-board-orange"> No existen retroalimentaciones para
+    <div class="info-board info-board-green"> No existen retroalimentaciones para
     {%if numTabIncubada|add:0 == 1%}
       la informaci&oacute;n General
     {%elif numTabIncubada|add:0 == 2%}

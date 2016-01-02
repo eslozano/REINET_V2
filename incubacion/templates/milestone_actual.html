@@ -13,14 +13,14 @@
     <h4 style="margin-top: 0px;font-size:16px">{{milestone.fecha_maxima_Retroalimentacion.date}}</h4>
 
     {% if completar == True %}
-    	<div class="info-board info-board-orange"> Milestone en FASE DE COMPLETAR</div>
+    	<div class="info-board info-board-green"> Milestone en FASE DE COMPLETAR</div>
     {% elif retroalimentar == True %}
-    	<div class="info-board info-board-orange"> Milestone en FASE DE RETROALIMENTACI&Oacute;N</div>
+    	<div class="info-board info-board-green"> Milestone en FASE DE RETROALIMENTACI&Oacute;N</div>
     {%else%}
 
     {% endif %}
 
     
 {% else %}
-    <div class="info-board info-board-orange"> No hay ning&uacute;n milestone en curso</div>
+    <div class="info-board info-board-green"> No hay ning&uacute;n milestone en curso</div>
 {% endif %}

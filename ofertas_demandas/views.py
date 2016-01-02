@@ -507,6 +507,8 @@ Descripcion: funcion para editar un borrador
 """
 @login_required
 def editar_borrador(request, id_oferta):
+	print "id_oferta-::  ",id_oferta
+
 	sesion = request.session['id_usuario']
 	usuario = Perfil.objects.get(id=sesion)
 	args = {}
@@ -1830,15 +1832,12 @@ def oferta_resuelve_demanda(request):
 			return render(request,'resuelve_demanda.html',args)
 
 		except Oferta.DoesNotExist:
-			print 'esa oferta no existe '
 			return redirect('/')
 
 		except Demanda.DoesNotExist:
-			print 'yiyi izi :/'
 			return redirect('/')
 
 		except:
-			print 'ya me jodi =('
 			return redirect('/')
 	else:
 		return redirect('/NotFound')

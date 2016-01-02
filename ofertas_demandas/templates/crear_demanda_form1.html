@@ -6,28 +6,25 @@
 
 <div class="col-md-12">
     <!--NOMBRES-->
-
     <div class="form-group">
         <label for="Nombres" class="col-md-2">Nombre</label>
 
-        <div class="col-md-6">
+        <div class="col-md-10">
 
-            <input autofocus type="text" class="form-control" placeholder="Nombre de la Demanda"
-                   id="nombre" name="nombre_demanda"  data-trigger="focus"
-                   ng-model="demanda.nombre" ng-pattern="/^[a-zA-Z ]{10,300}$/"  ng-required="true" ng-blur="validarSubmit(forms.crear_demanda_form1)">
-            <span ng-show="forms.crear_demanda_form1.nombre_demanda.$error.pattern"><p class="bg-danger text-danger">Nombre de la demanda debe contener por lo menos 10 caracteres alfab&eacute;ticos</p></span>
-            <span ng-show="forms.crear_demanda_form1.nombre_demanda.$error.required" ng-if="!forms.crear_demanda_form1.$pristine"><p class="bg-danger text-danger">Este campo es obligatorio</p></span>
+            <input autofocus type="text" class="form-control" placeholder="Nombre de la Demanda" id="nombre" name="nombre_demanda"  data-trigger="focus" ng-model="demanda.nombre" ng-pattern="/^[a-zA-Z ]{10,300}$/"  ng-required="true" ng-blur="validarSubmit(forms.crear_demanda_form1)">
+            <span ng-show="forms.crear_demanda_form1.nombre_demanda.$error.pattern"><p class="bg-danger text-danger">Nombre de la Demanda debe contener por lo menos 10 caracteres alfab&eacute;ticos.</p></span>
+            <span ng-show="forms.crear_demanda_form1.nombre_demanda.$error.required" ng-if="!forms.crear_demanda_form1.$pristine"><p class="bg-danger text-danger">Este campo es obligatorio.</p></span>
         </div>
     </div>
 
     <!--Descripicion-->
     <div class="form-group">
         <label for="descripcion-demanda" class="col-md-2">Descripci&oacute;n</label>
-        <div class="col-md-6">
+        <div class="col-md-10">
 
             <textarea id="descripcion_demanda" name="descripcion_demanda" rows="4" class="form-control" placeholder="Escribe aqu&iacute; la descripci&oacute;n de la demanda"
                       ng-model="demanda.descripcion" ng-required="true" ng-blur="validarSubmit(forms.crear_demanda_form1)" ng-init="value='Probando'"></textarea>
-            <span ng-show="forms.crear_demanda_form1.descripcion_demanda.$error.required" ng-if="!forms.crear_demanda_form1.$pristine"><p class="bg-danger text-danger">Este campo es obligatorio</p></span>
+            <span ng-show="forms.crear_demanda_form1.descripcion_demanda.$error.required" ng-if="!forms.crear_demanda_form1.$pristine"><p class="bg-danger text-danger">Este campo es obligatorio.</p></span>
 
         </div>
     </div>
@@ -37,11 +34,7 @@
         <label class="col-md-2">Im&aacute;genes</label>
         <div class="col-md-8">
 
-<div flow-init="{target:'/CargarImagenDemanda/',testChunks:false,headers:setHead }"
-                flow-name="imagen.flow"
-                flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]"
-                flow-file-success="exitoSubida($file)"
-                >
+        <div flow-init="{target:'/CargarImagenDemanda/',testChunks:false,headers:setHead }" flow-name="imagen.flow" flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]" flow-file-success="exitoSubida($file)" >
                 
                 <div class="col-md-12 col-sm-12" style="left:-18px;">
                     <span id="btn_cargar_imagen" class="btn btn-default btn-file" flow-btn style="margin:2px;">Cargar Im&aacute;genes</span>
@@ -67,45 +60,37 @@
         </div>
     </div>
 
-
     <!--Dominio-->
     <div class="form-group">
         <label for="demanda-dominio" class="col-md-2">Dominio</label>
-        <div class="col-md-6">
+        <div class="col-md-10">
 
             <textarea type="text" class="form-control" id="demanda_dominio" name="demanda_dominio"
                       placeholder="Ingresa el dominio de la demanda" rows="5"
                       ng-model="demanda.dominio" ng-required="true" ng-blur="validarSubmit(forms.crear_demanda_form1)"></textarea>
-            <span ng-show="forms.crear_demanda_form1.demanda_dominio.$error.required" ng-if="!forms.crear_demanda_form1.$pristine"><p class="bg-danger text-danger">Este campo es obligatorio</p></span>
-
-
+            <span ng-show="forms.crear_demanda_form1.demanda_dominio.$error.required" ng-if="!forms.crear_demanda_form1.$pristine"><p class="bg-danger text-danger">Este campo es obligatorio.</p></span>
         </div>
     </div>
     <!--Sub dominio-->
     <div class="form-group">
         <label for="demanda_sub_dominio" class="col-md-2">Sub Dominio</label>
-        <div class="col-md-6">
+        <div class="col-md-10">
 
             <textarea type="text" class="form-control" id="demanda_sub_dominio" name="demanda_sub_dominio" placeholder="Ingresa el subdominio de la demanda" rows="5"
                       ng-model="demanda.subdominio" ng-required="true" ng-blur="validarSubmit(forms.crear_demanda_form1)"></textarea>
-            <span ng-show="forms.crear_demanda_form1.demanda_sub_dominio.$error.required" ng-if="!forms.crear_demanda_form1.$pristine"><p class="bg-danger text-danger">Este campo es obligatorio</p></span>
+            <span ng-show="forms.crear_demanda_form1.demanda_sub_dominio.$error.required" ng-if="!forms.crear_demanda_form1.$pristine"><p class="bg-danger text-danger">Este campo es obligatorio.</p></span>
 
         </div>
     </div>
     <!--Palabras Clave-->
     <div class="form-group">
         <label for="demanda_palabras_clave" class="col-md-2">Palabras Claves</label>
-        <div class="col-md-6">
-
+        <div class="col-md-10">
             <tags-input class="tags" name="demanda_tags" ng-model="demanda.tags" placeholder="Agrege palabras claves"></tags-input>
-
         </div>
     </div>
 
-    <div class="col-md-8">
-        <a href="#cliente_usuario"  aria-controls="messages" role="tab" data-toggle="tab">
-            <input type="button" class="btn btn-warning pull-right" value="Siguiente">
-        </a>
+    <div class="col-md-12">
+        <a href="#cliente_usuario" aria-controls="messages" role="tab" data-toggle="tab" class="btn btn-blue pull-right">&nbsp;&nbsp;Siguiente&nbsp;&nbsp;<i class="fa fa-caret-square-o-right"></i></a>
     </div>
-
 </div>

@@ -24,7 +24,7 @@
     <div class="container">
 
     	<div class="alert alert-info">
-	        <strong>Recuerde!</strong> Usted es ADMINISTRADOR de esta incubada, perteneciente a su incubaci&oacute;n<a style="color:red"href="/AdminIncubacion/{{incubada.fk_incubacion.id_incubacion}}"> {{incubada.fk_incubacion.nombre}}</a>
+	        <strong>Recuerde!</strong> Usted es ADMINISTRADOR de esta incubada, perteneciente a su incubaci&oacute;n<a style="color:#1D9D74"href="/AdminIncubacion/{{incubada.fk_incubacion.id_incubacion}}"> {{incubada.fk_incubacion.nombre}}</a>
 	     </div>
 
 	    <div class="col-md-12" style="padding-right: 0px;padding-left: 0px;">
@@ -38,13 +38,13 @@
 			            
 
 			            {%if estado_incubacion == 0%}
-			            	<a href="#" data-target="#modalInvitarConsultor" data-toggle="modal"  class="btn btn-red"><i class="fa fa-user-plus"></i>&nbsp;&nbsp;Invitar consultores</a>
+			            	<a href="#" data-target="#modalInvitarConsultor" data-toggle="modal"  class="btn btn-green"><i class="fa fa-user-plus"></i>&nbsp;&nbsp;Invitar consultores</a>
 
 			            	{%if milestoneVigente == False%}
-				            	<a id="milestone" href="#" data-target="#definirMilestone" data-toggle="modal" class="btn btn-red"><i class="fa fa-sliders"></i>&nbsp;&nbsp;Definir Milestone</a>
+				            	<a id="milestone" href="#" data-target="#definirMilestone" data-toggle="modal" class="btn btn-dark"><i class="fa fa-sliders"></i>&nbsp;&nbsp;Definir Milestone</a>
 				            	</div>
 				            {%else%}
-				            	<a id="milestone" href="#" data-target="#definirMilestone" data-toggle="modal" class="btn btn-red" disabled="disabled"><i class="fa fa-sliders"></i>&nbsp;&nbsp;Definir Milestone</a>
+				            	<a id="milestone" href="#" data-target="#definirMilestone" data-toggle="modal" class="btn btn-dark" disabled="disabled"><i class="fa fa-sliders"></i>&nbsp;&nbsp;Definir Milestone</a>
 				            	</div>
 				            	<div class="col-md-offset-6">
 				            	<span style="font-size:11px;margin-right: 15px;">*Existe un milestone vigente</span>
@@ -52,20 +52,20 @@
 				            {%endif%}
 
 			            {%elif estado_incubacion == 1%}
-			            		<a href="#" data-target="#modalInvitarConsultor" data-toggle="modal"  class="btn btn-red" disabled="disabled"><i class="fa fa-user-plus"></i>&nbsp;&nbsp;Invitar consultores</a>
+			            		<a href="#" data-target="#modalInvitarConsultor" data-toggle="modal"  class="btn btn-green" disabled="disabled"><i class="fa fa-user-plus"></i>&nbsp;&nbsp;Invitar consultores</a>
 
-			            		<a id="milestone" href="#" data-target="#definirMilestone" data-toggle="modal" class="btn btn-red" disabled="disabled"><i class="fa fa-sliders"></i>&nbsp;&nbsp;Definir Milestone</a>
+			            		<a id="milestone" href="#" data-target="#definirMilestone" data-toggle="modal" class="btn btn-dark" disabled="disabled"><i class="fa fa-sliders"></i>&nbsp;&nbsp;Definir Milestone</a>
 				            	</div>
 
 			            {%elif estado_incubacion == 2%}
-			            		<a href="#" data-target="#modalInvitarConsultor" data-toggle="modal"  class="btn btn-red" disabled="disabled"><i class="fa fa-user-plus"></i>&nbsp;&nbsp;Invitar consultores</a>
+			            		<a href="#" data-target="#modalInvitarConsultor" data-toggle="modal"  class="btn btn-green" disabled="disabled"><i class="fa fa-user-plus"></i>&nbsp;&nbsp;Invitar consultores</a>
 
-			            		<a id="milestone" href="#" data-target="#definirMilestone" data-toggle="modal" class="btn btn-red" disabled="disabled"><i class="fa fa-sliders"></i>&nbsp;&nbsp;Definir Milestone</a>
+			            		<a id="milestone" href="#" data-target="#definirMilestone" data-toggle="modal" class="btn btn-dark" disabled="disabled"><i class="fa fa-sliders"></i>&nbsp;&nbsp;Definir Milestone</a>
 				            	</div>
 				        {%elif estado_incubacion == 3%}
-				        		<a href="#" data-target="#modalInvitarConsultor" data-toggle="modal"  class="btn btn-red" disabled="disabled"><i class="fa fa-user-plus"></i>&nbsp;&nbsp;Invitar consultores</a>
+				        		<a href="#" data-target="#modalInvitarConsultor" data-toggle="modal"  class="btn btn-green" disabled="disabled"><i class="fa fa-user-plus"></i>&nbsp;&nbsp;Invitar consultores</a>
 
-			            		<a id="milestone" href="#" data-target="#definirMilestone" data-toggle="modal" class="btn btn-red" disabled="disabled"><i class="fa fa-sliders"></i>&nbsp;&nbsp;Definir Milestone</a>
+			            		<a id="milestone" href="#" data-target="#definirMilestone" data-toggle="modal" class="btn btn-green" disabled="disabled"><i class="fa fa-sliders"></i>&nbsp;&nbsp;Definir Milestone</a>
 				            	</div>
 			            {%endif%}
 
@@ -117,7 +117,7 @@
 						                    <input type="text" class="form-control col-md-9" id="destinatario_txt" name="destinatario_txt" placeholder="Invitar a un usuario a ser consultor" maxlength="50" required style="height: 34px;border-left-width: 1px;margin-left: 30px;width: 301px;">
 
 						                    <div align="right">
-						                    	<input id="invitarSubmit" type="submit" class="btn btn-dark fa" value="Invitar" style=" width: 87px; height: 34px; border-left-width: 0px;" />
+						                    	<a id="invitarSubmit" class="btn btn-dark" style=" width: 87px; height: 34px; border-left-width: 0px;" ><i class="fa fa-child"></i>&nbsp;&nbsp;Invitar&nbsp;&nbsp;</a>
 						                    </div>
 						                </div>
 
@@ -207,7 +207,7 @@
 
 									    <div class="form-group">
 									   		<div align="right">
-									   			<a href="#" id="enviarInvitaciones" disabled data-dismiss="modal" data-target="#confirmacion_invitar_consultor" data-toggle="modal"  class="btn btn-green fa">&nbsp;&nbsp;Enviar Invitaciones</a>
+									   			<a id="enviarInvitaciones" disabled data-dismiss="modal" data-target="#confirmacion_invitar_consultor" data-toggle="modal"  class="btn btn-green"><i class="fa fa-send-o"></i>&nbsp;&nbsp;Enviar Invitaciones</a>
 									   		</div>
 									   	</div>
 									   	
@@ -750,7 +750,7 @@
 		        <div class="col-md-12 col-sm-6" style="padding-right: 0px;">
 					<!--PANEL DEL MILESTONE ACTUAL-->	 
 
-			            <div class="panel panel-dark" style="margin-top:0px">
+			            <div class="panel panel-green" style="margin-top:0px">
 			                		            
 			                <div class="panel-body">
 			                	<div class="media">
@@ -790,8 +790,8 @@
 		        <div class="col-md-12 col-sm-6" style="padding-right: 0px;">
 		        	<!-- COMIENZA  Historial de Milestones -->
 		          	<div class="block-header">
-			            <h2 style="margin-bottom: 20px;margin-top: 20px;">
-			              <span class="title">Historial Milestones</span><span class="decoration"></span><span class="decoration"></span><span class="decoration"></span>
+			            <h2 style="margin-bottom: 20px;margin-top: 20px; color:#1D9D74;">
+			              <span class="title"><b>Historial Milestones</b></span><span class="decoration"></span><span class="decoration"></span><span class="decoration"></span>
 			            </h2>
 			          </div>
 
@@ -858,7 +858,7 @@
                                     <div align="right">
                                       <a data-dismiss="modal" class="btn btn-dark"><i class="fa fa-times"></i>&nbsp;&nbsp;Cancelar&nbsp;&nbsp;</a>
 
-                                      <button id="adefinirMilestone" class="btn btn-green" data-dismiss="modal" data-target="#confirmacion_Milestones" data-toggle="modal" class="btn btn-red"><i class="fa fa-plus"></i>&nbsp;&nbsp;Crear&nbsp;&nbsp;</button>
+                                      <button id="adefinirMilestone" class="btn btn-green" data-dismiss="modal" data-target="#confirmacion_Milestones" data-toggle="modal"><i class="fa fa-plus"></i>&nbsp;&nbsp;C r e a r&nbsp;&nbsp;</button>
                                       
                                   
                                     </div>                                                  

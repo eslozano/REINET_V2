@@ -295,7 +295,7 @@
                 <div class="form-group" style="margin-bottom: 0px;">
                     <div class="col-sm-offset-2 col-sm-10" align="right">
                     
-                        <button id="enviarMensaje" type="submit" class="btn btn-green" ><i class="fa fa-comment-o"></i>&nbsp;&nbsp;Publicar</button>
+                        <button id="enviarMensaje" type="submit" class="btn btn-green btn-sm" ><i class="fa fa-comment-o"></i>&nbsp;&nbsp;Publicar</button>
                     </div>
                 </div>
             </form>
@@ -449,26 +449,20 @@
                                         </button>
                                         <hr style="margin-top: 15px;">
                                     {% else %}
-                                        <button id="btn_participar" class="btn btn-green btn-sm"
-                                                style="color:white;margin-top: 15px;" data-toggle="modal"
-                                                data-target="#solicitarEquipo">
+                                        <button id="btn_participar" class="btn btn-green btn-sm" style="color:white;margin-top: 15px;" data-toggle="modal" data-target="#solicitarEquipo">
                                             <i class="fa fa-sign-in"></i>
                                             &nbsp;&nbsp;Participar en este equipo
                                         </button>
                                         <hr style="margin-top: 15px;">
                                     {% endif %}
                                 {% elif estado_membresia == 0 %}
-                                    <button disabled="true" id="btn_participar" class="btn btn-green btn-sm"
-                                            style="color:green;margin-top: 15px;" data-toggle="modal"
-                                            data-target="#solicitarEquipo">
+                                    <button disabled="true" id="btn_participar" class="btn btn-green btn-sm" style="color:green;margin-top: 15px;" data-toggle="modal" data-target="#solicitarEquipo">
                                         <i class="fa fa-sign-in"></i>
                                         &nbsp;&nbsp;Solicitud Pendiente
                                     </button>
                                     <hr style="margin-top: 15px;">
                                 {% elif estado_membresia == -1 %}
-                                    <button id="btn_participar" class="btn btn-green btn-sm"
-                                            style="color:white;margin-top: 15px;" data-toggle="modal"
-                                            data-target="#solicitarEquipo">
+                                    <button id="btn_participar" class="btn btn-green btn-sm" style="color:white;margin-top: 15px;" data-toggle="modal" data-target="#solicitarEquipo">
                                         <i class="fa fa-sign-in"></i>
                                         &nbsp;&nbsp;Enviar Petici&oacute;n de Nuevo
                                     </button>
@@ -519,10 +513,6 @@
     </div>
     </div>
 
-
-
-
-
     <!-- COMIENZAN Los modals que se usan en toda la pagina -->
 
 
@@ -534,8 +524,7 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 
-                    <h4 class="modal-title" id="sendemailtitle">Solicitar pertenecer al equipo de trabajo de la
-                        oferta</h4>
+                    <h4 class="modal-title" id="sendemailtitle">SOLICITAR PERTENECER AL EQUIPO DE TRABAJO DE LA OFERTA </h4>
 
                     <div class="clearfix"></div>
                 </div>
@@ -544,7 +533,7 @@
                         <!--{% csrf_token %}-->
                         <div class="form-group">
                             <textarea style="resize:none" class="form-control" rows="3" name="comentario_peticion"
-                                      placeholder="Escriba algun comentario acerca de su solicitud de participación en el equipo"></textarea>
+                                      placeholder="Escriba algun comentario acerca de su solicitud de participaci&oacute;n en el equipo"></textarea>
                         </div>
                         <a href="/solicitarMembresiaOferta/" class="button" data-toggle="modal"
                            data-target="#confirmarcionSolicitud" style="float:right">
@@ -626,7 +615,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="sendemailtitle">Mensaje de Confirmaci&oacute;n</h4>
+                    <h4 class="modal-title" id="sendemailtitle">OFERTA CALIFICADA</h4>
                     <div class="clearfix"></div>
                 </div>
                 <div class="modal-body">
@@ -638,12 +627,13 @@
                             {% else %}
                             <label for="Confirmacion">Ha comentado la oferta con &eacute;xito</label>
                             {% endif %}
-                            <p class="text-muted" style="font-size:11px;margin-bottom: 0px;">*Los comentarios deben ser
-                                aprobados por el due&ntilde;o de la oferta para ser mostrados</p>
+                            <p class="text-muted" style="font-size:11px;margin-bottom: 0px;">*Los comentarios deben ser aprobados por el due&ntilde;o de la oferta para ser mostrados</p>
+
                         </div>
                         <div align="right">
+
                             <a href="" class="button">
-                                <button type="button" class="btn btn-green" data-dismiss="modal">Aceptar</button>
+                                <button type="button" class="btn btn-green" data-dismiss="modal"><i class="fa fa-check-square"></i>&nbsp;&nbsp;Aceptar</button>
                             </a>
                         </div>
                     </form>
@@ -658,7 +648,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="sendemailtitle">Algo sali&oacute; mal.</h4>
+                    <h4 class="modal-title" id="sendemailtitle">ALGO SALI&Oacute; MAL.</h4>
                     <div class="clearfix"></div>
                 </div>
                 <div class="modal-body">
@@ -667,9 +657,7 @@
                             <label for="Confirmacion">REINET lo siente un mundo, algo ha salido mal intentalo de nuevo por favor.</label>
                         </div>
                         <div align="right">
-                            <a href="" class="button">
-                                <button type="button" class="btn btn-red" data-dismiss="modal">Volver</button>
-                            </a>
+                            <a data-dismiss="modal" class="btn btn-dark" class="button"><i class="fa fa-backward"></i>&nbsp;&nbsp;Volver&nbsp;&nbsp;</a>
                         </div>
                     </form>
                 </div>
@@ -683,18 +671,17 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="sendemailtitle">No ha calificado la Oferta</h4>
+                    <h4 class="modal-title" id="sendemailtitle">NO HA CALIFICADO LA OFERTA</h4>
                     <div class="clearfix"></div>
                 </div>
                 <div class="modal-body">
                     <form role="form" action="" method=''>
                         <div class="form-group">
-                            <label for="Confirmacion">Debe calificar la Oferta para poder publicar su comentario. Esta calificaci&oacute;n solo la podr&aacute; hacer una sola vez.</label>
+                            <label for="Confirmacion">Debe calificar la Oferta; para poder publicar su comentario. Esta calificaci&oacute;n solo la podr&aacute; hacer una sola vez.</label>
                         </div>
                         <div align="right">
-                            <a href="" class="button">
-                                <button type="button" class="btn btn-red" data-dismiss="modal">Volver</button>
-                            </a>
+
+                            <a data-dismiss="modal" class="btn btn-dark" class="button"><i class="fa fa-backward"></i>&nbsp;&nbsp;Volver&nbsp;&nbsp;</a>
                         </div>
                     </form>
                 </div>
