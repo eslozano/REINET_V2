@@ -19,7 +19,7 @@
         <div align=left class="col-md-2 col-sm-2 col-xs-3">
 
             <div class="pull-left">
-                <a href="#" class="btn btn-green" data-toggle="modal" data-target="#modalCrearDemanda"><i class="fa fa-plus-square"></i>&nbsp;&nbsp;Crear Demanda</a>
+                <a href="#" class="btn btn-green" data-toggle="modal" data-target="#modalCrearDemanda"><i class="fa fa-plus-square"></i>&nbsp;&nbsp;Crear Borrador Demanda</a>
             </div> 
         </div>
         <div class="col-md-4 col-sm-4 col-xs-3">
@@ -45,10 +45,10 @@
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
         <li role="presentation" class="active">
-            <a href="#demandasPublicadas" aria-controls="home" role="tab" data-toggle="tab">Mis Demandas</a>
-        </li>
-        <li role="presentation">
             <a href="#borradorDemanda" aria-controls="borradorDemanda" role="tab" data-toggle="tab">Borradores de Demandas</a>
+        </li>
+        <li role="presentation" >
+            <a href="#demandasPublicadas" aria-controls="home" role="tab" data-toggle="tab">Mis Demandas</a>
         </li>
         <li role="presentation">
             <a href="#demandasdelaREd" aria-controls="demandasdelaREd" role="tab" data-toggle="tab">Demandas en la Red</a>
@@ -86,6 +86,10 @@
                                 <div class="col-md-6 col-xs-5" align="right" style="padding-right: 0px;">
 
                                 </div>
+                                <div class="col-md-6 col-xs-5" align="right" style="padding-right: 0px;">
+                                        <a href="/oferta/[[ ofertasRed.id_oferta ]]" class="btn btn-dark btn-sm">
+                                        <i class="fa fa-pencil"></i>&nbsp;&nbsp;VER</a>
+                                </div>
                             </div>
                             <div style="clear:both;">
                             </div>
@@ -122,7 +126,7 @@
     <!-- TERMINA DEMANDAS EN LA RED-->
 
     <!-- COMIENZA TAB DE DEMANDAS PUBLICADAS-->
-    <div role="tabpanel" class="tab-pane active" id="demandasPublicadas" ng-controller="MisDemandasControlador">
+    <div role="tabpanel" class="tab-pane " id="demandasPublicadas" ng-controller="MisDemandasControlador">
         <div class="col-sm-12">
             <div class="timeline-block">
                 <!-- First blog post -->
@@ -195,7 +199,7 @@
     <!-- TERMINA TAB DE OFERTAS PUBLICADAS-->
 
     <!-- COMIENZA TAB DE BORRADORES-->
-    <div role="tabpanel" class="tab-pane" id="borradorDemanda" ng-controller="MisDemandasBorradoresControlador">
+    <div role="tabpanel" class="tab-pane active" id="borradorDemanda" ng-controller="MisDemandasBorradoresControlador">
         <div class="col-sm-12">
             <div class="timeline-block">
                 <!-- First blog post -->
@@ -205,9 +209,7 @@
                                     <h4 style="padding-left: 0px;padding-right: 0px;">
                                         <a href="/administrarBorradorDemanda/[[ borrador.id_demanda ]]">[[borrador.nombre]]</a>
                                     </h4>
-                                    <time datetime="2013-11-10" class="timestamp hidden-xs">[[
-                                        borrador.fecha_creacion.substring(0,4) ]]/ [[ borrador.fecha_creacion.substring(5,7)
-                                        ]]/ [[ borrador.fecha_creacion.substring(8,10) ]]
+                                    <time datetime="2013-11-10" class="timestamp hidden-xs">[[ borrador.fecha_creacion.substring(0,4) ]]/ [[ borrador.fecha_creacion.substring(5,7) ]]/ [[ borrador.fecha_creacion.substring(8,10) ]]
                                     </time>
                                     <div class="col-md-12" style="padding-left: 0px;padding-right: 0px;">
                                         <div class="col-md-6 col-xs-7" style="padding-left: 0px;">
@@ -220,8 +222,8 @@
                                             </ul>
                                         </div>
                                         <div class="col-md-6 col-xs-5" align="right" style="padding-right: 0px;">
-                                            <a href="/EditarBorradorDemanda/[[ borrador.id_demanda ]]" class="btn btn-dark btn-sm">
-                                                <i class="fa fa-pencil"></i>&nbsp;&nbsp;Editar</a>
+                                            <a href="/administrarBorradorDemanda/[[ borrador.id_demanda ]]" class="btn btn-dark btn-sm">
+                                                <i class="fa fa-pencil"></i>&nbsp;&nbsp;VER</a>
                                         </div>
                                     </div>
                                     <div style="clear:both;">

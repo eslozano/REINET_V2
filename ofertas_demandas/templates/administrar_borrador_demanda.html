@@ -14,8 +14,10 @@
             {% endif %}
             <h4>{{ demanda.nombre }}</h4>
             <ul class="text-muted list-inline">
+                <!--
                 <li><i class="fa fa-user"></i> <a href="/perfilUsuario">{{ dueno }}</a></li>
-                <li><i class="fa fa-calendar"></i> {{ demanda.fecha_creacion }}</li>
+                -->
+                <li><i class="fa fa-calendar"></i> {{ fecha_creacion_demanda }}</li>
             </ul>
         </div>
         <div class="col-md-6 col-xs-6" align="right" style="padding-top: 15px;padding-right: 0px;">
@@ -73,7 +75,7 @@
     </div>
 
     <div class="col-md-12">
-        <div class="col-md-8" style="padding-left: 0px;">
+        <div class="col-md-10" style="padding-left: 0px;">
             <div class="blog-text">
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs " role="tablist">

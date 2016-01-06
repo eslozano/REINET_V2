@@ -46,9 +46,11 @@
                 <label for="Nombres" class="col-md-2">Nombre</label>
 
                 <div class="col-md-10">
-
-                    <input autofocus type="text" class="form-control" placeholder="Nombre de la Oferta" id="nombre" name="nombre_oferta"  data-trigger="focus" ng-pattern="/^[a-zA-Z ]{10,300}$/"  ng-required="true"  ng-focus="" value="{{ oferta.nombre }}" ng-model="oferta.nombre">
+                    <input autofocus type="text" class="form-control" placeholder="Nombre de la Oferta" id="nombre" name="nombre_oferta"  data-trigger="focus" ng-pattern="/^[a-zA-Z ]|[0-9]{5,300}$/"  ng-required="true" ng-focus="" value="{{ oferta.nombre }}" ng-model="oferta.nombre">
+                    <!--
+                    <input autofocus type="text" class="form-control" placeholder="Nombre de la Oferta" id="nombre" name="nombre_oferta"  data-trigger="focus" ng-pattern="/^[a-zA-Z ]|[0-9]{5,300}$/"  ng-required="true" ng-focus="" value="{{ oferta.nombre }}" ng-model="oferta.nombre">
                     <span ng-show="form_editar.nombre_oferta.$error.pattern"><p class="bg-danger text-danger">Nombre de la Oferta debe contener por lo menos 10 caracteres alfab&eacute;ticos</p></span>
+                    -->
                     <span ng-show="form_editar.nombre_oferta.$error.required" ng-if="!form_editar.$pristine"><p class="bg-danger text-danger">Este campo es obligatorio.</p></span>
                 </div>
             </div>
@@ -285,7 +287,7 @@
             <div class="form-group">
                 <div class="col-md-8">
                     <label class="col-md-6"style="left:-17px;">Tiempo de disponilidad del producto o servicio</label>
-                    <input autofocus number type="text" class="form-control" id="oferta_tiempo_disponibilidad" name="oferta_tiempo_disponibilidad" style="width:70px;" ng-pattern="/^([1-9][0-9]*)$/" ng-required="false" ng-change="tiempoDisponibleInput(tiempo_disponible)" ng-model="tiempo_disponible"
+                    <input autofocus number type="number" min="0" step="1" class="form-control" id="oferta_tiempo_disponibilidad" name="oferta_tiempo_disponibilidad" style="width:70px;" ng-pattern="/^([1-9][0-9]*)$/" ng-required="false" ng-change="tiempoDisponibleInput(tiempo_disponible)" ng-model="tiempo_disponible"
                             >
                     <span ng-show="form_editar.oferta_tiempo_disponibilidad.$error.pattern"><p class="bg-danger text-danger">N&uacute;mero no v&aacute;lido</p></span>
                 </div>

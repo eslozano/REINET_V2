@@ -10,9 +10,11 @@
         <label for="Nombres" class="col-md-2">Nombre</label>
 
         <div class="col-md-10">
-
+            <input autofocus type="text" class="form-control" placeholder="Nombre de la Demanda" id="nombre" name="nombre_demanda"  data-trigger="focus" ng-model="demanda.nombre" ng-pattern="/^[a-zA-Z ]|[0-9]{5,300}$/"  ng-required="true" ng-blur="validarSubmit(forms.crear_demanda_form1)">
+            <!--
             <input autofocus type="text" class="form-control" placeholder="Nombre de la Demanda" id="nombre" name="nombre_demanda"  data-trigger="focus" ng-model="demanda.nombre" ng-pattern="/^[a-zA-Z ]{10,300}$/"  ng-required="true" ng-blur="validarSubmit(forms.crear_demanda_form1)">
             <span ng-show="forms.crear_demanda_form1.nombre_demanda.$error.pattern"><p class="bg-danger text-danger">Nombre de la Demanda debe contener por lo menos 10 caracteres alfab&eacute;ticos.</p></span>
+            -->
             <span ng-show="forms.crear_demanda_form1.nombre_demanda.$error.required" ng-if="!forms.crear_demanda_form1.$pristine"><p class="bg-danger text-danger">Este campo es obligatorio.</p></span>
         </div>
     </div>
@@ -66,8 +68,7 @@
         <div class="col-md-10">
 
             <textarea type="text" class="form-control" id="demanda_dominio" name="demanda_dominio"
-                      placeholder="Ingresa el dominio de la demanda" rows="5"
-                      ng-model="demanda.dominio" ng-required="true" ng-blur="validarSubmit(forms.crear_demanda_form1)"></textarea>
+                      placeholder="Se refiere al &aacute;rea principal de la industria en la cual se encuentra el producto o servicio." rows="5" ng-model="demanda.dominio" ng-required="true" ng-blur="validarSubmit(forms.crear_demanda_form1)"></textarea>
             <span ng-show="forms.crear_demanda_form1.demanda_dominio.$error.required" ng-if="!forms.crear_demanda_form1.$pristine"><p class="bg-danger text-danger">Este campo es obligatorio.</p></span>
         </div>
     </div>
@@ -76,8 +77,7 @@
         <label for="demanda_sub_dominio" class="col-md-2">Sub Dominio</label>
         <div class="col-md-10">
 
-            <textarea type="text" class="form-control" id="demanda_sub_dominio" name="demanda_sub_dominio" placeholder="Ingresa el subdominio de la demanda" rows="5"
-                      ng-model="demanda.subdominio" ng-required="true" ng-blur="validarSubmit(forms.crear_demanda_form1)"></textarea>
+            <textarea type="text" class="form-control" id="demanda_sub_dominio" name="demanda_sub_dominio" placeholder="Se refiere al sub&aacute;rea principal de la industria en la cual se encuentra el producto o servicio." rows="5" ng-model="demanda.subdominio" ng-required="true" ng-blur="validarSubmit(forms.crear_demanda_form1)"></textarea>
             <span ng-show="forms.crear_demanda_form1.demanda_sub_dominio.$error.required" ng-if="!forms.crear_demanda_form1.$pristine"><p class="bg-danger text-danger">Este campo es obligatorio.</p></span>
 
         </div>
@@ -86,7 +86,7 @@
     <div class="form-group">
         <label for="demanda_palabras_clave" class="col-md-2">Palabras Claves</label>
         <div class="col-md-10">
-            <tags-input class="tags" name="demanda_tags" ng-model="demanda.tags" placeholder="Agrege palabras claves"></tags-input>
+            <tags-input class="tags" name="demanda_tags" ng-model="demanda.tags" placeholder="Escriba la palabra y debe dar enter para agregarla."></tags-input>
         </div>
     </div>
 

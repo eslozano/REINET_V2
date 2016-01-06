@@ -10,7 +10,7 @@
         <div class="col-md-8" >
             <label class="col-md-6" style="left:-17px;">Tiempo en que se necesita disponer de soluci&oacute;n</label>
 
-            <input autofocus number type="text" class="form-control" id="demanda_tiempo_disponibilidad" name="demanda_tiempo_disponibilidad" style="width:70px;" ng-model="tiempo_disponible" ng-pattern="/^([1-9][0-9]*)$/" ng-change="tiempoDisponibleInput(tiempo_disponible)" ng-required="false" >
+            <input autofocus number type="number" min="0" step="1" class="form-control" id="demanda_tiempo_disponibilidad" name="demanda_tiempo_disponibilidad" style="width:70px;" ng-model="tiempo_disponible" ng-pattern="/^([1-9][0-9]*)$/" ng-change="tiempoDisponibleInput(tiempo_disponible)" ng-required="false" >
             <span ng-show="forms.crear_demanda_form1.demanda_tiempo_disponibilidad.$error.pattern"><p class="bg-danger text-danger">N&uacute;mero no v&aacute;lido</p></span>
         </div>
 

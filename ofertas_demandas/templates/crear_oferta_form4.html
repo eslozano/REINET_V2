@@ -28,18 +28,58 @@
     <div class="form-group" style="margin-bottom: 0px;">
         <label for="Descripcion" class="col-md-2">Diagrama de Porter</label>
         <div class="col-md-10">
+            <div class="col-md-12 col-sm-12 "style="margin-bottom: 0px;">
+
+                <div class="col-md-12">
+                    <label style="text-align:center" class="col-md-12">Nuevos entrantes</label>
+
+                    <textarea class="col-md-12" autofocus name="diagramapoter_nuevos_entrantes" id="diagramapoter_nuevos_entrantes" style="resize:none "rows="4" placeholder="Aquí es donde realmente se mide con otras empresas para poder ver si su producto realmente es rentable o no." ng-model="oferta.fk_diagrama_competidores.nuevosMiembros" ng-required="false" >
+                    </textarea>
+
+                </div>
+                <div class="col-md-6">
+                    <label class="col-md-12" style="text-align:center">Compradores</label>
+
+                    <textarea class="col-md-12" autofocus name="diagramapoter_consumidores" id="diagramapoter_consumidores" style="resize:none "rows="4" placeholder="Es si su empresa esta llegando a los clientes y cuál es el grado de dependencia o lealtad de ellos con sus productos." ng-model="oferta.fk_diagrama_competidores.consumidores" ng-required="false" >
+                    </textarea>
+
+                </div>
+                <div class="col-md-6">
+                    <label style="text-align:center" class="col-md-12">Proveedores</label>
+
+                    <textarea class="col-md-12" autofocus name="diagramapoter_proveedores" id="diagramapoter_proveedores" style="resize:none "rows="4" placeholder="Es la forma de la negociación con los proveedores, ya que ellos son los que realmente saben dónde está la rentabilidad en el sector." ng-model="oferta.fk_diagrama_competidores.proveedores" ng-required="false" >
+                    </textarea>
+
+                </div>
+                <div class="col-md-12">
+                    <label class="col-md-12" style="text-align:center">Competidores</label>
+
+                    <textarea class="col-md-12" autofocus name="diagramapoter_competidores" id="diagramapoter_competidores" style="resize:none "rows="4" placeholder="Indique las empresas con las que puede competir directamente que ofrecen el mismo producto." ng-model="oferta.fk_diagrama_competidores.competidores" ng-required="false" >
+                    </textarea>
+
+                </div>
+                <div class="col-md-12">
+                    <label style="text-align:center" class="col-md-12">Sustitutos</label>
+
+                    <textarea class="col-md-12" autofocus name="diagramapoter_sustitutos" id="diagramapoter_sustitutos" style="resize:none "rows="4" placeholder="Es la existencia de los productos que pueden sustituir su producto en precios, características,etc." ng-model="oferta.fk_diagrama_competidores.sustitutos" ng-required="false" >
+                    </textarea>
+
+                </div>
+            </div>
+
+            <!--
             <div class=" table-responsive" style="font-size: 12px;">
                 <table class="table table-bordered" style="margin-bottom: 0px;">
                     <tr >
-                        <th style="text-align: center;">Competidores</th>
-                        <th style="text-align: center;">Poder de los Consumidores</th>
-                        <th style="text-align: center;">Sustitutos</th>
-                        <th style="text-align: center;">Poder de los proveedores</th>
                         <th style="text-align: center;">Nuevos entrantes</th>
+                        <th style="text-align: center;">Compradores</th>
+                        <th style="text-align: center;">Proveedores</th>
+                        <th style="text-align: center;">Competidores</th>
+                        <th style="text-align: center;">Sustitutos</th>
                     </tr>
                     <tr>
                         <td>
-                            <textarea autofocus name="diagramapoter_competidores" id="diagramapoter_competidores" style="resize:none "rows="6" placeholder="Indique las empresas con las que puede competir directamente que ofrecen el mismo producto." ng-model="oferta.fk_diagrama_competidores.competidores" ng-required="false" >
+                            <textarea autofocus name="diagramapoter_nuevos_entrantes" id="diagramapoter_nuevos_entrantes" style="resize:none "rows="6" placeholder="Aquí es donde realmente se mide con otras empresas para poder ver si su producto realmente es rentable o no." ng-model="oferta.fk_diagrama_competidores.nuevosMiembros" ng-required="false" >
                             </textarea>
                         </td>
                         <td>
@@ -47,20 +87,23 @@
                             </textarea>
                         </td>
                         <td>
-                            <textarea autofocus name="diagramapoter_sustitutos" id="diagramapoter_sustitutos" style="resize:none "rows="6" placeholder="Es la existencia de los productos que pueden sustituir su producto en precios, características,etc." ng-model="oferta.fk_diagrama_competidores.sustitutos" ng-required="false" >
-                            </textarea>
-                        </td>
-                        <td>
                             <textarea autofocus name="diagramapoter_proveedores" id="diagramapoter_proveedores" style="resize:none "rows="6" placeholder="Es la forma de la negociación con los proveedores, ya que ellos son los que realmente saben dónde está la rentabilidad en el sector." ng-model="oferta.fk_diagrama_competidores.proveedores" ng-required="false" >
                             </textarea>
                         </td>
                         <td>
-                            <textarea autofocus name="diagramapoter_nuevos_entrantes" id="diagramapoter_nuevos_entrantes" style="resize:none "rows="6" placeholder="Aquí es donde realmente se mide con otras empresas para poder ver si su producto realmente es rentable o no." ng-model="oferta.fk_diagrama_competidores.nuevosMiembros" ng-required="false" >
+                            <textarea autofocus name="diagramapoter_competidores" id="diagramapoter_competidores" style="resize:none "rows="6" placeholder="Indique las empresas con las que puede competir directamente que ofrecen el mismo producto." ng-model="oferta.fk_diagrama_competidores.competidores" ng-required="false" >
+                            </textarea>
+                        </td>
+                        
+                        <td>
+                            <textarea autofocus name="diagramapoter_sustitutos" id="diagramapoter_sustitutos" style="resize:none "rows="6" placeholder="Es la existencia de los productos que pueden sustituir su producto en precios, características,etc." ng-model="oferta.fk_diagrama_competidores.sustitutos" ng-required="false" >
                             </textarea>
                         </td>
                     </tr>
                 </table>
             </div>
+            -->
+
         </div>
     </div>
 

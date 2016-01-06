@@ -1,6 +1,8 @@
 # -*- encoding: utf-8 -*-
 import random
 import string
+from datetime import datetime
+
 
 from django.shortcuts import render, redirect
 from django.shortcuts import render_to_response
@@ -332,6 +334,7 @@ def ver_cualquier_oferta(request, id_oferta):
 			if oferta.estado == 3:  #la oferta esta censurada
 				return HttpResponseRedirect('/NotFound')
 			args['oferta'] = oferta
+			args['fecha_publicacion_oferta'] = oferta.fecha_publicacion.strftime('%Y-%m-%d %H:%M:%S')
 		#Sino la encuentro informo.
 		except:
 			args['mensaje_error'] = "La oferta no se encuentra en la red, lo sentimos."
@@ -444,6 +447,7 @@ def administrar_Oferta(request, id_oferta):
 	args.update(csrf(request))
 	args['dueno'] = equipoDueno.fk_participante.first_name + ' ' + equipoDueno.fk_participante.last_name
 	args['oferta'] = oferta
+	args['fecha_publicacion_oferta'] = oferta.fecha_publicacion.strftime('%Y-%m-%d %H:%M:%S')
 	calificacionOferta = oferta.calificacion_total
 	args['calificacionOferta'] = str(calificacionOferta)
 	args['participantes'] = participantes
@@ -477,6 +481,7 @@ def administrar_Borrador(request, id_oferta):
 
 	try:
 		oferta = Oferta.objects.get(id_oferta = id_oferta)
+		fecha_creacion_oferta = oferta.fecha_creacion
 	except:
 		return HttpResponseRedirect('/NotFound/')
 	if (oferta.publicada == 1):
@@ -493,6 +498,7 @@ def administrar_Borrador(request, id_oferta):
 	args.update(csrf(request))
 	args['dueno'] = equipoDueno.fk_participante.first_name + ' ' + equipoDueno.fk_participante.last_name
 	args['oferta'] = oferta
+	args['fecha_creacion_oferta'] = oferta.fecha_creacion.strftime('%Y-%m-%d %H:%M:%S')
 	args['galeria'] = galeria
 	args['imagen_principal'] = galeria.first()
 	args['palabras'] = oferta.palabras_clave.all
@@ -555,6 +561,7 @@ def editar_borrador(request, id_oferta):
 		descripcion = request.POST['descripcion_oferta']
 		dominio = request.POST['oferta_dominio']
 		subdominio = request.POST['oferta_sub_dominio']
+		fecha_actual = datetime.datetime.now()
 		#tags = request.POST['oferta_tags'] #Aun no usado
 		#seccion de perfiles
 		perfil_cliente = request.POST.get('oferta_descripcion_perfil', "No disponible")
@@ -591,6 +598,7 @@ def editar_borrador(request, id_oferta):
 		oferta_editada.descripcion = descripcion
 		oferta_editada.dominio = dominio
 		oferta_editada.subdominio = subdominio
+		oferta_editada.fecha_creacion = fecha_actual
 		#seccion perfiles
 		oferta_editada.perfil_cliente = perfil_cliente
 		oferta_editada.perfil_beneficiario = perfil_beneficiario
@@ -755,6 +763,7 @@ def editar_borrador_demanda(request, id_demanda):
 		descripcion = request.POST['descripcion_demanda']
 		dominio = request.POST['demanda_dominio']
 		subdominio = request.POST['demanda_sub_dominio']
+		fecha_actual = datetime.datetime.now()
 		#tags = request.POST['demanda_tags'] #Aun no usado
 		#seccion de perfiles
 		perfil_cliente = request.POST.get('demanda_descripcion_perfil', "No disponible")
@@ -789,6 +798,7 @@ def editar_borrador_demanda(request, id_demanda):
 		demanda_editada.descripcion = descripcion
 		demanda_editada.dominio = dominio
 		demanda_editada.subdominio = subdominio
+		demanda_editada.fecha_creacion = fecha_actual
 		#seccion perfiles
 		demanda_editada.perfil_cliente = perfil_cliente
 		demanda_editada.perfil_beneficiario = perfil_beneficiario
@@ -1496,6 +1506,7 @@ def ver_cualquier_demanda(request, id_demanda):
 				args['mensaje_error'] = "La Demanda no se encuentra disponible, lo sentimos."
 				return render_to_response('problema_oferta.html',args)
 			args['demanda'] = demanda
+			args['fecha_publicacion_demanda'] = demanda.fecha_publicacion.strftime('%Y-%m-%d')
 			args['estado'] = estado
 		#Si algo sale mal entonces la demanda no existe.
 		except:
@@ -1679,6 +1690,7 @@ def administrar_Borrador_Demanda(request, id_demanda):
 	args.update(csrf(request))
 	args['dueno'] = usuario.first_name + ' ' + usuario.last_name
 	args['demanda'] = demanda
+	args['fecha_creacion_demanda'] = demanda.fecha_creacion.strftime('%Y-%m-%d')
 	args['galeria'] = galeria
 	args['imagen_principal'] = galeria.first()
 	args['palabras'] = demanda.palabras_clave.all
@@ -1707,6 +1719,7 @@ def administrar_demanda(request, id_demanda):
 		try:
 			demanda = Demanda.objects.get(id_demanda = id_demanda)
 			args['demanda'] = demanda
+			args['fecha_publicacion_demanda'] = demanda.fecha_publicacion.strftime('%Y-%m-%d')
 			solicitudes = ResolucionDemanda.objects.filter(fk_demanda_que_aplica = demanda)
 			args['solicitudes'] = solicitudes
 		except:
