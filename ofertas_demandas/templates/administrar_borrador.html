@@ -67,10 +67,8 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
-
 
     <!--MODAL ELIMINAR BORRADOR OFERTA-->
     <div id="aceptarEliminar" class="modal fade" role="dialog">
@@ -108,10 +106,10 @@
                         <a href="#modelo" aria-controls="messages" role="tab" data-toggle="tab">Modelo de Negocio</a>
                     </li>
                     <li role="presentation">
-                        <a href="#industria" aria-controls="settings" role="tab" data-toggle="tab">Competidores</a>
+                        <a href="#industria" aria-controls="settings" role="tab" data-toggle="tab">Industria/Competidores</a>
                     </li>
                     <li role="presentation">
-                        <a href="#esta_logro" aria-controls="messages" role="tab" data-toggle="tab">Logros</a>
+                        <a href="#esta_logro" aria-controls="messages" role="tab" data-toggle="tab">Estado/Logros</a>
                     </li>
                 </ul>
                 <!-- Tab panes -->
@@ -168,6 +166,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div role="tabpanel" class="tab-pane" id="cliente_usuario">
                         <div class="col-md-12">
                             <!--Perfil Cliente-->
@@ -189,6 +188,7 @@
                             {% endif %} </p>
                         </div>
                     </div>
+
                     <div role="tabpanel" class="tab-pane" id="modelo">
                         <div class="col-md-12">
                             <!--Canvas del modelo de negocio-->
@@ -205,58 +205,174 @@
                                         <th>Segementos de clientes</th>
                                     </tr>
                                     <tr>
-                                        <td class="bottom-15" align="justify"  rowspan=3>{{ oferta.fk_diagrama_canvas.asociaciones_clave }} </td>
-                                        <td class="bottom-15" align="justify" >{{ oferta.fk_diagrama_canvas.actividades_clave }} </td>
-                                        <td class="bottom-15" align="justify" rowspan=3>{{ oferta.fk_diagrama_canvas.propuesta_valor }} </td>
-                                        <td class="bottom-15" align="justify" >{{ oferta.fk_diagrama_canvas.relacion_clientes }} </td>
-                                        <td class="bottom-15" align="justify" rowspan=3>{{ oferta.fk_diagrama_canvas.segmento_mercado }} </td>
+                                        <td class="bottom-15" align="justify"  rowspan=3>
+                                        {% if oferta.fk_diagrama_canvas.asociaciones_clave != None %}
+                                            {{oferta.fk_diagrama_canvas.asociaciones_clave }} 
+                                        {% else %}
+                                            No disponible
+                                        {% endif %}
+                                        </td>
+                                        <td class="bottom-15" align="justify" >
+                                        {% if oferta.fk_diagrama_canvas.actividades_clave != None %}
+                                            {{oferta.fk_diagrama_canvas.actividades_clave }} 
+                                        {% else %}
+                                            No disponible
+                                        {% endif %}
+                                        </td>
+                                        <td class="bottom-15" align="justify" rowspan=3>
+                                        {% if oferta.fk_diagrama_canvas.propuesta_valor != None %}
+                                            {{oferta.fk_diagrama_canvas.propuesta_valor }} 
+                                        {% else %}
+                                            No disponible
+                                        {% endif %}
+                                        </td>
+                                        <td class="bottom-15" align="justify" >
+                                        {% if oferta.fk_diagrama_canvas.relacion_clientes != None %}
+                                            {{oferta.fk_diagrama_canvas.relacion_clientes }} 
+                                        {% else %}
+                                            No disponible
+                                        {% endif %}
+                                        </td>
+                                        <td class="bottom-15" align="justify" rowspan=3>
+                                        {% if oferta.fk_diagrama_canvas.segmento_mercado != None %}
+                                            {{oferta.fk_diagrama_canvas.segmento_mercado }} 
+                                        {% else %}
+                                            No disponible
+                                        {% endif %}
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th>Recursos Claves</th>
-                                        <th>Canales</th>
+                                        <th>Canales de Distribuci&oacute;n</th>
                                     </tr>
                                     <tr>
-                                        <td class="bottom-15" align="justify" >{{ oferta.fk_diagrama_canvas.recursos_clave }} </td>
-                                        <td class="bottom-15" align="justify" >{{ oferta.fk_diagrama_canvas.canales_distribucion }} </td>
+                                        <td class="bottom-15" align="justify" >
+                                        {% if oferta.fk_diagrama_canvas.recursos_clave != None %}
+                                            {{oferta.fk_diagrama_canvas.recursos_clave }} 
+                                        {% else %}
+                                            No disponible
+                                        {% endif %}
+                                        </td>
+                                        <td class="bottom-15" align="justify" >
+                                        {% if oferta.fk_diagrama_canvas.canales_distribucion != None %}
+                                            {{oferta.fk_diagrama_canvas.canales_distribucion }} 
+                                        {% else %}
+                                            No disponible
+                                        {% endif %}
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th colspan=3>Estructura de Costos</th>
                                         <th colspan=2>Fuentes de Ingresos</th>
                                     </tr>
                                     <tr>
-                                        <td class="bottom-15" align="justify"  colspan=3>{{ oferta.fk_diagrama_canvas.estructura_costos }}</td>
-                                        <td class="bottom-15" align="justify"  colspan=2>{{ oferta.fk_diagrama_canvas.fuente_ingresos }} </td>
+                                        <td class="bottom-15" align="justify"  colspan=3>
+                                        {% if oferta.fk_diagrama_canvas.estructura_costos != None %}
+                                            {{oferta.fk_diagrama_canvas.estructura_costos }} 
+                                        {% else %}
+                                            No disponible
+                                        {% endif %}
+                                        </td>
+                                        <td class="bottom-15" align="justify"  colspan=2>
+                                        {% if oferta.fk_diagrama_canvas.fuente_ingresos != None %}
+                                            {{oferta.fk_diagrama_canvas.fuente_ingresos }} 
+                                        {% else %}
+                                            No disponible
+                                        {% endif %}
+                                        </td>
                                     </tr>
                                 </table>
                             </div>
                         </div>
-
                     </div>
+
                     <div role="tabpanel" class="tab-pane" id="industria">
                         <div class="col-md-12">
                             <!--Tendencias-->
-                            <p style="color: darkgray" for="Descripcion" class="col-md-5">Tendencias Relevantes</p>
-                            <br>
-                            <p class="bottom-15" align="justify" class="col-md-12">
+                            <p style="color: darkgray" for="Descripcion" class="col-md-4">Tendencias Relevantes</p>
+                            <p align="justify" class="col-md-8">
                             {% if oferta.cuadro_tendencias_relevantes != None %}
                             {{ oferta.cuadro_tendencias_relevantes }} 
                             {% else %}
                             No disponible
-                            {% endif %} </p>
+                            {% endif %} 
+                            </p>
                             <!--Alternativas de solucion-->
-                            <p style="color: darkgray" for="Descripcion" class="col-md-5">Alternativas de Soluci&oacute;n Existentes</p>
+                            <p style="color: darkgray" for="Descripcion" class="col-md-4">Alternativas de Soluci&oacute;n Existentes</p>
                             <br>
-                            <p class="bottom-15" align="justify" class="col-md-12">
+                            <p align="justify" class="col-md-8">
                             {% if oferta.descripcion_soluciones_existentes != None %}
                             {{ oferta.descripcion_soluciones_existentes }} 
                             {% else %}
                             No disponible
                             {% endif %} 
                             </p>
+
                             <!--Diagrama de Porter-->
+                            <p style="color: darkgray" for="Descripcion" class="col-md-4">Diagrama de Porter</p>
 
-                            <p style="color: darkgray" for="Descripcion" class="col-md-5">Diagrama de Porter</p>
+                            <div class="col-md-8 table-responsive" style="font-size: 12px;">
+                                <table class="table table-bordered" >
+                                    <tr>
+                                        <th colspan=2 >Nuevos entrantes</th>
+                                    </tr>
+                                    <tr>
+                                        <td class="bottom-15" align="justify"  colspan=2>
+                                        {% if oferta.fk_diagrama_competidores.nuevosMiembros != None %}
+                                            {{oferta.fk_diagrama_competidores.nuevosMiembros }} 
+                                        {% else %}
+                                            No disponible
+                                        {% endif %}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th colspan=1>Compradores</th>
+                                        <th colspan=1>Proveedores</th>
+                                    </tr>
+                                    <tr>
+                                        <td class="bottom-15" align="justify" colspan=1>
+                                        {% if oferta.fk_diagrama_competidores.consumidores != None %}
+                                            {{oferta.fk_diagrama_competidores.consumidores }} 
+                                        {% else %}
+                                            No disponible
+                                        {% endif %}
+                                        </td>
+                                        <td class="bottom-15" align="justify" colspan=1>
+                                        {% if oferta.fk_diagrama_competidores.proveedores != None %}
+                                            {{oferta.fk_diagrama_competidores.proveedores }} 
+                                        {% else %}
+                                            No disponible
+                                        {% endif %}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th colspan=2>Competidores</th>
+                                    </tr>
+                                    <tr>
+                                        <td class="bottom-15" align="justify"  colspan=2>
+                                        {% if oferta.fk_diagrama_competidores.competidores != None %}
+                                            {{oferta.fk_diagrama_competidores.competidores }} 
+                                        {% else %}
+                                            No disponible
+                                        {% endif %}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th colspan=2>Sustitutos</th>
+                                    </tr>
+                                    <tr>
+                                        <td class="bottom-15" align="justify"  colspan=2>
+                                        {% if oferta.fk_diagrama_competidores.sustitutos != None %}
+                                            {{oferta.fk_diagrama_competidores.sustitutos }} 
+                                        {% else %}
+                                            No disponible
+                                        {% endif %}
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
 
+                            <!--
                             <div class="col-md-12 table-responsive" style="font-size: 12px;">
                                 <table class="table table-bordered" >
                                     <tr>
@@ -277,8 +393,10 @@
                             </div>
 
                             <br><br>
+                            -->
                         </div>
                     </div>
+
                     <div role="tabpanel" class="tab-pane" id="esta_logro">
                         <div class="col-md-12">
                             <p style="color: darkgray" for="Descripcion" class="col-md-6">Tiempo aproximado de disponilidad del producto o servicio</p>
@@ -312,6 +430,7 @@
                             </p>
                         </div>
                     </div>
+
                 </div>
             </div>
             <br>

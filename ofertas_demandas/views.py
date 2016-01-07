@@ -552,7 +552,7 @@ def editar_borrador(request, id_oferta):
 	#si no se encuentra establecida la duracion
 	except:
 		oferta_duracion = 1
-		oferta_tiempo = "Año/s"
+		#oferta_tiempo = "Año/s"
 
 	if request.method == 'POST':
 		#seccion de informacion
@@ -700,7 +700,7 @@ def editar_borrador(request, id_oferta):
 		args.update(csrf(request))
 		args['oferta_tiempo']=oferta_tiempo
 		args['oferta_duracion']=oferta_duracion
-		args['oferta'] = oferta_editada
+		args['oferta'] = oferta
 		args['msg'] = "Borrador de oferta modificada exitosamente"
 		args['imagen_principal'] = galeria.first()
 		args['palabras'] = oferta.palabras_clave.all
