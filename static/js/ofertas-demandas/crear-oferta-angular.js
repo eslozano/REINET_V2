@@ -27,7 +27,8 @@ appoferta.config(['flowFactoryProvider', function (flowFactoryProvider) {
 
 }]);
 
-appoferta.controller('crearOfertaFormController',['$scope','$rootScope','Oferta','$timeout','$window','$cookies','$compile',function($scope,$rootScope,Oferta,$timeout,$window,$cookies,$compile,flowFactoryProvider){
+appoferta.controller('crearOfertaFormController',['$scope','$rootScope','Oferta','$timeout','$window','$cookies','$compile',
+    function($scope,$rootScope,Oferta,$timeout,$window,$cookies,$compile,flowFactoryProvider){
     // dentro del scope van modelos
 
     $scope.setHead = function (file, chunk, isTest) {
@@ -165,6 +166,7 @@ appoferta.controller('crearOfertaFormController',['$scope','$rootScope','Oferta'
             }else{
                 console.log('form invalido');
                 $scope.validar_form=true; 
+                var toId;
             };
         };
     };
@@ -221,7 +223,6 @@ appoferta.controller('crearOfertaFormController',['$scope','$rootScope','Oferta'
         return json_array;
     }
 
-
     $scope.guardar = function(){
 
         $scope.oferta.tiempo_para_estar_disponible=tiempo + " " + duracion;
@@ -249,11 +250,58 @@ appoferta.controller('crearOfertaFormController',['$scope','$rootScope','Oferta'
 
         });
     }
-
-
-
 //fin de controller
 }]);
+
+appoferta.directive('uniqueNombre', function($http){
+    var toId;
+    return {
+        require: 'ngModel',
+        ink: function(scope, elem, attr, ctrl) {
+            //when the scope changes, revisar las siglas.
+            scope.$watch(attr.ngModel, function(value) {
+                // if there was a previous attempt, stop it.
+                if(toId) clearTimeout(toId);
+                if(value!= undefined){
+                    console.log("Estamos adentro del directive para Nombre Oferta");
+                    toId = setTimeout(function(){
+                        $http(
+                        {
+                            method: 'POST',
+                            url: '/verificar_nombre_oferta',
+                            data: 'nombre_oferta='+value,
+                            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                        })
+                        .success(function(data, status, headers, config) {
+                            if (data == "usado") {
+                                ctrl.$setValidity('uniqueNombre', false);
+                                $("#nombre_oferta_usado").html("Nombre de Oferta no disponible");
+                                $("#nombre_oferta_usado").attr("style", "display: block; color: red; text-align:center");
+                                $("#nombre_oferta_usado").attr("class", "info-board-red");
+                            }
+                            else if (data == "ok"){
+                                ctrl.$setValidity('uniqueNombre', true);
+                                $("#nombre_oferta_usado").html("Nombre de Oferta disponible");
+                                $("#nombre_oferta_usado").attr("style", "display: block; color: green; text-align:center");
+                                $("#nombre_oferta_usado").attr("class", "info-board-green");
+                            }
+                            else {
+                                ctrl.$setValidity('uniqueNombre', false);
+                                $("#nombre_oferta_usado").html("Ingrese nombre Oferta");
+                                $("#nombre_oferta_usado").attr("style", "display: block; color: blue; text-align:center");
+                                $("#nombre_oferta_usado").attr("class", "info-board-blue");
+                            }
+                        })
+                        .error(function(data, status, headers, config) {
+                            console.log("error")
+                        });
+                    }, 200);
+                }
+            })
+        }
+    }
+            
+});
 
 
 appoferta.factory('Oferta',['$resource',function($resource){
@@ -296,19 +344,18 @@ appoferta.controller('CargarOfertasSelectController',['$scope','$http','urls',fu
 
     $scope.selectOfertas = function(item){
         console.log(item);
-    }
-    
+    }   
 }]);
 
-//appoferta.directive('ngUpdateHidden',function() {
-//    return function(scope, el, attr) {
-//        var model = attr['ngModel'];
-//        scope.$watch(model, function(nv) {
-//            console.log(el.val(nv));
-//        });
-//
-//    };
-//});
+/*appoferta.directive('ngUpdateHidden',function() {
+    return function(scope, el, attr) {
+        var model = attr['ngModel'];
+        scope.$watch(model, function(nv) {
+            console.log(el.val(nv));
+        });
+
+    };
+});*/
 
 //CONTROLADOR LISTA OFERTAS DE LA RED
 appoferta.controller('OfertasControlador',['$scope','$http','urls',function($scope,$http,urls){
@@ -712,9 +759,6 @@ appoferta.controller('editar_oferta_form', ['$scope','$window', 'Oferta', functi
     }else{
         console.log('borrador oferta no existe');
     }
-    
-
-
 }]);
 
 appoferta.filter('range', function() {
@@ -725,12 +769,4 @@ appoferta.filter('range', function() {
     return input;
   };
 });
-
-
-
-
-
-
-
-
 

@@ -54,8 +54,6 @@ redInn.factory('ContarNoLeidos',['$http','urls',function($http,urls){
     }
 }]);
 
-
-
 //controlador que hara la busqueda de los usuario y los mostrara en pantalla
 redInn.controller('ControladorBusqueda',['$scope','Entidades',function($scope,Entidades){
     $scope.busqueda_entrada = null;
@@ -105,7 +103,6 @@ redInn.controller('ControladorBusqueda',['$scope','Entidades',function($scope,En
         }
     }
 }]);
-
 
 redInn.controller('MensajesControllers',['$scope','$dragon','$rootScope',function($scope,$dragon,$rootScope){
     $scope.mensaje = {};
@@ -158,7 +155,6 @@ redInn.controller('MensajesControllers',['$scope','$dragon','$rootScope',functio
             });
         }
     });
-
 }]);
 
 redInn.controller('MensajesContadorController',['$scope','ContarNoLeidos',function($scope,ContarNoLeidos){
@@ -179,10 +175,7 @@ redInn.controller('MensajesContadorController',['$scope','ContarNoLeidos',functi
             contar();
         }
     );
-
 }]);
-
-
 
 /// Controlador de Notificaciones 
 /// Modf:Usado para notificar accion de membresias - Fausto Mora
@@ -234,7 +227,6 @@ redInn.controller('NotificacionControllers',['$scope','$dragon','$rootScope',fun
             });
         }
     });
-
 }]);
 
 redInn.controller('NotificacionContadorController',['$scope','ContarNoLeidos',function($scope,ContarNoLeidos){
@@ -255,14 +247,12 @@ redInn.controller('NotificacionContadorController',['$scope','ContarNoLeidos',fu
             contar();
         }
     );
-
 }]);
 
 
- redInn.controller('ExampleController', ['$scope', function($scope) {
-                                    $scope.email = 'me@dfgdsf.com';
-                                    
-                                  }]);
+redInn.controller('ExampleController', ['$scope', function($scope) {
+    $scope.email = 'me@dfgdsf.com';
+}]);
 
 redInn.directive('uniqueNombre', function($http){
             var toId;
@@ -311,9 +301,7 @@ redInn.directive('uniqueNombre', function($http){
                 })
               }
             }
-          });
-
-
+});
 
 redInn.directive('uniqueUser', function($http){
             var toId;
@@ -363,9 +351,7 @@ redInn.directive('uniqueUser', function($http){
                 })
               }
             }
-          });
-
-
+});
 
 redInn.directive('uniqueEmail', function($http){
             var toId;
@@ -416,4 +402,4 @@ redInn.directive('uniqueEmail', function($http){
                 })
               }
             }
-          });
+});

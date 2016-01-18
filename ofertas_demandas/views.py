@@ -31,6 +31,31 @@ from usuarios.models import *
 from django.db.models import Avg
 from usuarios.serializers import UsuarioSerializador
 
+
+"""
+Autor: Jose Velez
+Nombre de funcion: verificar_nombre_oferta
+Entrada: request GET o POST
+Salida: Formulario de generarCodigo
+Descripción: Genera un codigo para crear una oferta
+"""
+
+def verificar_nombre_oferta(request):  
+
+    if request.method == "POST":
+        nombre_oferta = request.POST['nombre_oferta'] 
+        try:
+            oferta = Oferta.objects.get(nombre=nombre_oferta) 
+        except:
+            oferta = None
+        #print "nombre_oferta",nombre_oferta, "oferta ", oferta
+        if oferta is not None: #Error 10, usar palabras en español
+            return HttpResponse("usado")
+        else:
+            return HttpResponse("ok")
+    return HttpResponse("no es post")
+
+
 """
 Autor: Leonel Ramirez
 Nombre de funcion: inicio_oferta
@@ -481,7 +506,7 @@ def administrar_Borrador(request, id_oferta):
 
 	try:
 		oferta = Oferta.objects.get(id_oferta = id_oferta)
-		fecha_creacion_oferta = oferta.fecha_creacion
+		#fecha_creacion_oferta = oferta.fecha_creacion.strftime('%Y-%m-%d %H:%M:%S')
 	except:
 		return HttpResponseRedirect('/NotFound/')
 	if (oferta.publicada == 1):
@@ -505,7 +530,7 @@ def administrar_Borrador(request, id_oferta):
 	return render_to_response('administrar_borrador.html',args)
 
 """
-Autor: Roberto Yoncon
+Autor: Roberto Yoncon - Jose Velez Gomez
 Nombre de funcion: editar_borrador
 Parametros: request, id de una oferta
 Salida: 
@@ -513,8 +538,6 @@ Descripcion: funcion para editar un borrador
 """
 @login_required
 def editar_borrador(request, id_oferta):
-	print "id_oferta-::  ",id_oferta
-
 	sesion = request.session['id_usuario']
 	usuario = Perfil.objects.get(id=sesion)
 	args = {}
@@ -656,6 +679,7 @@ def editar_borrador(request, id_oferta):
 				diagrama_canvas.save()
 				oferta_editada.fk_diagrama_canvas = diagrama_canvas
 
+		#print "id_oferta-borrador POST:3:  ",id_oferta
 		#seccion Diagrama de Porter
 		#se verifica si no existen datos ingresados en los campos. Entonces se dice que no existe el objeto diagrama porter
 		if porter_competidores == "" and porter_consumidores=="" and porter_sustitutos=="" and porter_proveedores=="" and porter_nuevos=="":
@@ -682,14 +706,13 @@ def editar_borrador(request, id_oferta):
 				diagrama_porter.save()
 				oferta_editada.fk_diagrama_competidores = diagrama_porter
 
+		#print "id_oferta-borrador POST:4:  ",id_oferta
 		#manejo de tags
 		try:
 			palabra_clave = PalabraClave.objects.filter(ofertas_con_esta_palabra=oferta)
 			tags = []
-
 			for t in palabra_clave:
 				tags.append(t.palabra.encode('utf-8','ignore'))
-
 			etiqueta_json= json.dumps(tags)
 			args['tags']=etiqueta_json
 		except:
@@ -698,24 +721,27 @@ def editar_borrador(request, id_oferta):
 		galeria = ImagenOferta.objects.all().filter(fk_oferta = oferta.id_oferta)
 		oferta_editada.save()
 		args.update(csrf(request))
+
 		args['oferta_tiempo']=oferta_tiempo
 		args['oferta_duracion']=oferta_duracion
-		args['oferta'] = oferta
+		args['oferta'] = oferta_editada
 		args['msg'] = "Borrador de oferta modificada exitosamente"
 		args['imagen_principal'] = galeria.first()
 		args['palabras'] = oferta.palabras_clave.all
-		return render_to_response('administrar_borrador.html',args)
-
+		#return render_to_response('administrar_borrador.html',args)
+		return HttpResponseRedirect('/AdministrarBorradorOferta/'+id_oferta)
+		
 	else:
 		args.update(csrf(request))
 		args['oferta_tiempo']=oferta_tiempo
 		args['oferta_duracion']=oferta_duracion
 		args['oferta'] = oferta
+		print "DESCRIPCION:::::::::::  ",oferta.descripcion
 		return render_to_response('editar_borrador.html',args)
 
 
 """
-Autor: Roberto Yoncon
+Autor: Roberto Yoncon - Jose Velez Gomez
 Nombre de funcion: editar_borrador_demanda
 Parametros: request, id de una demanda
 Salida: 
@@ -842,13 +868,15 @@ def editar_borrador_demanda(request, id_demanda):
 		args['msg'] = "Borrador de demanda modificado exitosamente"
 		args['imagen_principal'] = galeria.first()
 		args['palabras'] = demanda.palabras_clave.all
-		return render_to_response('administrar_borrador_demanda.html',args)
+		#return render_to_response('administrar_borrador_demanda.html',args)
+		return HttpResponseRedirect('/AdministrarBorradorDemanda/'+id_demanda)
 
 	else:
 		args.update(csrf(request))
 		args['demanda_tiempo']=demanda_tiempo
 		args['demanda_duracion']=demanda_duracion
 		args['demanda'] = demanda
+		print "DESCRIPCION DEMANDA:::::::::::  ",demanda.descripcion
 		return render_to_response('editar_borrador_demanda.html',args)
 
 

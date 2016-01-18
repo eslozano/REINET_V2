@@ -1051,7 +1051,7 @@ def verificar_username(request):  #Error 10, nombre inadecuado de la funcion
 
 """
 Autor: Angel Guale
-Nombre de funcion: verificar_username
+Nombre de funcion: verificar_cedula
 Entrada: request GET o POST
 Salida: Formulario de generarCodigo
 Descripción: Genera un codigo para registrar institucion
@@ -1074,7 +1074,7 @@ def verificar_cedula(request):  #Error 10, nombre inadecuado de la funcion
 
 """
 Autor: Angel Guale
-Nombre de funcion: verificar_username
+Nombre de funcion: verificar_email
 Entrada: request GET o POST
 Salida: Formulario de generarCodigo
 Descripción: Genera un codigo para registrar institucion

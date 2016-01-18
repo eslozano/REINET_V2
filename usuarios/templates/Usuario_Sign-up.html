@@ -170,9 +170,7 @@
                         </div>
 
                         
-                        <input required type="text" class="form-control" id="username" name="username" maxlength="20"
-                               placeholder="Usuario" data-toggle="popover" data-placement="left" data-trigger="focus"
-                               data-content="Ingresa tu usuario aquí." data-original-title="username" ng-required="true" ng-pattern="/^[a-zA-Z][a-zA-Z0-9]{3,30}$/" ng-model="perfil.username" unique-user>
+                        <input required type="text" class="form-control" id="username" name="username" maxlength="20" placeholder="Usuario" data-toggle="popover" data-placement="left" data-trigger="focus" data-content="Ingresa tu usuario aquí." data-original-title="username" ng-required="true" ng-pattern="/^[a-zA-Z][a-zA-Z0-9]{3,30}$/" ng-model="perfil.username" unique-user>
 
                         <div ng-messages='registro_usuario_form.username.$error'>
                           <label class="info-board-red" style="display: block; color: red; text-align:center" ng-show="registro_usuario_form.username.$dirty && registro_usuario_form.username.$invalid">

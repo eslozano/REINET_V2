@@ -7,6 +7,12 @@
 <div class="col-md-12">
     <!--NOMBRES-->
     <div class="form-group">
+        <div class="form-group">
+            <label class="info-board-red col-md-offset-2 col-md-10" id="nombre_oferta_usado" style="display: none; color: red"></label>
+        </div>
+
+        
+
         <label for="Nombres" class="col-md-2">Nombre</label>
 
         <div class="col-md-10">
@@ -15,7 +21,7 @@
             <input autofocus type="text" class="form-control" placeholder="Nombre de la Oferta" id="nombre" name="nombre_oferta"  data-trigger="focus" ng-model="oferta.nombre" ng-pattern="/^[a-zA-Z ]{10,300}$/"  ng-required="true" ng-blur="validarSubmit(forms.crear_oferta_form1)">
             <span ng-show="forms.crear_oferta_form1.nombre_oferta.$error.pattern"><p class="bg-danger text-danger">Nombre de la Oferta debe contener por lo menos 10 caracteres alfab&eacute;ticos.</p></span>
             -->
-            <span ng-show="forms.crear_oferta_form1.nombre_oferta.$error.required" ng-if="!forms.crear_oferta_form1.$pristine"><p class="bg-danger text-danger">Este campo es obligatorio.</p></span>
+            <span ng-show="forms.crear_oferta_form1.nombre_oferta.$error.required" ng-if="!forms.crear_oferta_form1.$pristine"><p class="bg-danger text-danger">El nombre de la Oferta es obligatorio.</p></span>
         </div>
     </div>
     <!--Tipo-->
@@ -26,7 +32,7 @@
             <select name="select_tipo" class="form-control" ng-options="i.valor as i.tipo for i in items_tipo" ng-model="oferta.tipo" ng-required="true" name="select_tipo_oferta" ng-blur="validarSubmit(forms.crear_oferta_form1)">
                 <option value="">Seleccione tipo de oferta</option>
             </select>
-            <span ng-show="forms.crear_oferta_form1.select_tipo.$error.required" ng-if="!forms.crear_oferta_form1.$pristine"><p class="bg-danger text-danger">Este campo es obligatorio.</p></span>
+            <span ng-show="forms.crear_oferta_form1.select_tipo.$error.required" ng-if="!forms.crear_oferta_form1.$pristine"><p class="bg-danger text-danger">El tipo de la Oferta es obligatorio.</p></span>
         </div>
 
 
@@ -36,9 +42,8 @@
         <label for="descripcion-oferta" class="col-md-2">Descripci&oacute;n</label>
         <div class="col-md-10">
 
-            <textarea id="descripcion_oferta" name="descripcion_oferta" rows="4" class="form-control" placeholder="Escribe aqu&iacute; la descripci&oacute;n de la oferta"
-                      ng-model="oferta.descripcion" ng-required="true" ng-blur="validarSubmit(forms.crear_oferta_form1)" ng-init="value='Probando'"></textarea>
-            <span ng-show="forms.crear_oferta_form1.descripcion_oferta.$error.required" ng-if="!forms.crear_oferta_form1.$pristine"><p class="bg-danger text-danger">Este campo es obligatorio.</p></span>
+            <textarea id="descripcion_oferta" name="descripcion_oferta" rows="4" class="form-control" placeholder="Escribe aqu&iacute; la descripci&oacute;n de la oferta" ng-model="oferta.descripcion" ng-required="true" ng-blur="validarSubmit(forms.crear_oferta_form1)" ng-init="value='Probando'"></textarea>
+            <span ng-show="forms.crear_oferta_form1.descripcion_oferta.$error.required" ng-if="!forms.crear_oferta_form1.$pristine"><p class="bg-danger text-danger">La descripci&oacute;n de la Oferta es obligatorio.</p></span>
 
 
         </div>
@@ -81,7 +86,7 @@
 
             <textarea type="text" class="form-control" id="oferta_dominio" name="oferta_dominio"
                       placeholder="Se refiere al &aacute;rea principal de la industria en la cual se encuentra el producto o servicio." rows="5" ng-model="oferta.dominio" ng-required="true" ng-blur="validarSubmit(forms.crear_oferta_form1)"></textarea>
-            <span ng-show="forms.crear_oferta_form1.oferta_dominio.$error.required" ng-if="!forms.crear_oferta_form1.$pristine"><p class="bg-danger text-danger">Este campo es obligatorio.</p></span>
+            <span ng-show="forms.crear_oferta_form1.oferta_dominio.$error.required" ng-if="!forms.crear_oferta_form1.$pristine"><p class="bg-danger text-danger">El Dominio de la Oferta es obligatorio.</p></span>
         </div>
     </div>
     <!--Sub dominio-->
@@ -90,7 +95,7 @@
         <div class="col-md-10">
 
             <textarea type="text" class="form-control" id="oferta_sub_dominio" name="oferta_sub_dominio" placeholder="Se refiere al sub&aacute;rea principal de la industria en la cual se encuentra el producto o servicio." rows="5" ng-model="oferta.subdominio" ng-required="true" ng-blur="validarSubmit(forms.crear_oferta_form1)"></textarea>
-            <span ng-show="forms.crear_oferta_form1.oferta_sub_dominio.$error.required" ng-if="!forms.crear_oferta_form1.$pristine"><p class="bg-danger text-danger">Este campo es obligatorio.</p></span>
+            <span ng-show="forms.crear_oferta_form1.oferta_sub_dominio.$error.required" ng-if="!forms.crear_oferta_form1.$pristine"><p class="bg-danger text-danger">El Sub Dominio de la Oferta es obligatorio.</p></span>
 
         </div>
     </div>

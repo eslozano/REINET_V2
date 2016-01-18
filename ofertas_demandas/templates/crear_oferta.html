@@ -13,7 +13,7 @@
         textarea { resize: none; }
     </style>
     <div class="container" ng-controller="crearOfertaFormController">
-        <form  class="form-horizontal"  name="forms.crear_oferta_form1" id="crear_oferta_form1" novalidate>
+        <form  class="form-horizontal"  name="forms.crear_oferta_form1" id="crear_oferta_form1" novalidate method="post">
         
             <div class="row col-md-12">
                 <div align=right>
@@ -83,6 +83,7 @@
 
     {% if oferta %}
       oferta_copia = {
+          nombre:'{{oferta.nombre}}',
           tipo:'{{oferta.tipo}}',
           descripcion:'{{ oferta.descripcion }}',
           dominio:'{{ oferta.dominio }}',

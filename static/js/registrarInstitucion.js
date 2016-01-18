@@ -1,17 +1,17 @@
 
 function readURL(input) {
-if (input.files && input.files[0]) {
-	var reader = new FileReader();
+    if (input.files && input.files[0]) {
+    	var reader = new FileReader();
 
-	reader.onload = function (e) {
-		$('#blah')
-			.attr('src', e.target.result)
-			.width(200)
-			.height(200);
-	};
+    	reader.onload = function (e) {
+    		$('#blah')
+    			.attr('src', e.target.result)
+    			.width(200)
+    			.height(200);
+    	};
 
-	reader.readAsDataURL(input.files[0]);
-}
+    	reader.readAsDataURL(input.files[0]);
+    }
 }
 
 $("#paisInstitucion").change(function () {
@@ -31,7 +31,6 @@ function ciudadSuccess(data, textStatus, jqXHR){
 $("#optsCiudades").html(data);
 }
 
-
 /*
 Autor: Sixto Castro
 Nombre de función: validarNumero
@@ -42,7 +41,6 @@ Descripción: No permite el ingreso de letras
 */
 //Función que permite solo Números
 function validarNumero(e){
-
 	var key = window.Event ? e.which : e.keyCode
     /*Edicion: Ray Montiel
       Descripcion: Se permite el caracter '+' para ingresar números por códigos de región, ejemplo: +593 123 456 789
@@ -50,9 +48,7 @@ function validarNumero(e){
     return (key >= 48 && key <= 57 || key == 43 || key == 8)
 }
 
-
-
- function validarLetras(e){
+function validarLetras(e){
    key = e.keyCode || e.which;
    tecla = String.fromCharCode(key).toLowerCase();
    letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
@@ -70,7 +66,6 @@ function validarNumero(e){
 		return false;
 	}
 }
-
 
 function validarURL (abc) {
 	var string = abc.value;

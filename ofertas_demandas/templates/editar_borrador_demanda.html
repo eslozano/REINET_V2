@@ -44,20 +44,20 @@
                 <label for="Nombres" class="col-md-2">Nombre</label>
 
                 <div class="col-md-10">
-                    <input autofocus type="text" class="form-control" placeholder="Nombre de la demanda" id="nombre" name="nombre_demanda"  data-trigger="focus" ng-pattern="/^[a-zA-Z ]|[0-9]{10,300}$/"  ng-required="true"  ng-focus="" value="{{ demanda.nombre }}" ng-model="demanda.nombre">
+                    <input autofocus type="text" class="form-control" placeholder="Nombre de la demanda" id="nombre" name="nombre_demanda"  data-trigger="focus" ng-pattern="/^[a-zA-Z]|[0-9]{10,300}$/"  ng-required="true"  ng-focus="" value="{{ demanda.nombre }}" ng-model="demanda.nombre">
                     <!--
                     <input autofocus type="text" class="form-control" placeholder="Nombre de la demanda" id="nombre" name="nombre_demanda"  data-trigger="focus" ng-pattern="/^[a-zA-Z ]{10,300}$/"  ng-required="true"  ng-focus="" value="{{ demanda.nombre }}" ng-model="demanda.nombre">
                     <span ng-show="form_editar.nombre_demanda.$error.pattern"><p class="bg-danger text-danger">Nombre de la Demanda debe contener por lo menos 10 caracteres alfab&eacute;ticos</p></span>
                     -->
-                    <span ng-show="form_editar.nombre_demanda.$error.required" ng-if="!form_editar.$pristine"><p class="bg-danger text-danger">Este campo es obligatorio.</p></span>
+                    <span ng-show="form_editar.nombre_demanda.$error.required" ng-if="!form_editar.$pristine"><p class="bg-danger text-danger">El nombre de la Demanda es obligatorio.</p></span>
                 </div>
             </div>
             <!--Descripicion-->
             <div class="form-group">
                 <label for="descripcion-demanda" class="col-md-2">Descripci&oacute;n</label>
                 <div class="col-md-10">
-                    <textarea id="descripcion_demanda" name="descripcion_demanda" rows="4" class="form-control" placeholder="Escribe aqu&iacute; la descripci&oacute;n de la demanda" ng-required="true"  ng-model="demanda.descripcion">{{ demanda.descripcion }}</textarea>
-                    <span ng-show="form_editar.descripcion_demanda.$error.required" ng-if="!form_editar.$pristine"><p class="bg-danger text-danger">Este campo es obligatorio.</p></span>
+                    <textarea id="descripcion_demanda" name="descripcion_demanda" rows="4" class="form-control" placeholder="Escribe aqu&iacute; la descripci&oacute;n de la demanda" ng-required="true" ng-bind="demanda.descripcion" ng-model="demanda.descripcion">{{ demanda.descripcion }}</textarea>
+                    <span ng-show="form_editar.descripcion_demanda.$error.required" ng-if="!form_editar.$pristine"><p class="bg-danger text-danger">La descripci&oacute;n de la Demanda es obligatorio.</p></span>
                 </div>
             </div>
             <!--Dominio-->
@@ -65,7 +65,7 @@
                 <label for="demanda-dominio" class="col-md-2">Dominio</label>
                 <div class="col-md-10">
                     <textarea type="text" class="form-control" id="demanda_dominio" name="demanda_dominio" placeholder="Ingresa el dominio de la demanda" rows="5" ng-required="true"  ng-model="demanda.dominio">{{ demanda.dominio }}</textarea>
-                    <span ng-show="form_editar.demanda_dominio.$error.required" ng-if="!form_editar.$pristine"><p class="bg-danger text-danger">Este campo es obligatorio.</p></span>
+                    <span ng-show="form_editar.demanda_dominio.$error.required" ng-if="!form_editar.$pristine"><p class="bg-danger text-danger">El Dominio de la Demanda es obligatorio.</p></span>
                 </div>
             </div>
             <!--Sub dominio-->
@@ -73,7 +73,7 @@
                 <label for="demanda_sub_dominio" class="col-md-2">Sub Dominio</label>
                 <div class="col-md-10">
                     <textarea type="text" class="form-control" id="demanda_sub_dominio" name="demanda_sub_dominio" placeholder="Ingresa el subdominio de la demanda" rows="5" ng-required="true" ng-model="demanda.subdominio">{{ demanda.subdominio }}</textarea>
-                    <span ng-show="form_editar.demanda_sub_dominio.$error.required" ng-if="!form_editar.$pristine"><p class="bg-danger text-danger">Este campo es obligatorio.</p></span>
+                    <span ng-show="form_editar.demanda_sub_dominio.$error.required" ng-if="!form_editar.$pristine"><p class="bg-danger text-danger">El Sub Dominio de la Demanda es obligatorio.</p></span>
                 </div>
             </div>
 
