@@ -100,14 +100,14 @@
                                             <li><i style="color:#515151" class="fa fa-calendar"></i> {{ incubacion.fecha_inicio.date }}</li>
                                             <li><i style="color:#515151" class="fa fa-user"></i> Administrador: {{ incubacion.fk_perfil.username }}</li>
                                             <li><i style="color:#515151" class="fa fa-cogs"></i> Tipo de Oferta:
+
                                             {%if incubacion.tipos_oferta == 0 %}
                                                 Emprendimiento
-                                            {%endif%}
-                                            {%if incubacion.tipos_oferta == 1%}
+                                            {% elif incubacion.tipos_oferta == 1 %}
                                                 Tecnología
-                                            {%else%}
+                                            {% else %}
                                                 Prototipo
-                                            {%endif%}
+                                            {% endif %}
                                             </li>
                                         </ul>
                                         <ul class="text-muted list-inline">
@@ -118,9 +118,7 @@
                                 </div>
                             </div>
                         {% endfor %}
-                        <!-- PAGINACION DE VER INCUBACIONES DEL ADMINISTRADOR-->
-                        <div id='page_navigation' class="about-btn"></div>
-
+                        
                     {% else %}
                         <div class="alert alert-info alert-dismissable">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -128,7 +126,9 @@
                         </div>
                     {% endif %}
                 </div>
-                            </div>
+                <!-- PAGINACION DE VER INCUBACIONES DEL ADMINISTRADOR-->
+                <div style="display: none;" id='page_navigation' class="about-btn"></div>
+            </div>
         </div>
     </div>
 
@@ -146,11 +146,15 @@
     $(document).ready(function(){  
       
         //how much items per page to show  
-        var show_per_page = 5;  
+        var show_per_page = 4;  
         //getting the amount of elements inside content div  
         var number_of_items = $('#content').children().size();  
         //calculate the number of pages we are going to have  
         var number_of_pages = Math.ceil(number_of_items/show_per_page);  
+
+        if (number_of_items > 4) {
+            $('#page_navigation').show();
+        };
       
         //set the value of our hidden input fields  
         $('#current_page').val(0);  
@@ -158,15 +162,14 @@
       
         //now when we got all we need for the navigation let's make it '  
              
-        var navigation_html = '<a class="btn btn-default" href="javascript:previous();">Anterior </a>';  
+        var navigation_html = '<a id="id_previous" class="btn btn-default" href="javascript:previous();">Anterior </a>';  
         var current_link = 0;  
         while(number_of_pages > current_link){  
             navigation_html += '<a class="btn btn-default page_link" href="javascript:go_to_page(' + current_link +')" longdesc="' + current_link +'">'+ (current_link + 1) +' </a>';  
             current_link++;  
         }  
-        navigation_html += '<a class="btn btn-default" href="javascript:next();">Siguiente </a>';
+        navigation_html += '<a id="id_next" class="btn btn-default" href="javascript:next();">Siguiente </a>';
 
-        
         $('#page_navigation').html(navigation_html);  
       
         //add active_page class to the first page link  
@@ -181,11 +184,13 @@
     });  
       
     function previous(){  
-      
         new_page = parseInt($('#current_page').val()) - 1;  
         //if there is an item before the current active link run the function  
         if($('.active_page').prev('.page_link').length==true){  
+            $('#id_next').attr('disabled', false);
             go_to_page(new_page);  
+        }else{
+            $('#id_previous').attr('disabled', true);
         }  
       
     }  
@@ -193,9 +198,12 @@
     function next(){  
         new_page = parseInt($('#current_page').val()) + 1;  
         //if there is an item after the current active link run the function  
-        if($('.active_page').next('.page_link').length==true){  
+        if($('.active_page').next('.page_link').length==true){ 
+            $('#id_previous').attr('disabled', false); 
             go_to_page(new_page);  
-        }  
+        }else{
+            $('#id_next').attr('disabled', true);
+        } 
       
     }  
     function go_to_page(page_num){  
@@ -220,4 +228,3 @@
     } 
     </script>
 {% endblock %}
-
